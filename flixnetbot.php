@@ -232,18 +232,14 @@ switch($text)
   default:
 
     {
-
-		if ( $msg != "" & $msg == "🔎 CERCA SERIE" & $msg == "🔎 cerca serie" ){
-    			
-    			Typing($chatId);
-   
-		    	$text_in = $msg;
-				GetSerie($chatId,$text_in);
-				break;		
-    	}
-
     	Typing($chatId);
-		TastieraErrore($chatId); 
+   
+    	$text_in = $msg;
+		GetSerie($chatId,$text_in);
+		break;
+
+    	//Typing($chatId);
+		//TastieraErrore($chatId); 
 	}
 
 	break;
