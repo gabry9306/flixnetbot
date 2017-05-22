@@ -101,12 +101,12 @@ function GetSerie($chatId,$title)
 
 		$cast = $update_2["_embedded"]["cast"]["0"]["person"]["name"];
 
-			$cast[0] = $update_2["_embedded"]["cast"]["0"]["person"]["name"];
+			$cast["0"] = $update_2["_embedded"]["cast"]["0"]["person"]["name"];
 			$cast[1] = $update_2["_embedded"]["cast"]["1"]["person"]["name"];
 			$cast[2] = $update_2["_embedded"]["cast"]["2"]["person"]["name"];
 			$casts = implode(", ", $cast);
 
-		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$cast[0]."%0A %0A";
+		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$cast["0"]."%0A %0A";
 
 		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"MAGGIORI INFO","url":"'.$link_imdb.'"}]]}';
 		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
