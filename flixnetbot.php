@@ -105,7 +105,7 @@ function GetSerie($chatId,$title)
 
 		$date_film = timestamp_to_date($date_film);
 
-		$message1 = "<b>Titolo Film:</b>%0A".$title_film."%0A %0A"."<b>Prima apparizione:</b>%0A".$year_film."%0A %0A"."<b>Regista:</b>%0A".$regista."%0A %0A"."<b>Produttore:</b>%0A".$network."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Trama:</b>%0A".$trama."%0A %0A"."<b>Premi:</b>%0A".$array_premi;
+		$message1 = "<b>Titolo Film:</b>%0A".$title_film."%0A %0A"."<b>Prima apparizione:</b>%0A".$year_film."%0A %0A"."<b>Produttore:</b>%0A".$network."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Trama:</b>%0A".$trama;
 
 		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"TRAILER","url":"'.$trailer.'"}]]}';
 		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
