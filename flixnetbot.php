@@ -80,52 +80,43 @@ function timestamp_to_date($timestamp){
 function GetSerie($chatId,$title)
 {
 
-		$content_imdb = file_get_contents('http://api.tvmaze.com/search/shows?q='.$title.'');
+		$content_imdb = file_get_contents('http://api.tvmaze.com/singlesearch/shows?q='.$title.'&embed=episodes');
 		$update_1 = json_decode($content_imdb, TRUE);
 	
-		$title_film = $update_1["0"]["show"]["name"];
-		$date_film = $update_1["0"]["show"]["premiered"];
-		$genere = $update_1["0"]["show"]["genres"]["0"];
-		$durata = $update_1["0"]["show"]["runtime"];
-		$produttore = $update_1["0"]["show"]["webChannel"]["name"];
-		$id_imdb = $update_1["0"]["show"]["externals"]["imdb"];
+		$title_film = $update_1["name"];
+		$date_film = $update_1["premiered"];
+		$genere = $update_1["genres"]["0"];
+		$durata = $update_1["runtime"];
+		$produttore = $update_1["webChannel"]["name"];
+		$id_imdb = $update_1["externals"]["imdb"];
 		$link_imdb = "http://www.imdb.com/title/".$id_imdb."/";
-		$trama = $update_1["data"]["0"]["overview"];
+		
+		$locandina = $update_1["image"]["original"];
 
 		/*$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
 		$update_2 = json_decode($content_yadex, TRUE)
 
 		$text_traslate = $update_2["text"]["0"];*/
 
-		/*for ($x = 0; $x <= 10; $x++) 
+		for ($x = 0; $x <= 10; $x++) 
 		{
-			$genere[$x] = $update_1["0"]["show"]["genres"][$x];
-			$generi = implode(', ', $genere);
+			$episodio[$x] = $update_1["0"]["_embedded"]["episodes"][$x]["name"];
+			$episodi = implode(', ', $episodio);
 
-			if($genere[$x] == "")
+			if($episodio[$x] == "")
 			{
 				break;
 			}  
-		}*/ 
+		}
 
-		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_film."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A";
+		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_film."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Episodi:</b>%0A".$episodi."%0A %0A";
 
 		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"MAGGIORI INFO","url":"'.$link_imdb.'"}]]}';
 		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
 		file_get_contents($url);
 
-		$message1 = "Per scaricare la locandina digita /locandina";
-
-		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1;
+		$url = $GLOBALS[website].'/sendPhoto?chat_id='.$chatId.'&parse_mode=HTML&photo='.$locandina;
 		file_get_contents($url);
-
-		if ($msg == "/locandina")
-			
-			{
-				$locandina = $update_1["0"]["show"]["image"]["original"];
-				$url = $GLOBALS[website].'/sendPhoto?chat_id='.$chatId.'&parse_mode=HTML&photo='.$locandina;
-				file_get_contents($url);
-			}	
 
 }
 
