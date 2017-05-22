@@ -96,7 +96,7 @@ function GetSerie($chatId,$title)
 		date_default_timezone_set('Europe/Rome');
 		$date_serie = date("d-m-Y");
 
-		$episodio_0 = $update_1["0"]["_embedded"]["episodes"]["0"]["name"];
+		$episodio_0 = $update_1["0"]["_embedded"]["episodes"]["0"]["2"];
 
 		/*$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
 		$update_2 = json_decode($content_yadex, TRUE)
