@@ -88,7 +88,7 @@ function GetSerie($chatId,$title)
 		$genere = $update_1["0"]["show"]["genres"]["0"];
 		$durata = $update_1["0"]["show"]["runtime"];
 		$produttore = $update_1["0"]["show"]["webChannel"]["name"];
-		$id_imdb = $update_1["data"]["0"]["externals"]["imdb"];
+		$id_imdb = $update_1["data"]["0"]["show"]["externals"]["imdb"];
 		$link_imdb = "http://www.imdb.com/title/".$id_imdb."/";
 		$trama = $update_1["data"]["0"]["overview"];
 		$locandina = $update_1["0"]["show"]["image"]["original"];
@@ -109,7 +109,7 @@ function GetSerie($chatId,$title)
 			}  
 		}*/ 
 
-		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_film."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$id_imdb."%0A %0A";
+		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_film."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A";
 
 		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"MAGGIORI INFO","url":"'.$link_imdb.'"}]]}';
 		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
