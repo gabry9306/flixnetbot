@@ -181,7 +181,7 @@ switch($text)
     
     break;
 
-  case "🔎 CERCA FILM":
+  case "🔎 CERCA SERIE":
 
   	{
   		Typing($chatId);
