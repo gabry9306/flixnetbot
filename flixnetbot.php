@@ -73,17 +73,34 @@ function timestamp_to_date($timestamp){
 function GetSerie($chatId,$title)
 {
 
-		$content_imdb = file_get_contents('http://api.myapifilms.com/tvdb/searchSeries?title=Breaking+Bad&token=11e08191-2011-4679-9fb6-caaaef23eae7&format=json&language=it');
-		$update_1 = json_decode($content_imdb, TRUE);
+		$ch = curl_init();
+
+		curl_setopt($ch, CURLOPT_URL, "https://api.trakt.tv/search/movie?query=sharknado");
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($ch, CURLOPT_HEADER, FALSE);
+
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+		  "Content-Type: application/json",
+		  "trakt-api-version: 2",
+		  "trakt-api-key: e30ac70f23db2ccd8889767e4c4b929f8c9231dfd035472b509856380580061d"
+		));
+
+		$response = curl_exec($ch);
+		curl_close($ch);
+
+		var_dump($response);
+
+		$content_trak = file_get_contents($response);
+		$update_1 = json_decode($content_trak, TRUE);
 	
-		$title_film = $update_1["data"]["0"]["seriesName"];
-		$year_film = $update_1["data"]["0"]["firstAired"];
-		$network = $update_1["data"]["0"]["network"];
-		$durata = $update_1["data"]["0"]["runtime"];
+		$title_film = $update_1["title"];
+		$year_film = $update_1["year"];
+		$network = $update_1["network"];
+		$durata = $update_1["runtime"];
 		//$premi = $update_1["data"]["0"]["awards"]["0"][""];
 		//$trailer = $update_1["data"]["0"]["trailer"]["videoURL"];
-		$trama = $update_1["data"]["0"]["overview"];
-		$locandina = $update_1["data"]["0"]["banner"];
+		$trama = $update_1["overview"];
+		$locandina = $update_1["banner"];
 
 		for ($x = 0; $x <= 10; $x++) 
 		{
