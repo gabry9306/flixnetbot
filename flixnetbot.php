@@ -163,6 +163,15 @@ switch($text)
 
     break;
 
+  case "info bot":
+
+	{
+		Typing($chatId);
+	    TastieraMenuPrincipale($chatId,"In <b>SerieDbBot</b> troverai tutte le info sulle Serie Tv che cerchi%0A %0A<b>CREDITS:</b>%0A %0AIl Bot è stato ideato da <b>Gabriele Dell'Aria</b> (@gabrieledellaria) e sviluppato sfruttando le API fornite da MyApi");
+	}
+
+    break; 
+
   case "NEWS":
 
   	{
@@ -201,7 +210,7 @@ switch($text)
 		break;  
 	}
 
-  case "HELP":
+  case "help":
 
 	  	{	
 	  		Typing($chatId);
@@ -210,6 +219,16 @@ switch($text)
 		}
 
   	break;  
+
+  case "HELP":
+
+	  	{	
+	  		Typing($chatId);
+
+			TastieraMenuPrincipale($chatId,"Per usare il Bot utilizza la tastiera sotto per accedere alla sezione che ti interessa");
+		}
+
+  	break;  	
 
   default:
 
