@@ -126,7 +126,7 @@ function GetSerie($chatId,$title)
 
 		$casts = "".$cast.",%0A".$cast_2.",".$cast_3.",%0A".$cast_4."%0A..."."%0A %0A";
 
-		if ( $title_film != "" & $genere != "" & $date_serie != "" & $durata != "" & $produttore != "" & $cast == "" & $cast_2 == "" & $cast_3 == "" & $cast_4 == "")
+		if ( $cast == "" & $cast_2 == "" & $cast_3 == "" & $cast_4 == "")
 		{
 			$casts = "Non disponibilie";
 		}
