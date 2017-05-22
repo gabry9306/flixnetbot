@@ -209,16 +209,6 @@ switch($text)
     	break;
 	} 
 
-  case "master":
-    
-    {
-    	Typing($chatId);
-   
-    	$text_in = "Master+of+none";
-		GetSerie($chatId,$text_in);
-		break;  
-	}
-
   case "help":
 
 	  	{	
@@ -243,8 +233,13 @@ switch($text)
 
     {
     	Typing($chatId);
+   
+    	$text_in = $msg;
+		GetSerie($chatId,$text_in);
+		break;
 
-		TastieraErrore($chatId); 
+    	//Typing($chatId);
+		//TastieraErrore($chatId); 
 	}
 
 	break;
