@@ -76,7 +76,7 @@ function GetSerie($chatId,$title)
 		$content_imdb = file_get_contents('https://api.trakt.tv/movie/summary.json/e30ac70f23db2ccd8889767e4c4b929f8c9231dfd035472b509856380580061d/sharknado');
 		$update_1 = json_decode($content_imdb, TRUE);
 	
-		$title_film = $update_1["data"]["title"];
+		$title_film = $update_1["data"]["0"];
 		$year_film = $update_1["data"]["year"];
 		$network = $update_1["data"]["network"];
 		$durata = $update_1["data"]["runtime"];
