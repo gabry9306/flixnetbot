@@ -111,9 +111,9 @@ function GetSerie($chatId,$title)
 			$genere = "".$genere_1."/%0A".$genere_2."/%0A".$genere_3;
 		}
 
-		if ( $title_film != "" & $genere != "" & $date_serie != "" & $durata != "" $casts != "" & $produttore == "")
+		if ( $produttore == "")
 		{
-			$produttore = "Non disponibilie";
+			$produttore = "Non disponibile";
 		}
 
 		$content_show_cast = file_get_contents('http://api.tvmaze.com/shows/'.$id_show.'?&embed=cast');
@@ -128,7 +128,7 @@ function GetSerie($chatId,$title)
 
 		if ( $cast == "" & $cast_2 == "" & $cast_3 == "" & $cast_4 == "")
 		{
-			$casts = "Non disponibilie";
+			$casts = "Non disponibile";
 		}
 
 		$content_trailer = file_get_contents('https://www.googleapis.com/youtube/v3/search?part=snippet&q='.$title.'official+trailer&key=AIzaSyAiMTE7edL3D-klp0y-nbtyyuv5IGLIlhU&maxResults=25');
