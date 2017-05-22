@@ -111,6 +111,11 @@ function GetSerie($chatId,$title)
 			$genere = "".$genere_1."/%0A".$genere_2."/%0A".$genere_3;
 		}
 
+		if ( $produttore == "")
+		{
+			$produttore = "Non disponibilie"
+		}
+
 		$content_show_cast = file_get_contents('http://api.tvmaze.com/shows/'.$id_show.'?&embed=cast');
 		$update_2 = json_decode($content_show_cast, TRUE);
 
@@ -119,6 +124,13 @@ function GetSerie($chatId,$title)
 		$cast_3 = $update_2["_embedded"]["cast"]["2"]["person"]["name"];
 		$cast_4 = $update_2["_embedded"]["cast"]["3"]["person"]["name"];
 
+		$casts = "".$cast.",%0A".$cast_2.",".$cast_3.",%0A".$cast_4."%0A..."."%0A %0A";
+
+		if ( $cast == "" & $cast_2 == "" & $cast_3 == "" & $cast_4 == "")
+		{
+			$casts = "Non disponibilie"
+		}
+
 		$content_trailer = file_get_contents('https://www.googleapis.com/youtube/v3/search?part=snippet&q='.$title.'official+trailer&key=AIzaSyAiMTE7edL3D-klp0y-nbtyyuv5IGLIlhU&maxResults=25');
 		$update_3 = json_decode($content_trailer, TRUE);
 
@@ -126,7 +138,7 @@ function GetSerie($chatId,$title)
 		$trailer = "www.youtube.com/watch?v=".$trailer_base."/";
 
 
-		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$cast.",%0A".$cast_2.",".$cast_3.",%0A".$cast_4."%0A..."."%0A %0A";
+		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts;
 
 		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"MAGGIORI INFO","url":"'.$link_imdb.'"},{"text":"TRAILER","url":"'.$trailer.'"}]]}';
 		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
