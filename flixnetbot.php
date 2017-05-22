@@ -88,7 +88,8 @@ function GetSerie($chatId,$title)
 		$genere = $update_1["0"]["show"]["genres"]["0"];
 		$durata = $update_1["0"]["show"]["runtime"];
 		$produttore = $update_1["0"]["show"]["webChannel"]["name"];
-		$trailer = $update_1["data"]["0"]["trailer"]["videoURL"];
+		$link_imdb = $update_1["data"]["0"]["externals"]["imdb"];
+		$link_imdb = "http://www.imdb.com/title/".$link_imdb;
 		$trama = $update_1["data"]["0"]["overview"];
 		$locandina = $update_1["0"]["show"]["image"]["original"];
 
@@ -97,7 +98,7 @@ function GetSerie($chatId,$title)
 
 		$text_traslate = $update_2["text"]["0"];*/
 
-		for ($x = 0; $x <= 10; $x++) 
+		/*for ($x = 0; $x <= 10; $x++) 
 		{
 			$genere[$x] = $update_1["0"]["show"]["genres"][$x];
 			$generi = implode(', ', $genere);
@@ -106,12 +107,12 @@ function GetSerie($chatId,$title)
 			{
 				break;
 			}  
-		} 
+		}*/ 
 
-		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$generi."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_film."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A";
+		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_film."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A";
 
-		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"TRAILER","url":"'.$trailer.'"}]]}';
-		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1;//.$tastiera_1;
+		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"MAGGIORI INFO","url":"'.$link_imdb.'"}]]}';
+		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
 		file_get_contents($url);
 
 		$url = $GLOBALS[website].'/sendPhoto?chat_id='.$chatId.'&parse_mode=HTML&photo='.$locandina;
