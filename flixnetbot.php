@@ -119,9 +119,16 @@ function GetSerie($chatId,$title)
 		$cast_3 = $update_2["_embedded"]["cast"]["2"]["person"]["name"];
 		$cast_4 = $update_2["_embedded"]["cast"]["3"]["person"]["name"];
 
+		$content_trailer = file_get_contents('https://www.googleapis.com/youtube/v3/search?part=snippet&q=Master+of+none+offical+trailer&key=AIzaSyAiMTE7edL3D-klp0y-nbtyyuv5IGLIlhU&maxResults=25');
+		$update_3 = json_decode($content_trailer, TRUE);
+
+		$trailer_base = $update_2["items"]["0"]["id"]["videoId"];
+		$trailer = "www.youtube.com/watch?v=".$trailer_base."/";
+
+
 		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$cast.",%0A".$cast_2.",".$cast_3.",%0A".$cast_4."%0A..."."%0A %0A";
 
-		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"MAGGIORI INFO","url":"'.$link_imdb.'"}]]}';
+		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"MAGGIORI INFO","url":"'.$link_imdb.'"},{"text":"TRAILER","url":"'.$trailer.'"}]]}';
 		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
 		file_get_contents($url);
 
