@@ -185,11 +185,19 @@ switch($text)
 
   	{
   		Typing($chatId);
-    	sendMessage($chatId,"<b>Qual'è il titolo del film che cerchi?</b>%0A %0ASe il titolo contiene spazi scrivere secondo la seguente sintassi%0A %0AES. Il+padrino");
+    	sendMessage($chatId,"<b>Qual'è il titolo della Serie Netflix che cerchi?</b>%0A %0ASe il titolo contiene spazi scrivere secondo la seguente sintassi%0A %0AES. Master+of+none");
 
     	break;
 	}
     
+  case "🔎 cerca serie":
+
+  	{
+  		Typing($chatId);
+    	sendMessage($chatId,"<b>Qual'è il titolo della Serie Netflix che cerchi?</b>%0A %0ASe il titolo contiene spazi scrivere secondo la seguente sintassi%0A %0AES. Master+of+none");
+
+    	break;
+	} 
 
   case "news":
     
