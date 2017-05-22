@@ -79,18 +79,11 @@ function GetSerie($chatId,$title)
 		$title_film = $update_1["data"]["0"]["seriesName"];
 		$year_film = $update_1["data"]["0"]["firstAired"];
 		$network = $update_1["data"]["0"]["network"];
-		$regista = $update_1["data"]["0"]["directors"]["0"]["name"];
-		$genere = $update_1["data"]["0"]["genres"]["0"];
 		$durata = $update_1["data"]["0"]["runtime"];
-		$premi = $update_1["data"]["0"]["awards"]["0"][""];
-		$trailer = $update_1["data"]["0"]["trailer"]["videoURL"];
+		//$premi = $update_1["data"]["0"]["awards"]["0"][""];
+		//$trailer = $update_1["data"]["0"]["trailer"]["videoURL"];
 		$trama = $update_1["data"]["0"]["overview"];
 		$locandina = $update_1["data"]["0"]["banner"];
-
-		/*$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
-		$update_2 = json_decode($content_yadex, TRUE)
-
-		$text_traslate = $update_2["text"]["0"];*/
 
 		for ($x = 0; $x <= 10; $x++) 
 		{
@@ -102,8 +95,6 @@ function GetSerie($chatId,$title)
 				break;
 			}  
 		} 
-
-		$date_film = timestamp_to_date($date_film);
 
 		$message1 = "<b>Titolo Film:</b>%0A".$title_film."%0A %0A"."<b>Prima apparizione:</b>%0A".$year_film."%0A %0A"."<b>Produttore:</b>%0A".$network."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Trama:</b>%0A".$trama;
 
