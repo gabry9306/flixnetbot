@@ -96,7 +96,7 @@ function GetSerie($chatId,$title)
 			$genere[$x] = $update_1["0"]["show"]["genres"]["0"];
 			$array_genere = implode(', ', $genere);
 
-			if($premi[$x] == "")
+			if($genere[$x] == "")
 			{
 				break;
 			}  
