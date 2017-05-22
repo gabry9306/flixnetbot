@@ -165,7 +165,7 @@ function GetSerie($chatId,$title)
 				file_get_contents($url);
 			}
 
-			if ( $title_film == "" & $locandina != "" ) {
+			if ( ($title_film == "") & ($locandina != "") ) {
 
 				$message1 = "Descrizione Serie Tv al momento non disponibile!";
 				$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1;
