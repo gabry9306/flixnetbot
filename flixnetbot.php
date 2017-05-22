@@ -131,7 +131,9 @@ $text = trim($text);
 $text = strtolower($text);
 header("Content-Type: application/json");
 
-if ($text == "/start")
+switch($text)
+{
+  case "/start":
 
 		{
 			Typing($chatId);
@@ -149,3 +151,74 @@ if ($text == "/start")
 
 			TastieraMenuPrincipale($chatId,"\xF0\x9F\x91\x8B Ciao $firstname (@$username), benvenuto in SerieDbBot!%0A %0A<b>Interegisci con me attraverso la pulsantiera sotto</b> 💬");
 		}
+
+    break;
+
+  case "INFO BOT":
+
+	{
+		Typing($chatId);
+	    TastieraMenuPrincipale($chatId,"In <b>SerieDbBot</b> troverai tutte le info sulle Serie Tv che cerchi%0A %0A<b>CREDITS:</b>%0A %0AIl Bot è stato ideato da <b>Gabriele Dell'Aria</b> (@gabrieledellaria) e sviluppato sfruttando le API fornite da MyApi");
+	}
+
+    break;
+
+  case "NEWS":
+
+  	{
+  		Typing($chatId);
+    	TastieraMenuPrincipale($chatId,"Per restare sempre aggiornato sulle news cinematografiche segui il Canale Telegram @CinePassionCh");
+    }
+    
+    break;
+
+  case "🔎 CERCA FILM":
+
+  	{
+  		Typing($chatId);
+    	sendMessage($chatId,"<b>Qual'è il titolo del film che cerchi?</b>%0A %0ASe il titolo contiene spazi scrivere secondo la seguente sintassi%0A %0AES. Il+padrino");
+
+    	break;
+	}
+    
+
+  case "news":
+    
+    {
+    	Typing($chatId);
+    	TastieraMenuPrincipale($chatId,"Per restare sempre aggiornato sulle news cinematografiche segui il Canale Telegram @CinePassionCh");
+    }
+    
+    break;
+
+  case "alice":
+    
+    {
+    	Typing($chatId);
+   
+    	$text_in = "Alice+In+Wonderland";
+		GetFilm($chatId,$text_in);
+		break;  
+	}
+
+  case "HELP":
+
+	  	{	
+	  		Typing($chatId);
+
+			TastieraMenuPrincipale($chatId,"Per usare il Bot utilizza la tastiera sotto per accedere alla sezione che ti interessa");
+		}
+
+  	break;  
+
+  default:
+
+    {
+    	Typing($chatId);
+
+		TastieraErrore($chatId); 
+	}
+
+	break;
+
+}
