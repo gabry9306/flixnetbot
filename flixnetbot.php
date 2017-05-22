@@ -67,11 +67,6 @@ function TastieraInfo($chatId,$message)
 	file_get_contents($url);
 }
 
-function timestamp_to_date($timestamp){
-   return date("r", $timestamp);
-}
-
-
 function Typing($chatId)
 {
 	$url = $GLOBALS[website].'/sendChatAction?chat_id='.$chatId.'&parse_mode=HTML&action=typing';
@@ -173,7 +168,7 @@ switch($text)
 
 	{
 		Typing($chatId);
-	    TastieraInfo($chatId,"In <b>SerieDbBot</b> troverai tutte le info sulle Serie Tv che cerchi%0A %0A<b>CREDITS:</b>%0A %0AIl Bot è stato ideato da <b>Gabriele Dell'Aria</b> (@gabrieledellaria) e sviluppato sfruttando le API fornite da MyApi");
+	    TastieraInfo($chatId,"In <b>SerieDbBot</b> troverai tutte le info sulle Serie Tv che cerchi%0A %0A<b>CREDITS:</b>%0A %0AIl Bot è stato ideato da <b>Gabriele Dell'Aria</b> (@gabrieledellaria)");
 	}
 
     break; 
