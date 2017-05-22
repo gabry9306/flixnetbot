@@ -104,7 +104,7 @@ function GetSerie($chatId,$title)
 
 		foreach ($cast as $value){
 			$cast = $update_2["_embedded"]["cast"][$x]["person"]["name"];
-			$casts = implode(', ', $cast);
+			$casts = implode(", ", $cast);
 			$x++;
 			break;
 		}
