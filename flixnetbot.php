@@ -77,11 +77,10 @@ function GetSerie($chatId,$title)
 		$update_1 = json_decode($content_imdb, TRUE);
 	
 		$title_film = $update_1["0"]["show"]["name"];
-		$year_film = $update_1["data"]["0"]["year"];
 		$date_film = $update_1["0"]["show"]["premiered"];
 		$genere = $update_1["0"]["show"]["genres"]["0"];
 		$durata = $update_1["0"]["show"]["runtime"];
-		$premi = $update_1["data"]["0"]["awards"]["0"][""];
+		$produttore = $update_1["0"]["show"]["webChannel"]["name"];
 		$trailer = $update_1["data"]["0"]["trailer"]["videoURL"];
 		$trama = $update_1["data"]["0"]["overview"];
 		$locandina = $update_1["0"]["show"]["image"]["original"];
@@ -102,7 +101,7 @@ function GetSerie($chatId,$title)
 			}  
 		} 
 
-		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Anno:</b>%0A".$year_film."%0A %0A"."<b>Regista:</b>%0A".$regista."%0A %0A"."<b>Data uscita:</b>%0A".$date_film."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Trama:</b>%0A".$trama."%0A %0A"."<b>Premi:</b>%0A".$array_premi;
+		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_film."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A";
 
 		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"TRAILER","url":"'.$trailer.'"}]]}';
 		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1;//.$tastiera_1;
