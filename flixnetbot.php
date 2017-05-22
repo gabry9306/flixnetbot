@@ -88,7 +88,7 @@ function GetSerie($chatId,$title)
 		$genere = $update_1["0"]["show"]["genres"]["0"];
 		$durata = $update_1["0"]["show"]["runtime"];
 		$produttore = $update_1["0"]["show"]["webChannel"]["name"];
-		$id_imdb = $update_1["data"]["0"]["show"]["externals"]["imdb"];
+		$id_imdb = $update_1["0"]["show"]["externals"]["imdb"];
 		$link_imdb = "http://www.imdb.com/title/".$id_imdb."/";
 		$trama = $update_1["data"]["0"]["overview"];
 		$locandina = $update_1["0"]["show"]["image"]["original"];
