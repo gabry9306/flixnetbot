@@ -106,12 +106,12 @@ function GetSerie($chatId,$title)
 
 		$text_traslate = $update_2["text"]["0"];*/
 
-		for ($x = 0; $x <= 10; $x++) 
+		for ($y = 0; $y <= 10; $y++) 
 		{
-			$cast[$x] = $update_2["_embedded"]["cast"][$x]["name"];
+			$cast[$y] = $update_2["_embedded"]["cast"][$y]["name"];
 			$casts = implode(', ', $cast);
 
-			if($cast[$x] == "")
+			if($cast[$y] == "")
 			{
 				break;
 			}  
