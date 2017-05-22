@@ -73,21 +73,25 @@ function timestamp_to_date($timestamp){
 function GetSerie($chatId,$title)
 {
 
-		$content_imdb = file_get_contents('https://api.trakt.tv/movie/summary.json/e30ac70f23db2ccd8889767e4c4b929f8c9231dfd035472b509856380580061d/sharknado');
+		$content_imdb = file_get_contents('http://api.myapifilms.com/tvdb/searchSeries?title=Master+of+none&token=11e08191-2011-4679-9fb6-caaaef23eae7&format=json&language=it');
 		$update_1 = json_decode($content_imdb, TRUE);
 	
-		$title_film = $update_1["data"]["0"];
-		$year_film = $update_1["data"]["year"];
-		$network = $update_1["data"]["network"];
-		$durata = $update_1["data"]["runtime"];
-		//$premi = $update_1["data"]["0"]["awards"]["0"][""];
-		//$trailer = $update_1["data"]["0"]["trailer"]["videoURL"];
-		$trama = $update_1["data"]["overview"];
-		$locandina = $update_1["data"]["banner"];
+		$title_film = $update_1["data"]["0"]["seriesName"];
+		$year_film = $update_1["data"]["0"]["year"];
+		$date_film = $update_1["data"]["0"]["firstAired"];
+		$regista = $update_1["data"]["0"]["directors"]["0"]["name"];
+		$genere = $update_1["data"]["0"]["genres"]["0"];
+		$durata = $update_1["data"]["0"]["runtime"];
+		$premi = $update_1["data"]["0"]["awards"]["0"][""];
+		$trailer = $update_1["data"]["0"]["trailer"]["videoURL"];
+		$trama = $update_1["data"]["0"]["overview"];
+		//$premi = $update_1["data"]["0"]["awards"]["0"]["titlesAwards"]["0"]["titleAwardOutcome"];
+		//$premi_2 = $update_1["data"]["0"]["awards"]["0"]["titlesAwards"]["1"]["titleAwardOutcome"];
+		$locandina = $update_1["data"]["0"]["banner"];
 
 		for ($x = 0; $x <= 10; $x++) 
 		{
-			$premi[$x] = $update_1["data"]["movies"]["0"]["awards"][$x]["titlesAwards"]["0"]["titleAwardOutcome"];
+			$premi[$x] = $update_1["data"]["0"]["awards"][$x]["titlesAwards"]["0"]["titleAwardOutcome"];
 			$array_premi = implode(', ', $premi);
 
 			if($premi[$x] == "")
@@ -96,10 +100,12 @@ function GetSerie($chatId,$title)
 			}  
 		} 
 
-		$message1 = "<b>Titolo Film:</b>%0A".$title_film."%0A %0A"."<b>Prima apparizione:</b>%0A".$year_film."%0A %0A"."<b>Produttore:</b>%0A".$network."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Trama:</b>%0A".$trama;
+		$date_film = timestamp_to_date($date_film);
+
+		$message1 = "<b>Titolo Film:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Anno:</b>%0A".$year_film."%0A %0A"."<b>Regista:</b>%0A".$regista."%0A %0A"."<b>Data uscita:</b>%0A".$date_film."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Trama:</b>%0A".$trama."%0A %0A"."<b>Premi:</b>%0A".$array_premi;
 
 		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"TRAILER","url":"'.$trailer.'"}]]}';
-		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1;//.$tastiera_1;
+		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
 		file_get_contents($url);
 
 		$url = $GLOBALS[website].'/sendPhoto?chat_id='.$chatId.'&parse_mode=HTML&photo='.$locandina;
