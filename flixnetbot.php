@@ -165,16 +165,8 @@ function GetSerie($chatId,$title)
 				file_get_contents($url);
 			}
 
-			if ( $locandina != "" ){
-
-				$url = $GLOBALS[website].'/sendPhoto?chat_id='.$chatId.'&parse_mode=HTML&photo='.$locandina;
-				file_get_contents($url);
-			}
-			
-			else
-			{
-				break;
-			}
+			$url = $GLOBALS[website].'/sendPhoto?chat_id='.$chatId.'&parse_mode=HTML&photo='.$locandina;
+			file_get_contents($url);
 
 		}
 
