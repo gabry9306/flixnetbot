@@ -77,7 +77,6 @@ function GetSerie($chatId,$title)
 		$update_1 = json_decode($content_imdb, TRUE);
 	
 		$title_film = $update_1["0"]["show"]["name"];
-		//$year_film = $update_1["0"]["show"]["name"];
 		$date_film = $update_1["0"]["show"]["premiered"];
 		$regista = $update_1["0"]["show"]["name"];
 		$genere = $update_1["0"]["show"]["genres"]["0"];
@@ -87,15 +86,15 @@ function GetSerie($chatId,$title)
 		$trama = $update_1["0"]["show"]["summary"];
 		$locandina = $update_1["0"]["show"]["image"]["original"];
 
-		$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
+		/*$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
 		$update_2 = json_decode($content_yadex, TRUE)
 
-		$text_traslate = $update_2["text"]["0"];
+		$text_traslate = $update_2["text"]["0"];*/
 
 		for ($x = 0; $x <= 10; $x++) 
 		{
-			$premi[$x] = $update_1["data"]["movies"]["0"]["awards"][$x]["titlesAwards"]["0"]["titleAwardOutcome"];
-			$array_premi = implode(', ', $premi);
+			$genere[$x] = $update_1["0"]["show"]["genres"]["0"];
+			$array_genere = implode(', ', $genere);
 
 			if($premi[$x] == "")
 			{
@@ -105,7 +104,7 @@ function GetSerie($chatId,$title)
 
 		$date_film = timestamp_to_date($date_film);
 
-		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."<b>Data uscita 1° Episodio:</b>%0A".$date_film."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Trama:</b>%0A".$text_traslate;
+		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$array_genere."<b>Data uscita 1° Episodio:</b>%0A".$date_film."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Trama:</b>%0A".$trama;
 
 		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"TRAILER","url":"'.$trailer.'"}]]}';
 		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
