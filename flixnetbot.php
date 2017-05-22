@@ -147,7 +147,7 @@ function GetSerie($chatId,$title)
 		$trailer_base = $update_3["items"]["0"]["id"]["videoId"];
 		$trailer = "www.youtube.com/watch?v=".$trailer_base."/";
 
-		if ( $title_film == "" & $genere == "" & $date_serie == "" & $durata == "" & $produttore == "" & $casts == "" ){
+		if ( $title_film == "" ){
 
 			$message1 = "Serie Tv non disponibile ... provare con un'altro nome!";
 		}
