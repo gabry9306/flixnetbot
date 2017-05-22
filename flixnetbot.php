@@ -89,19 +89,6 @@ function GetSerie($chatId,$title)
 		//$premi_2 = $update_1["data"]["0"]["awards"]["0"]["titlesAwards"]["1"]["titleAwardOutcome"];
 		$locandina = $update_1["data"]["0"]["banner"];
 
-		for ($x = 0; $x <= 10; $x++) 
-		{
-			$premi[$x] = $update_1["data"]["0"]["awards"][$x]["titlesAwards"]["0"]["titleAwardOutcome"];
-			$array_premi = implode(', ', $premi);
-
-			if($premi[$x] == "")
-			{
-				break;
-			}  
-		} 
-
-		$date_film = timestamp_to_date($date_film);
-
 		$message1 = "<b>Titolo Film:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Anno:</b>%0A".$year_film."%0A %0A"."<b>Regista:</b>%0A".$regista."%0A %0A"."<b>Data uscita:</b>%0A".$date_film."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Trama:</b>%0A".$trama."%0A %0A"."<b>Premi:</b>%0A".$array_premi;
 
 		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"TRAILER","url":"'.$trailer.'"}]]}';
