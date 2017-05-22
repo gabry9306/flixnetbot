@@ -70,10 +70,10 @@ function timestamp_to_date($timestamp){
    return date("r", $timestamp);
 }
 
-function GetFilm($chatId,$title)
+function GetSerie($chatId,$title)
 {
 
-		$content_imdb = file_get_contents('http://api.myapifilms.com/imdb/idIMDB?title='.$title.'&token=11e08191-2011-4679-9fb6-caaaef23eae7&format=json&language=it&aka=0&business=0&seasons=0&seasonYear=1&technical=0&filter=2&exactFilter=0&limit=1&forceYear=0&trailers=1&movieTrivia=0&awards=1&moviePhotos=0&movieVideos=0&actors=0&biography=0&uniqueName=0&filmography=0&bornAndDead=0&starSign=0&actorActress=1&actorTrivia=0&similarMovies=0&adultSearch=0&goofs=0&keyword=0&quotes=0&fullSize=1&companyCredits=0&filmingLocations=0');
+		$content_imdb = file_get_contents('http://api.myapifilms.com/tvdb/searchSeries?title=Master+of+none&token=11e08191-2011-4679-9fb6-caaaef23eae7&format=json&language=it');
 		$update_1 = json_decode($content_imdb, TRUE);
 	
 		$title_film = $update_1["data"]["movies"]["0"]["originalTitle"];
@@ -208,13 +208,13 @@ switch($text)
     
     break;
 
-  case "alice":
+  case "master":
     
     {
     	Typing($chatId);
    
-    	$text_in = "Alice+In+Wonderland";
-		GetFilm($chatId,$text_in);
+    	$text_in = "Master+of+none";
+		GetSerie($chatId,$text_in);
 		break;  
 	}
 
