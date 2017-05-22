@@ -165,8 +165,18 @@ function GetSerie($chatId,$title)
 				file_get_contents($url);
 			}
 
-			$url = $GLOBALS[website].'/sendPhoto?chat_id='.$chatId.'&parse_mode=HTML&photo='.$locandina;
-			file_get_contents($url);
+			if ( $title_film == "" & $locandina != "" ) {
+
+				$message1 = "Descrizione Serie Tv al momento non disponibile!";
+				$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1;
+				file_get_contents($url);
+
+				$url = $GLOBALS[website].'/sendPhoto?chat_id='.$chatId.'&parse_mode=HTML&photo='.$locandina;
+				file_get_contents($url);
+			}
+				
+				$url = $GLOBALS[website].'/sendPhoto?chat_id='.$chatId.'&parse_mode=HTML&photo='.$locandina;
+				file_get_contents($url);
 
 		}
 
