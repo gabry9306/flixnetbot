@@ -94,7 +94,6 @@ function GetSerie($chatId,$title)
 		
 		$locandina = $update_1["image"]["original"];
 
-		$episodio_0 = $update_1["_embedded"]["episodes"]["0"]["2"];
 
 		$content_show_cast = file_get_contents('http://api.tvmaze.com/shows/'.$id_show.'?&embed=cast');
 		$update_2 = json_decode($content_show_cast, TRUE);
@@ -105,17 +104,6 @@ function GetSerie($chatId,$title)
 		$update_2 = json_decode($content_yadex, TRUE)
 
 		$text_traslate = $update_2["text"]["0"];*/
-
-		for ($y = 0; $y <= 10; $y++) 
-		{
-			$cast[$y] = $update_2["_embedded"]["cast"][$y]["name"];
-			$casts = implode(', ', $cast);
-
-			if($cast[$y] == "")
-			{
-				break;
-			}  
-		}
 
 		for ($x = 0; $x <= 10; $x++) 
 		{
@@ -128,7 +116,7 @@ function GetSerie($chatId,$title)
 			}  
 		}
 
-		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Episodi:</b>%0A".$episodi."%0A %0A"."<b>Cast:</b>%0A".$casts."%0A %0A";
+		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Episodi:</b>%0A".$episodi;
 
 		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"MAGGIORI INFO","url":"'.$link_imdb.'"}]]}';
 		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
