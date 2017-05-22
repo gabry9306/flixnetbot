@@ -80,7 +80,7 @@ function timestamp_to_date($timestamp){
 function GetSerie($chatId,$title)
 {
 
-		$content_imdb = file_get_contents('http://api.tvmaze.com/search/shows?q=master+of+none');
+		$content_imdb = file_get_contents('http://api.tvmaze.com/search/shows?q='.$title.'');
 		$update_1 = json_decode($content_imdb, TRUE);
 	
 		$title_film = $update_1["0"]["show"]["name"];
@@ -98,18 +98,18 @@ function GetSerie($chatId,$title)
 
 		$text_traslate = $update_2["text"]["0"];*/
 
-		for ($x = 0; $x <= 10; $x++) 
+		/*for ($x = 0; $x <= 10; $x++) 
 		{
 			$genere[$x] = $update_1["0"]["show"]["genres"][$x];
 			$generi = implode(', ', $genere);
 
-			if(!$genere[$x])
+			if($genere[$x] == "")
 			{
 				break;
 			}  
-		}
+		}*/ 
 
-		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$generi."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_film."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A";
+		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_film."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A";
 
 		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"MAGGIORI INFO","url":"'.$link_imdb.'"}]]}';
 		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
