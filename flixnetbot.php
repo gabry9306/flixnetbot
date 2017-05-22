@@ -91,7 +91,6 @@ function GetSerie($chatId,$title)
 		$id_imdb = $update_1["0"]["show"]["externals"]["imdb"];
 		$link_imdb = "http://www.imdb.com/title/".$id_imdb."/";
 		$trama = $update_1["data"]["0"]["overview"];
-		$locandina = $update_1["0"]["show"]["image"]["original"];
 
 		/*$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
 		$update_2 = json_decode($content_yadex, TRUE)
@@ -120,9 +119,10 @@ function GetSerie($chatId,$title)
 		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1;
 		file_get_contents($url);
 
-		if ($text == "/locandina")
+		if ($msg == "/locandina")
 			
 			{
+				$locandina = $update_1["0"]["show"]["image"]["original"];
 				$url = $GLOBALS[website].'/sendPhoto?chat_id='.$chatId.'&parse_mode=HTML&photo='.$locandina;
 				file_get_contents($url);
 			}	
