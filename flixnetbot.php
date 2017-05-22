@@ -93,8 +93,6 @@ function GetSerie($chatId,$title)
 		
 		$locandina = $update_1["image"]["original"];
 
-		$date_serie = timestamp_to_date($date_serie);
-
 		$episodio_0 = $update_1["0"]["_embedded"]["episodes"]["0"]["2"];
 
 		/*$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
