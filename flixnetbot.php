@@ -73,7 +73,7 @@ function timestamp_to_date($timestamp){
 function GetSerie($chatId,$title)
 {
 
-		$content_imdb = file_get_contents('http://api.myapifilms.com/tvdb/searchSeries?title=Master+of+none&token=11e08191-2011-4679-9fb6-caaaef23eae7&format=json&language=it');
+		$content_imdb = file_get_contents('http://api.myapifilms.com/tvdb/searchSeries?title=Breaking+Bad&token=11e08191-2011-4679-9fb6-caaaef23eae7&format=json&language=it');
 		$update_1 = json_decode($content_imdb, TRUE);
 	
 		$title_film = $update_1["data"]["0"]["seriesName"];
