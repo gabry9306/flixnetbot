@@ -100,12 +100,11 @@ function GetSerie($chatId,$title)
 		$update_2 = json_decode($content_show_cast, TRUE);
 
 		$cast = $update_2["_embedded"]["cast"]["0"]["person"]["name"];
-		$x = 0;
 
-		foreach ($cast as $value){
+		for ($x = 0; $x <= 10; $x++) 
+		{
 			$cast[$x] = $update_2["_embedded"]["cast"][$x]["person"]["name"];
 			$casts = implode(", ", $cast);
-			$x++;
 			break;
 		}
 
