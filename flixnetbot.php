@@ -99,8 +99,10 @@ function GetSerie($chatId,$title)
 		if ( $title_film == "" ){
 
 			$message1 = "Serie Tv non disponibile ... provare con un'altro nome!";
+			$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1;
+			file_get_contents($url);
 		}
-		
+
 		if( $genere_1 != "" ){
 
 			$genere = "".$genere_1;
@@ -123,12 +125,12 @@ function GetSerie($chatId,$title)
 
 		if ( $date_serie == "")
 		{
-			$produttore = "Non disponibile";
+			$date_serie = "Non disponibile";
 		}
 
 		if ( $durata == "")
 		{
-			$produttore = "Non disponibile";
+			$durata = "Non disponibile";
 		}
 
 		$content_show_cast = file_get_contents('http://api.tvmaze.com/shows/'.$id_show.'?&embed=cast');
