@@ -99,16 +99,16 @@ function GetSerie($chatId,$title)
 
 		for ($x = 0; $x <= 10; $x++) 
 		{
-			$premi[$x] = $update_1["data"]["movies"]["0"]["awards"][$x]["titlesAwards"]["0"]["titleAwardOutcome"];
-			$array_premi = implode(', ', $premi);
+			$genere[$x] = $update_1["0"]["show"]["genres"][$x];
+			$generi = implode(', ', $premi);
 
-			if($premi[$x] == "")
+			if($genere[$x] == "")
 			{
 				break;
 			}  
 		} 
 
-		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_film."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A";
+		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$generi."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_film."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A";
 
 		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"TRAILER","url":"'.$trailer.'"}]]}';
 		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1;//.$tastiera_1;
