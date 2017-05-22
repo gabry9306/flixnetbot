@@ -131,9 +131,7 @@ $text = trim($text);
 $text = strtolower($text);
 header("Content-Type: application/json");
 
-switch($text)
-{
-  case "/start":
+if ($text == "/start")
 
 		{
 			Typing($chatId);
@@ -151,19 +149,3 @@ switch($text)
 
 			TastieraMenuPrincipale($chatId,"\xF0\x9F\x91\x8B Ciao $firstname (@$username), benvenuto in SerieDbBot!%0A %0A<b>Interegisci con me attraverso la pulsantiera sotto</b> 💬");
 		}
-
-    break;
-
-  
-
-  default:
-
-    {
-    	Typing($chatId);
-
-		TastieraErrore($chatId); 
-	}
-
-	break;
-
-}
