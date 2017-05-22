@@ -105,12 +105,12 @@ function GetSerie($chatId,$title)
 
 			if( $genere_2 != "" ){
 
-				$genere = "".$genere_1."/%0A".$genere_2;
+				$genere = "".$genere_1."%0A/%0A".$genere_2;
 			}
 
 			if( $genere_3 != "" ){
 
-				$genere = "".$genere_1."/%0A".$genere_2."/%0A".$genere_3;
+				$genere = "".$genere_1."%0A/%0A".$genere_2."%0A/%0A".$genere_3;
 			}
 
 			if ( $produttore == "")
