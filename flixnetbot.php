@@ -101,12 +101,10 @@ function GetSerie($chatId,$title)
 
 		$cast = $update_2["_embedded"]["cast"]["0"]["person"]["name"];
 
-		for ($x = 0; $x <= 10; $x++) 
-		{
-			$cast[$x] = $update_2["_embedded"]["cast"][$x]["person"]["name"];
+			$cast[0] = $update_2["_embedded"]["cast"]["0"]["person"]["name"];
+			$cast[1] = $update_2["_embedded"]["cast"]["1"]["person"]["name"];
+			$cast[2] = $update_2["_embedded"]["cast"]["2"]["person"]["name"];
 			$casts = implode(", ", $cast);
-			break;
-		}
 
 		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts."%0A %0A";
 
