@@ -93,8 +93,7 @@ function GetSerie($chatId,$title)
 		
 		$locandina = $update_1["image"]["original"];
 
-		date_default_timezone_set('Europe/Rome');
-		$date_serie = date("d-m-Y");
+		$date_serie = data_serie("d-m-Y");
 
 		$episodio_0 = $update_1["0"]["_embedded"]["episodes"]["0"]["2"];
 
