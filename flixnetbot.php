@@ -73,10 +73,10 @@ function timestamp_to_date($timestamp){
 function GetSerie($chatId,$title)
 {
 
-		$content_imdb = file_get_contents('http://api.myapifilms.com/tvdb/searchSeries?title=Master+of+none&token=11e08191-2011-4679-9fb6-caaaef23eae7&format=json&language=it');
+		$content_imdb = file_get_contents('http://api.tvmaze.com/search/shows?q=master+of+none');
 		$update_1 = json_decode($content_imdb, TRUE);
 	
-		$title_film = $update_1["data"]["0"]["seriesName"];
+		$title_film = $update_1["array"]["0"]["show"]["name"];
 		$year_film = $update_1["data"]["0"]["year"];
 		$date_film = $update_1["data"]["0"]["firstAired"];
 		$regista = $update_1["data"]["0"]["directors"]["0"]["name"];
@@ -85,14 +85,30 @@ function GetSerie($chatId,$title)
 		$premi = $update_1["data"]["0"]["awards"]["0"][""];
 		$trailer = $update_1["data"]["0"]["trailer"]["videoURL"];
 		$trama = $update_1["data"]["0"]["overview"];
-		//$premi = $update_1["data"]["0"]["awards"]["0"]["titlesAwards"]["0"]["titleAwardOutcome"];
-		//$premi_2 = $update_1["data"]["0"]["awards"]["0"]["titlesAwards"]["1"]["titleAwardOutcome"];
-		$locandina = $update_1["data"]["0"]["banner"];
+		$locandina = $update_1["array"]["0"]["show"]["image"]["original"];
 
-		$message1 = "<b>Titolo Film:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Anno:</b>%0A".$year_film."%0A %0A"."<b>Regista:</b>%0A".$regista."%0A %0A"."<b>Data uscita:</b>%0A".$date_film."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Trama:</b>%0A".$trama."%0A %0A"."<b>Premi:</b>%0A".$array_premi;
+		/*$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
+		$update_2 = json_decode($content_yadex, TRUE)
+
+		$text_traslate = $update_2["text"]["0"];*/
+
+		for ($x = 0; $x <= 10; $x++) 
+		{
+			$premi[$x] = $update_1["data"]["movies"]["0"]["awards"][$x]["titlesAwards"]["0"]["titleAwardOutcome"];
+			$array_premi = implode(', ', $premi);
+
+			if($premi[$x] == "")
+			{
+				break;
+			}  
+		} 
+
+		$date_film = timestamp_to_date($date_film);
+
+		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Anno:</b>%0A".$year_film."%0A %0A"."<b>Regista:</b>%0A".$regista."%0A %0A"."<b>Data uscita:</b>%0A".$date_film."%0A %0A"."<b>Durata:</b>%0A".$durata."%0A %0A"."<b>Trama:</b>%0A".$trama."%0A %0A"."<b>Premi:</b>%0A".$array_premi;
 
 		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"TRAILER","url":"'.$trailer.'"}]]}';
-		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
+		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1;//.$tastiera_1;
 		file_get_contents($url);
 
 		$url = $GLOBALS[website].'/sendPhoto?chat_id='.$chatId.'&parse_mode=HTML&photo='.$locandina;
