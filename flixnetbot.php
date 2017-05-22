@@ -78,13 +78,13 @@ function GetSerie($chatId,$title)
 	
 		$title_film = $update_1["0"]["show"]["name"];
 		$year_film = $update_1["data"]["0"]["year"];
-		$date_film = $update_1["data"]["0"]["firstAired"];
+		$date_film = $update_1["0"]["show"]["premiered"];
 		$regista = $update_1["data"]["0"]["directors"]["0"]["name"];
 		$genere = $update_1["data"]["0"]["genres"]["0"];
 		$durata = $update_1["data"]["0"]["runtime"];
 		$premi = $update_1["data"]["0"]["awards"]["0"][""];
 		$trailer = $update_1["data"]["0"]["trailer"]["videoURL"];
-		$trama = $update_1["data"]["0"]["overview"];
+		$trama = $update_1["0"]["show"]["summary"];
 		$locandina = $update_1["0"]["show"]["image"]["original"];
 
 		/*$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
