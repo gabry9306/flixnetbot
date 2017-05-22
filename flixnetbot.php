@@ -62,15 +62,7 @@ function TastieraErrore($chatId)
 
 function TastieraInfo($chatId,$message)
 {
-	//$message = "<b>INFO BOT</b>/n/n";
 	$tastiera = '&reply_markup={"inline_keyboard":[[{"text":"Gabriele Dell\'Aria","url":"http://t.me/gabrieledellaria"},{"text":"CinePassion","url":"http://cinepassion.blogsocial.it"}]]}';
-	$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message.$tastiera;
-	file_get_contents($url);
-}
-
-function TastieraInfo2($chatId,$message)
-{
-	$tastiera = '&reply_markup={"inline_keyboard":[[{"text":"@CinePassionCh","url":"http://t.me/CinePassionCh"}]]}';
 	$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message.$tastiera;
 	file_get_contents($url);
 }
