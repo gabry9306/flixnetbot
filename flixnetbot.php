@@ -159,7 +159,7 @@ switch($text)
 
 	{
 		Typing($chatId);
-	    TastieraInfo($chatId,"In <b>SerieDbBot</b> troverai tutte le info sulle Serie Tv che cerchi%0A %0A<b>CREDITS:</b>%0A %0AIl Bot è stato ideato da <b>Gabriele Dell'Aria</b> (@gabrieledellaria) e sviluppato sfruttando le API fornite da MyApi");
+	    TastieraInfo($chatId,"In <b>FlixNetBot</b> troverai tutte le info sulle Serie Tv che cerchi%0A %0A<b>CREDITS:</b>%0A %0AIl Bot è stato ideato da <b>Gabriele Dell'Aria</b> (@gabrieledellaria) e sviluppato sfruttando le API fornite da MyApi");
 	}
 
     break;
@@ -168,7 +168,7 @@ switch($text)
 
 	{
 		Typing($chatId);
-	    TastieraInfo($chatId,"In <b>SerieDbBot</b> troverai tutte le info sulle Serie Tv che cerchi%0A %0A<b>CREDITS:</b>%0A %0AIl Bot è stato ideato da <b>Gabriele Dell'Aria</b> (@gabrieledellaria)");
+	    TastieraInfo($chatId,"In <b>FlixNetBot</b> troverai tutte le info sulle Serie Tv che cerchi%0A %0A<b>CREDITS:</b>%0A %0AIl Bot è stato ideato da <b>Gabriele Dell'Aria</b> (@gabrieledellaria)");
 	}
 
     break; 
@@ -177,7 +177,7 @@ switch($text)
 
   	{
   		Typing($chatId);
-    	sendMessage($chatId,"<b>Qual'è il titolo della Serie Netflix che cerchi?</b>%0A %0ASe il titolo contiene spazi scrivere secondo la seguente sintassi%0A %0AES. Master+of+none");
+    	TastieraMenuPrincipale($chatId,"<b>Qual'è il titolo della Serie Netflix che cerchi?</b>%0A %0ASe il titolo contiene spazi scrivere secondo la seguente sintassi%0A %0AES. Master+of+none");
 
     	break;
 	}
@@ -186,19 +186,10 @@ switch($text)
 
   	{
   		Typing($chatId);
-    	sendMessage($chatId,"<b>Qual'è il titolo della Serie Netflix che cerchi?</b>%0A %0ASe il titolo contiene spazi scrivere secondo la seguente sintassi%0A %0AES. Master+of+none");
+    	TastieraMenuPrincipale($chatId,"<b>Qual'è il titolo della Serie Netflix che cerchi?</b>%0A %0ASe il titolo contiene spazi scrivere secondo la seguente sintassi%0A %0AES. Master+of+none");
 
     	break;
 	} 
-
-  case "news":
-    
-    {
-    	Typing($chatId);
-    	TastieraMenuPrincipale($chatId,"Per restare sempre aggiornato sulle news cinematografiche segui il Canale Telegram @CinePassionCh");
-    }
-    
-    break;
 
   case "master":
     
