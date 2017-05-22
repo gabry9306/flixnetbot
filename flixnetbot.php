@@ -116,6 +116,16 @@ function GetSerie($chatId,$title)
 			$produttore = "Non disponibile";
 		}
 
+		if ( $date_serie == "")
+		{
+			$produttore = "Non disponibile";
+		}
+
+		if ( $durata == "")
+		{
+			$produttore = "Non disponibile";
+		}
+
 		$content_show_cast = file_get_contents('http://api.tvmaze.com/shows/'.$id_show.'?&embed=cast');
 		$update_2 = json_decode($content_show_cast, TRUE);
 
