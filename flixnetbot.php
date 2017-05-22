@@ -45,7 +45,7 @@ function sendMessage($chatId,$message)
 function TastieraMenuPrincipale($chatId,$message)
 {
 
-	$tastiera = '&reply_markup={"keyboard":[["🔎 CERCA SERIE"],["NEWS","INFO BOT"]],"resize_keyboard":true}';
+	$tastiera = '&reply_markup={"keyboard":[["🔎 CERCA SERIE"],["INFO BOT"]],"resize_keyboard":true}';
 	$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message.$tastiera;
 	file_get_contents($url);
 
@@ -59,6 +59,26 @@ function TastieraErrore($chatId)
 	file_get_contents($url);
 
 }
+
+function TastieraInfo($chatId,$message)
+{
+	//$message = "<b>INFO BOT</b>/n/n";
+	$tastiera = '&reply_markup={"inline_keyboard":[[{"text":"Gabriele Dell\'Aria","url":"http://t.me/gabrieledellaria"},{"text":"CinePassion","url":"http://cinepassion.blogsocial.it"}]]}';
+	$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message.$tastiera;
+	file_get_contents($url);
+}
+
+function TastieraInfo2($chatId,$message)
+{
+	$tastiera = '&reply_markup={"inline_keyboard":[[{"text":"@CinePassionCh","url":"http://t.me/CinePassionCh"}]]}';
+	$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message.$tastiera;
+	file_get_contents($url);
+}
+
+function timestamp_to_date($timestamp){
+   return date("r", $timestamp);
+}
+
 
 function Typing($chatId)
 {
@@ -152,7 +172,7 @@ switch($text)
 
 	{
 		Typing($chatId);
-	    TastieraMenuPrincipale($chatId,"In <b>SerieDbBot</b> troverai tutte le info sulle Serie Tv che cerchi%0A %0A<b>CREDITS:</b>%0A %0AIl Bot è stato ideato da <b>Gabriele Dell'Aria</b> (@gabrieledellaria) e sviluppato sfruttando le API fornite da MyApi");
+	    TastieraInfo($chatId,"In <b>SerieDbBot</b> troverai tutte le info sulle Serie Tv che cerchi%0A %0A<b>CREDITS:</b>%0A %0AIl Bot è stato ideato da <b>Gabriele Dell'Aria</b> (@gabrieledellaria) e sviluppato sfruttando le API fornite da MyApi");
 	}
 
     break;
@@ -161,19 +181,10 @@ switch($text)
 
 	{
 		Typing($chatId);
-	    TastieraMenuPrincipale($chatId,"In <b>SerieDbBot</b> troverai tutte le info sulle Serie Tv che cerchi%0A %0A<b>CREDITS:</b>%0A %0AIl Bot è stato ideato da <b>Gabriele Dell'Aria</b> (@gabrieledellaria) e sviluppato sfruttando le API fornite da MyApi");
+	    TastieraInfo($chatId,"In <b>SerieDbBot</b> troverai tutte le info sulle Serie Tv che cerchi%0A %0A<b>CREDITS:</b>%0A %0AIl Bot è stato ideato da <b>Gabriele Dell'Aria</b> (@gabrieledellaria) e sviluppato sfruttando le API fornite da MyApi");
 	}
 
     break; 
-
-  case "NEWS":
-
-  	{
-  		Typing($chatId);
-    	TastieraMenuPrincipale($chatId,"Per restare sempre aggiornato sulle news cinematografiche segui il Canale Telegram @CinePassionCh");
-    }
-    
-    break;
 
   case "🔎 CERCA SERIE":
 
