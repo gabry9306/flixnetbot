@@ -197,15 +197,6 @@ switch($text)
   		Typing($chatId);
     	TastieraMenuPrincipale($chatId,"<b>Qual'è il titolo della Serie Netflix che cerchi?</b>%0A %0ASe il titolo contiene spazi scrivere secondo la seguente sintassi%0A %0AES. Master+of+none");
 
-    	if ( $msg != "🔎 CERCA SERIE" & $msg != "🔎 cerca serie" ){
-    			
-    			Typing($chatId);
-   
-		    	$text_in = $msg;
-				GetSerie($chatId,$text_in);
-				break;		
-    	}
-
     	break;
 	}
     
@@ -214,15 +205,6 @@ switch($text)
   	{
   		Typing($chatId);
     	TastieraMenuPrincipale($chatId,"<b>Qual'è il titolo della Serie Netflix che cerchi?</b>%0A %0ASe il titolo contiene spazi scrivere secondo la seguente sintassi%0A %0AES. Master+of+none");
-
-    	if ( $msg != "🔎 CERCA SERIE" & $msg != "🔎 cerca serie" ){
-    			
-    			Typing($chatId);
-   
-		    	$text_in = $msg;
-				GetSerie($chatId,$text_in);
-				break;		
-    	}
 
     	break;
 	} 
@@ -250,6 +232,16 @@ switch($text)
   default:
 
     {
+
+		if ( $msg != "" & $msg == "🔎 CERCA SERIE" & $msg == "🔎 cerca serie" ){
+    			
+    			Typing($chatId);
+   
+		    	$text_in = $msg;
+				GetSerie($chatId,$text_in);
+				break;		
+    	}
+
     	Typing($chatId);
 		TastieraErrore($chatId); 
 	}
