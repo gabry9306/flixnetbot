@@ -119,7 +119,7 @@ function GetSerie($chatId,$title)
 		$cast_3 = $update_2["_embedded"]["cast"]["2"]["person"]["name"];
 		$cast_4 = $update_2["_embedded"]["cast"]["3"]["person"]["name"];
 
-		$content_trailer = file_get_contents('https://www.googleapis.com/youtube/v3/search?part=snippet&q=Master+of+none+offical+trailer&key=AIzaSyAiMTE7edL3D-klp0y-nbtyyuv5IGLIlhU&maxResults=25');
+		$content_trailer = file_get_contents('https://www.googleapis.com/youtube/v3/search?part=snippet&q='.$title_film.'official+trailer&key=AIzaSyAiMTE7edL3D-klp0y-nbtyyuv5IGLIlhU&maxResults=25');
 		$update_3 = json_decode($content_trailer, TRUE);
 
 		$trailer_base = $update_3["items"]["0"]["id"]["videoId"];
