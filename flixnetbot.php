@@ -84,7 +84,7 @@ function GetSerie($chatId,$title)
 		$update_1 = json_decode($content_imdb, TRUE);
 	
 		$title_film = $update_1["name"];
-		$date_film = $update_1["premiered"];
+		$date_serie = $update_1["premiered"];
 		$genere = $update_1["genres"]["0"];
 		$durata = $update_1["runtime"];
 		$produttore = $update_1["webChannel"]["name"];
@@ -92,6 +92,11 @@ function GetSerie($chatId,$title)
 		$link_imdb = "http://www.imdb.com/title/".$id_imdb."/";
 		
 		$locandina = $update_1["image"]["original"];
+
+		date_default_timezone_set('Europe/Rome');
+		$date_serie = date("d-m-Y");
+
+		$episodio_0 = $update_1["0"]["_embedded"]["episodes"]["0"]["name"];
 
 		/*$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
 		$update_2 = json_decode($content_yadex, TRUE)
@@ -109,7 +114,7 @@ function GetSerie($chatId,$title)
 			}  
 		}
 
-		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_film."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Episodi:</b>%0A".$episodi."%0A %0A";
+		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Episodi:</b>%0A".$episodio_0."%0A %0A";
 
 		$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"MAGGIORI INFO","url":"'.$link_imdb.'"}]]}';
 		$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
