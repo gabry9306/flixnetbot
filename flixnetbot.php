@@ -108,7 +108,7 @@ function GetSerie($chatId,$title)
 
 		for ($x = 0; $x <= 10; $x++) 
 		{
-			$cast[$x] = $update_1["_embedded"]["cast"][$x]["name"];
+			$cast[$x] = $update_2["_embedded"]["cast"][$x]["name"];
 			$casts = implode(', ', $cast);
 
 			if($cast[$x] == "")
