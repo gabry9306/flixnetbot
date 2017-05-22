@@ -100,11 +100,14 @@ function GetSerie($chatId,$title)
 		$update_2 = json_decode($content_show_cast, TRUE);
 
 		$cast = $update_2["_embedded"]["cast"]["0"]["person"]["name"];
+		$x = 0;
 
-		/*$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
-		$update_2 = json_decode($content_yadex, TRUE)
-
-		$text_traslate = $update_2["text"]["0"];*/
+		foreach ($cast as $value){
+			$cast = $update_2["_embedded"]["cast"][$x]["person"]["name"];
+			$array_premi = implode(', ', $premi);
+			$x++;
+			break;
+		}
 
 		$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$episodio_0."%0A %0A";
 
