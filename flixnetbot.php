@@ -91,8 +91,6 @@ function GetSerie($chatId,$title)
 		$genere_3 = $update_1["genres"]["2"];
 		$durata = $update_1["runtime"];
 		//$produttore = $update_1["webChannel"]["name"];
-		$id_imdb = $update_1["externals"]["imdb"];
-		$id_tmdb = $update_1["externals"]["tmdb"];
 		$link_imdb = "http://www.imdb.com/title/".$id_imdb."/";
 		
 		$locandina = $update_1["image"]["original"];
@@ -182,7 +180,7 @@ function GetSerie($chatId,$title)
 
 			if ( $trailer == "www.youtube.com/watch?v=/"){
 
-				$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"MAGGIORI INFO","url":"'.$link_imdb.'"}]]}';
+				$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"MAGGIORI INFO","url":"'.$id_show.'"}]]}';
 				$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
 				file_get_contents($url);
 			} 
