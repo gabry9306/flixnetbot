@@ -150,7 +150,13 @@ function GetSerie($chatId,$title)
 			$trailer_base = $update_3["items"]["0"]["id"]["videoId"];
 			$trailer = "www.youtube.com/watch?v=".$trailer_base."/";
 
-			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts."TMDB ID: ".$id_tmdb;
+			$content_trama = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb);
+			$update_4 = json_decode($content_trama, TRUE);
+
+			
+			$trama = $update_4["synopsis"];
+
+			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts."Trama: ".$trama;
 
 			if ( $trailer == "www.youtube.com/watch?v=/"){
 
