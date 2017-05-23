@@ -150,7 +150,7 @@ function GetSerie($chatId,$title)
 			$trailer_base = $update_3["items"]["0"]["id"]["videoId"];
 			$trailer = "www.youtube.com/watch?v=".$trailer_base."/";
 
-			$content_trama = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb);
+			$content_trama = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
 			$update_4 = json_decode($content_trama, TRUE);
 
 			
