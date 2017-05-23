@@ -235,7 +235,7 @@ function GetMostPopularSeries($chatId)
 		$name_show_19 = $update_1["tv_shows"]["18"]["name"];
 		$name_show_20 = $update_1["tv_shows"]["19"]["name"];
 
-				$message1 = "<b>Serie più popolari: </b>%0A".$name_show_1."%0A %0A".$name_show_2."%0A %0A".$name_show_3."%0A %0A".$name_show_4."%0A %0A".$name_show_5."%0A %0A".$name_show_6."%0A %0A".$name_show_7."%0A %0A".$name_show_8."%0A %0A".$name_show_9."%0A %0A".$name_show_10."%0A %0A".$name_show_11."%0A %0A".$name_show_12."%0A %0A".$name_show_13."%0A %0A".$name_show_14."%0A %0A".$name_show_15."%0A %0A".$name_show_16."%0A %0A".$name_show_17."%0A %0A".$name_show_18."%0A %0A".$name_show_19."%0A %0A".$name_show_20."%0A %0A";
+				$message1 = "<b>Serie più popolari: </b>%0A %0A".$name_show_1."%0A %0A".$name_show_2."%0A %0A".$name_show_3."%0A %0A".$name_show_4."%0A %0A".$name_show_5."%0A %0A".$name_show_6."%0A %0A".$name_show_7."%0A %0A".$name_show_8."%0A %0A".$name_show_9."%0A %0A".$name_show_10."%0A %0A".$name_show_11."%0A %0A".$name_show_12."%0A %0A".$name_show_13."%0A %0A".$name_show_14."%0A %0A".$name_show_15."%0A %0A".$name_show_16."%0A %0A".$name_show_17."%0A %0A".$name_show_18."%0A %0A".$name_show_19."%0A %0A".$name_show_20."%0A %0A";
 
 				$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"MAGGIORI INFO","url":"https://www.episodate.com/most-popular"}]]}';
 				$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
