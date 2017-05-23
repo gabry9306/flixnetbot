@@ -90,7 +90,7 @@ function GetSerie($chatId,$title)
 		$genere_2 = $update_1["genres"]["1"];
 		$genere_3 = $update_1["genres"]["2"];
 		$durata = $update_1["runtime"];
-		$produttore = $update_1["webChannel"]["name"];
+		//$produttore = $update_1["webChannel"]["name"];
 		$id_imdb = $update_1["externals"]["imdb"];
 		$id_tmdb = $update_1["externals"]["tmdb"];
 		$link_imdb = "http://www.imdb.com/title/".$id_imdb."/";
@@ -157,6 +157,7 @@ function GetSerie($chatId,$title)
 			$content_trama = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
 			$update_4 = json_decode($content_trama, TRUE);
 
+			$produttore = $update_4["network"];
 			$trama = $update_4["synopsis"];
 
 			// TRADUZIONE TRAMA 
