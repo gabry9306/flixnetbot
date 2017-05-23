@@ -159,7 +159,7 @@ function GetSerie($chatId,$title)
 
 			$produttore = $update_4["network"];
 			$trama = $update_4["synopsis"];
-			$stagioni = $update_4["synopsis"];
+			$stagioni = $update_4["num_seasons"];
 
 			// TRADUZIONE TRAMA 
 
