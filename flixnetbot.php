@@ -168,10 +168,7 @@ function GetSerie($chatId,$title)
 
 			$trama = $update_5["text"]["0"];
 
-			if ( $text = "/" )
-			{
-				$text = "";
-			}
+			$trama = preg_replace('/(?<!^)([A-Z][a-z]|(?<=[a-z])[^a-z]|(?<=[A-Z])[0-9_])/', ' $1', $trama);
 
 			if ( $trama == "")
 			{
