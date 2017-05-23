@@ -45,7 +45,7 @@ function sendMessage($chatId,$message)
 function TastieraMenuPrincipale($chatId,$message)
 {
 
-	$tastiera = '&reply_markup={"keyboard":[["🔎 CERCA SERIE","🎦 SERIE PIU\' POPOLARI"],["INFO BOT"]],"resize_keyboard":true}';
+	$tastiera = '&reply_markup={"keyboard":[["🔎 CERCA SERIE","🎦 SERIE PIU POPOLARI"],["INFO BOT"]],"resize_keyboard":true}';
 	$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message.$tastiera;
 	file_get_contents($url);
 
@@ -314,7 +314,7 @@ switch($text)
 
     	break;
 	} 
-  case "🎦 SERIE PIU' POPOLARI":
+  case "🎦 SERIE PIU POPOLARI":
 
   	{
   		Typing($chatId);
@@ -323,7 +323,7 @@ switch($text)
     	break;
 	}
     
-  case "🎦 serie piu' popolari":
+  case "🎦 serie piu popolari":
 
   	{
   		Typing($chatId);
