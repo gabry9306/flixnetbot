@@ -150,7 +150,13 @@ function GetSerie($chatId,$title)
 			$trailer_base = $update_3["items"]["0"]["id"]["videoId"];
 			$trailer = "www.youtube.com/watch?v=".$trailer_base."/";
 
-			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts."TMDB ID: ".$id_tmdb;
+			$content_show_cast = file_get_contents('	http://api.myapifilms.com/imdb/idIMDB?idIMDB='.$id_imdb.'&token=11e08191-2011-4679-9fb6-caaaef23eae7&format=json&language=it&aka=0&business=0&seasons=0&seasonYear=0&technical=0&trailers=1&movieTrivia=0&awards=1&moviePhotos=0&movieVideos=0&actors=1&biography=0&actorActress=0&similarMovies=0&goofs=0&keyword=0&quotes=0&fullSize=0&companyCredits=0&filmingLocations=0');
+			$update_4 = json_decode($content_show_cast, TRUE);
+
+			$trailer = $update_4["data"]["movies"]["0"]["trailer"]["videoURL"];
+			$trama = $update_4["data"]["movies"]["0"]["simplePlot"];
+
+			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts."Trama: ".$trama;
 
 			if ( $trailer == "www.youtube.com/watch?v=/"){
 
