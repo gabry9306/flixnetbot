@@ -168,9 +168,9 @@ function GetSerie($chatId,$title)
 
 			$trama = $update_5["text"]["0"];
 
-			if ( "/" )
+			if ( $text = "/" )
 			{
-				"/" = "";
+				$text = "";
 			}
 
 			if ( $trama == "")
