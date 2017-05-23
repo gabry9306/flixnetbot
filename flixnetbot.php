@@ -45,7 +45,7 @@ function sendMessage($chatId,$message)
 function TastieraMenuPrincipale($chatId,$message)
 {
 
-	$tastiera = '&reply_markup={"keyboard":[["🔎 CERCA SERIE","🎦 SERIE PIU POPOLARI"],["INFO BOT"]],"resize_keyboard":true}';
+	$tastiera = '&reply_markup={"keyboard":[["🔎 CERCA SERIE","🎦 SERIE PIU\' POPOLARI"],["INFO BOT"]],"resize_keyboard":true}';
 	$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message.$tastiera;
 	file_get_contents($url);
 
@@ -237,7 +237,7 @@ function GetMostPopularSeries($chatId)
 
 				$message1 = "<b>Serie più popolari: </b>%0A".$name_show_1."%0A %0A".$name_show_2."%0A %0A".$name_show_3."%0A %0A".$name_show_4."%0A %0A".$name_show_5."%0A %0A".$name_show_6."%0A %0A".$name_show_7."%0A %0A".$name_show_8."%0A %0A".$name_show_9."%0A %0A".$name_show_10."%0A %0A".$name_show_11."%0A %0A".$name_show_12."%0A %0A".$name_show_13."%0A %0A".$name_show_14."%0A %0A".$name_show_15."%0A %0A".$name_show_16."%0A %0A".$name_show_17."%0A %0A".$name_show_18."%0A %0A".$name_show_19."%0A %0A".$name_show_20."%0A %0A";
 
-				$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"MAGGIORI INFO","url":"'.$link_imdb.'"},{"text":"TRAILER","url":"'.$trailer.'"}]]}';
+				$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"MAGGIORI INFO","url":"https://www.episodate.com/most-popular"}]]}';
 				$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
 				file_get_contents($url);
 		
@@ -314,7 +314,7 @@ switch($text)
 
     	break;
 	} 
-  case "🎦 SERIE PIU POPOLARI":
+  case "🎦 SERIE PIU' POPOLARI":
 
   	{
   		Typing($chatId);
@@ -323,7 +323,7 @@ switch($text)
     	break;
 	}
     
-  case "🎦 serie piu popolari":
+  case "🎦 serie piu' popolari":
 
   	{
   		Typing($chatId);
