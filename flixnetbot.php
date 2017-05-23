@@ -83,8 +83,8 @@ function GetSerie($chatId,$title)
 		$content_imdb = file_get_contents('http://api.tvmaze.com/singlesearch/shows?q='.$title.'&embed=episodes');
 		$update_1 = json_decode($content_imdb, TRUE);
 	
-		$id_show = $update_1["id"];
-		$title_film = $update_1["name"];
+		//$id_show = $update_1["id"];
+		//$title_film = $update_1["name"];
 		$date_serie = $update_1["premiered"];
 		$genere_1 = $update_1["genres"]["0"];
 		$genere_2 = $update_1["genres"]["1"];
@@ -160,6 +160,9 @@ function GetSerie($chatId,$title)
 			$produttore = $update_4["network"];
 			$trama = $update_4["synopsis"];
 			$stagioni = $update_4["num_seasons"];
+
+			$id_show = $update_4["_id"];
+			$title_film = $update_4["title"];
 
 			// TRADUZIONE TRAMA 
 
