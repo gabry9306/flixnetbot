@@ -97,6 +97,26 @@ function GetSerie($chatId,$title)
 		
 		$locandina = $update_1["image"]["original"];
 
+		// PRELEVO TRAILER 
+
+			$content_trailer = file_get_contents('https://www.googleapis.com/youtube/v3/search?part=snippet&q='.$title.'official+trailer&key=AIzaSyAiMTE7edL3D-klp0y-nbtyyuv5IGLIlhU&maxResults=25');
+			$update_3 = json_decode($content_trailer, TRUE);
+
+			$trailer_base = $update_3["items"]["0"]["id"]["videoId"];
+			$trailer = "www.youtube.com/watch?v=".$trailer_base."/";
+
+		// PRELEVO TRAMA 
+
+			$content_trama = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
+			$update_4 = json_decode($content_trama, TRUE);
+
+			$produttore = $update_4["network"];
+			$trama = $update_4["synopsis"];
+			$stagioni = $update_4["num_seasons"];
+
+			$id_show = $update_4["_id"];
+			$title_film = $update_4["title"];
+
 		if ( $title_film != "" ){
 
 			if( $genere_1 != "" ){
@@ -143,26 +163,6 @@ function GetSerie($chatId,$title)
 			{
 				$casts = "Non disponibile";
 			}
-
-			// PRELEVO TRAILER 
-
-			$content_trailer = file_get_contents('https://www.googleapis.com/youtube/v3/search?part=snippet&q='.$title.'official+trailer&key=AIzaSyAiMTE7edL3D-klp0y-nbtyyuv5IGLIlhU&maxResults=25');
-			$update_3 = json_decode($content_trailer, TRUE);
-
-			$trailer_base = $update_3["items"]["0"]["id"]["videoId"];
-			$trailer = "www.youtube.com/watch?v=".$trailer_base."/";
-
-			// PRELEVO TRAMA 
-
-			$content_trama = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
-			$update_4 = json_decode($content_trama, TRUE);
-
-			$produttore = $update_4["network"];
-			$trama = $update_4["synopsis"];
-			$stagioni = $update_4["num_seasons"];
-
-			$id_show = $update_4["_id"];
-			$title_film = $update_4["title"];
 
 			// TRADUZIONE TRAMA 
 
