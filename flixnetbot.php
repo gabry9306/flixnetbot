@@ -165,6 +165,27 @@ function GetSerie($chatId,$title)
 
 			$rating = $update_2["rating"]["average"];
 
+			
+			if ( $cast == "" & $cast_2 != "" & $cast_3 != "" & $cast_4 != "")
+			{
+				$casts = $cast_2.", ".$cast_3.", %0A".$cast_4." ..."."%0A %0A";
+			}
+
+			if ( $cast != "" & $cast_2 == "" & $cast_3 != "" & $cast_4 != "")
+			{
+				$casts = "".$cast.", %0A".$cast_3.", %0A".$cast_4." ..."."%0A %0A";
+			}
+
+			if ( $cast != "" & $cast_2 != "" & $cast_3 == "" & $cast_4 != "")
+			{
+				$casts = "".$cast.", %0A".$cast_2.", ".$cast_4." ..."."%0A %0A";
+			}
+
+			if ( $cast != "" & $cast_2 != "" & $cast_3 != "" & $cast_4 == "")
+			{
+				$casts = "".$cast.", %0A".$cast_2.", ".$cast_3." ..."."%0A %0A";
+			}
+
 			if ( $cast == "" & $cast_2 == "" & $cast_3 == "" & $cast_4 == "")
 			{
 				$casts = "Non disponibile";
