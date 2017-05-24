@@ -148,13 +148,18 @@ function GetSerie($chatId,$title)
 				$durata = "Non disponibile";
 			}
 
-			$content_show_cast = file_get_contents('http://api.tvmaze.com/lookup/shows?imdb='.$id_imdb.'?&embed=cast');
+			$content_show_cast = file_get_contents('http://api.tvmaze.com/lookup/shows?imdb='.$id_imdb.'');
 			$update_2 = json_decode($content_show_cast, TRUE);
 
-			$cast = $update_2["_embedded"]["cast"]["0"]["person"]["name"];
-			$cast_2 = $update_2["_embedded"]["cast"]["1"]["person"]["name"];
-			$cast_3 = $update_2["_embedded"]["cast"]["2"]["person"]["name"];
-			$cast_4 = $update_2["_embedded"]["cast"]["3"]["person"]["name"];
+			$id = $update_2["id"];
+
+			$content_show_cast = file_get_contents('http://api.tvmaze.com/shows/'.$id.'?&embed=cast');
+			$update_5 = json_decode($content_show_cast, TRUE);
+
+			$cast = $update_5["_embedded"]["cast"]["0"]["person"]["name"];
+			$cast_2 = $update_5["_embedded"]["cast"]["1"]["person"]["name"];
+			$cast_3 = $update_5["_embedded"]["cast"]["2"]["person"]["name"];
+			$cast_4 = $update_5["_embedded"]["cast"]["3"]["person"]["name"];
 
 			$casts = "".$cast.", %0A".$cast_2.", ".$cast_3.", %0A".$cast_4." ..."."%0A %0A";
 
