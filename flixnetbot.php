@@ -83,7 +83,7 @@ function GetSerie($chatId,$title)
 		$content_imdb = file_get_contents('http://api.tvmaze.com/singlesearch/shows?q='.$title.'&embed=episodes');
 		$update_1 = json_decode($content_imdb, TRUE);
 	
-		$id_show = $update_1["id"];
+		//$id_show = $update_1["id"];
 		//$title_film = $update_1["name"];
 		$date_serie = $update_1["premiered"];
 		$genere_1 = $update_1["genres"]["0"];
@@ -111,7 +111,7 @@ function GetSerie($chatId,$title)
 
 			$produttore = $update_4["network"];
 			$trama = $update_4["synopsis"];
-			$stagioni = $update_4["num_seasons"];
+			//$stagioni = $update_4["num_seasons"]; non sono proprio precise
 
 			$id_show = $update_4["_id"];
 			$title_film = $update_4["title"];
@@ -148,7 +148,7 @@ function GetSerie($chatId,$title)
 				$durata = "Non disponibile";
 			}
 
-			$content_show_cast = file_get_contents('http://api.tvmaze.com/shows/'.$id_show.'?&embed=cast');
+			$content_show_cast = file_get_contents('http://api.tvmaze.com/lookup/shows?imdb='.$id_imdb.'?&embed=cast');
 			$update_2 = json_decode($content_show_cast, TRUE);
 
 			$cast = $update_2["_embedded"]["cast"]["0"]["person"]["name"];
@@ -157,6 +157,8 @@ function GetSerie($chatId,$title)
 			$cast_4 = $update_2["_embedded"]["cast"]["3"]["person"]["name"];
 
 			$casts = "".$cast.", %0A".$cast_2.", ".$cast_3.", %0A".$cast_4." ..."."%0A %0A";
+
+			$rating = $update_2["rating"]["average"];
 
 			if ( $cast == "" & $cast_2 == "" & $cast_3 == "" & $cast_4 == "")
 			{
@@ -177,7 +179,7 @@ function GetSerie($chatId,$title)
 				$trama = "Non disponibile";
 			}
 
-			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A"."<b>Num Stagioni:</b>%0A".$stagioni."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts."%0A %0A"; //."<b>Trama:</b>%0A".$trama."%0A %0A";
+			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A"."<b>Rating:</b>%0A".$rating."%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts."%0A %0A"; //."<b>Trama:</b>%0A".$trama."%0A %0A";
  
 			if ( $trailer == "www.youtube.com/watch?v=/"){
 
