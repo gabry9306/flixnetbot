@@ -268,7 +268,7 @@ function GetDiscoverSerie($chatId)
 		
 }
 
-public function escape($string) {
+function escape($string) {
     $return = '';
     for($i = 0; $i < strlen($string); ++$i) {
         $char = $string[$i];
