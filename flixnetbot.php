@@ -85,8 +85,6 @@ function GetSerie($chatId,$title)
 	
 		//$id_show = $update_1["id"];
 		//$title_film = $update_1["name"];
-		$date_serie = $update_1["premiered"];
-		$date_serie = date("d-m-Y", strtotime($date_serie));
 
 		$genere_1 = $update_1["genres"]["0"];
 		$genere_2 = $update_1["genres"]["1"];
@@ -113,10 +111,13 @@ function GetSerie($chatId,$title)
 			$update_4 = json_decode($content_trama, TRUE);
 
 			$produttore = "Non disponibile"; //$produttore = $update_4["network"];
-			$trama = $update_4["overview"];
+			$trama = $update_4["tv_results"]["0"]["overview"];
 
-			$id_show = $update_4["id"];
-			$title_film = $update_4["original_name"];
+			$date_serie = $update_4["tv_results"]["0"]["first_air_date"];
+			$date_serie = date("d-m-Y", strtotime($date_serie));
+
+			$id_show = $update_4["tv_results"]["0"]["id"];
+			$title_film = $update_4["tv_results"]["0"]["original_name"];
 
 		if ( $title_film != "" ){
 
