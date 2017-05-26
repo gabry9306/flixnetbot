@@ -87,7 +87,7 @@ function GetSerie($chatId,$title)
 		//$title_film = $update_1["name"];
 		$date_serie = $update_1["premiered"];
 		$date_serie = date("d-m-Y", strtotime($date_serie));
-		
+
 		$genere_1 = $update_1["genres"]["0"];
 		$genere_2 = $update_1["genres"]["1"];
 		$genere_3 = $update_1["genres"]["2"];
@@ -108,15 +108,15 @@ function GetSerie($chatId,$title)
 
 		// PRELEVO TRAMA 
 
-			$content_trama = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
+			$content_trama = file_get_contents('https://api.themoviedb.org/3/find/'.$id_imdb.'?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&external_source=imdb_id');
+			// prima era $content_trama = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
 			$update_4 = json_decode($content_trama, TRUE);
 
-			$produttore = $update_4["network"];
-			$trama = $update_4["synopsis"];
-			//$stagioni = $update_4["num_seasons"]; non sono proprio precise
+			$produttore = "Non disponibile"; //$produttore = $update_4["network"];
+			$trama = $update_4["overview"];
 
-			$id_show = $update_4["_id"];
-			$title_film = $update_4["title"];
+			$id_show = $update_4["id"];
+			$title_film = $update_4["original_name"];
 
 		if ( $title_film != "" ){
 
