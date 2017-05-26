@@ -192,6 +192,7 @@ function GetSerie($chatId,$title)
 
 			$message1 = str_replace_json('-',' ',$message1);
 			$message1 = str_replace_json(':',' -s',$message1);
+			$message1 = str_replace_json(';',' -st',$message1);
 			$message1 = str_replace_json('\'',' ',$message1);
  
 			if ( $trailer == "www.youtube.com/watch?v=/"){
