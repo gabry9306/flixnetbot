@@ -96,6 +96,8 @@ function GetSerie($chatId,$title)
 		
 		$locandina = $update_1["image"]["original"];
 
+		$title_serie = str_replace_json('','+',$trama);
+
 		// PRELEVO TRAILER 
 
 			$content_trailer = file_get_contents('https://www.googleapis.com/youtube/v3/search?part=snippet&q='.$title_serie.'official+trailer&key=AIzaSyAiMTE7edL3D-klp0y-nbtyyuv5IGLIlhU&maxResults=25');
