@@ -84,7 +84,7 @@ function GetSerie($chatId,$title)
 		$update_1 = json_decode($content_imdb, TRUE);
 	
 		//$id_show = $update_1["id"];
-		//$title_film = $update_1["name"];
+		$title_serie = $update_1["name"];
 
 		$genere_1 = $update_1["genres"]["0"];
 		$genere_2 = $update_1["genres"]["1"];
@@ -98,7 +98,7 @@ function GetSerie($chatId,$title)
 
 		// PRELEVO TRAILER 
 
-			$content_trailer = file_get_contents('https://www.googleapis.com/youtube/v3/search?part=snippet&q='.$title.'official+trailer&key=AIzaSyAiMTE7edL3D-klp0y-nbtyyuv5IGLIlhU&maxResults=25');
+			$content_trailer = file_get_contents('https://www.googleapis.com/youtube/v3/search?part=snippet&q='.$title_serie.'official+trailer&key=AIzaSyAiMTE7edL3D-klp0y-nbtyyuv5IGLIlhU&maxResults=25');
 			$update_3 = json_decode($content_trailer, TRUE);
 
 			$trailer_base = $update_3["items"]["0"]["id"]["videoId"];
@@ -106,7 +106,7 @@ function GetSerie($chatId,$title)
 
 		// PRELEVO TRAMA 
 
-			$content_trama = file_get_contents('https://api.themoviedb.org/3/search/tv?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&query='.$title.'&page=1');
+			$content_trama = file_get_contents('https://api.themoviedb.org/3/search/tv?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&query='.$title_serie.'&page=1');
 			//$content_trama = file_get_contents('https://api.themoviedb.org/3/find/'.$id_imdb.'?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&external_source=imdb_id');
 			// prima era $content_trama = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
 			$update_4 = json_decode($content_trama, TRUE);
