@@ -106,7 +106,8 @@ function GetSerie($chatId,$title)
 
 		// PRELEVO TRAMA 
 
-			$content_trama = file_get_contents('https://api.themoviedb.org/3/find/'.$id_imdb.'?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&external_source=imdb_id');
+			$content_trama = file_get_contents('https://api.themoviedb.org/3/search/tv?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&query=the%2Bbig%2Bbang%2Btheory&page=1');
+			//$content_trama = file_get_contents('https://api.themoviedb.org/3/find/'.$id_imdb.'?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&external_source=imdb_id');
 			// prima era $content_trama = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
 			$update_4 = json_decode($content_trama, TRUE);
 
@@ -123,8 +124,8 @@ function GetSerie($chatId,$title)
 			$id_show = $update_4["tv_results"]["0"]["id"];
 			$title_film = $update_4["tv_results"]["0"]["original_name"];
 
-			$content_trama = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
-			$update_6 = json_decode($content_trama, TRUE);
+			$content_produttore = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
+			$update_6 = json_decode($content_produttore, TRUE);
 
 			$produttore = $update_6["network"];
 
@@ -168,7 +169,7 @@ function GetSerie($chatId,$title)
 			$content_show_cast = file_get_contents('https://api.themoviedb.org/3/tv/'.$id_show.'/season/{season_number}/credits?api_key=89a238b8e3407a5052501a516009622a&language=it-IT');
 			$update_5 = json_decode($content_show_cast, TRUE);
 
-			$cast = $update_5["cast"]["0"]["character"];
+			$cast = $update_5["cast"]["0"]["name"];
 			/*$cast_2 = $update_5["cast"]["1"]["name"];
 			$cast_3 = $update_5["cast"]["2"]["name"];
 			$cast_4 = $update_5["cast"]["3"]["name"];
