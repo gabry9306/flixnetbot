@@ -96,7 +96,7 @@ function GetSerie($chatId,$title)
 		
 		$locandina = $update_1["image"]["original"];
 
-		$title_serie = str_replace_json(' ','+',$title_serie);
+		$title_serie = str_replace_json(' ','%2B',$title_serie);
 
 		// PRELEVO TRAILER 
 
