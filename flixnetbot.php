@@ -172,8 +172,8 @@ function GetSerie($chatId,$title)
 
 			// TRADUZIONE TRAMA 
 
-			$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
-			$update_5 = json_decode($content_yadex, TRUE);
+			$content_translate = file_get_contents('http://ws.detectlanguage.com/0.2/detect?q='.$trama.'&key=480139a0c53c9a7983d246a770c943c5');
+			$update_5 = json_decode($content_translate, TRUE);
 
 			$trama = $update_5["text"]["0"];
 
