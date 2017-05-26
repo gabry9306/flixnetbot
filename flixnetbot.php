@@ -111,18 +111,10 @@ function GetSerie($chatId,$title)
 
 			$produttore = $update_4["network"];
 			$trama = $update_4["synopsis"];
+			//$stagioni = $update_4["num_seasons"]; non sono proprio precise
 
 			$id_show = $update_4["_id"];
 			$title_film = $update_4["title"];
-
-
-			// TRADUZIONE TRAMA 
-
-			$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
-			$update_5 = json_decode($content_yadex, TRUE);
-
-			$trama = $update_5["text"]["0"];
-			
 
 		if ( $title_film != "" ){
 
@@ -178,7 +170,12 @@ function GetSerie($chatId,$title)
 				$casts = "Non disponibile";
 			}
 
-			//$trama = preg_replace('/(?<!^)([A-Z][a-z]|(?<=[a-z])[^a-z]|(?<=[A-Z])[0-9_])/', ' $1', $trama);
+			// TRADUZIONE TRAMA 
+
+			/*$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
+			$update_5 = json_decode($content_yadex, TRUE);
+
+			$trama = $update_5["text"]["0"];*/
 
 			if ( $trama == "")
 			{
