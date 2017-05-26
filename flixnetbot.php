@@ -96,7 +96,7 @@ function GetSerie($chatId,$title)
 		
 		$locandina = $update_1["image"]["original"];
 
-		$title_serie = str_replace_json(' ','%2B',$title_serie);
+		$title_serie = str_replace_json(' ','+',$title_serie);
 
 		// PRELEVO TRAILER 
 
@@ -118,6 +118,8 @@ function GetSerie($chatId,$title)
 			$trama = str_replace_json('-',' ',$trama);
 			$trama = str_replace_json(';',' ',$trama);
 			$trama = str_replace_json('\'',' ',$trama);
+
+			$trama = "<b>Trama:</b>%0A".$trama;
 
 			$date_serie = $update_4["results"]["0"]["first_air_date"];
 			$date_serie = date("d-m-Y", strtotime($date_serie));
@@ -188,9 +190,9 @@ function GetSerie($chatId,$title)
 				$trama = "Non disponibile";
 			}
 
-			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A"."<b>Rating:</b>%0A".$rating."/10%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts;/*."<b>Trama:</b>%0A".$trama;*/
+			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A"."<b>Rating:</b>%0A".$rating."/10%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts.$trama;*/
 
-			$message2 = "<b>Trama:</b>%0A".$trama;
+			//$message2 = "<b>Trama:</b>%0A".$trama;
 
 			if ( $trailer == "www.youtube.com/watch?v=/"){
 
@@ -205,8 +207,8 @@ function GetSerie($chatId,$title)
 				$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
 				file_get_contents($url);
 
-				$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message2;
-				file_get_contents($url);
+				//$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message2;
+				//file_get_contents($url);
 			}
 
 			$url = $GLOBALS[website].'/sendPhoto?chat_id='.$chatId.'&parse_mode=HTML&photo='.$locandina;
