@@ -172,13 +172,6 @@ function GetSerie($chatId,$title)
 				$casts = "Non disponibile";
 			}
 
-			// TRADUZIONE TRAMA 
-
-			$content_translate = file_get_contents('http://ws.detectlanguage.com/0.2/detect?q='.$trama.'&key=480139a0c53c9a7983d246a770c943c5');
-			$update_5 = json_decode($content_translate, TRUE);
-
-			$trama = $update_5["text"]["0"];
-
 			if ( $trama == "")
 			{
 				$trama = "Non disponibile";
