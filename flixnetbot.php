@@ -151,6 +151,11 @@ function GetSerie($chatId,$title)
 				$durata = "Non disponibile";
 			}
 
+			$content_show_cast = file_get_contents('http://api.tvmaze.com/lookup/shows?imdb='.$id_imdb.'');
+			$update_2 = json_decode($content_show_cast, TRUE);
+
+			$rating = $update_2["rating"]["average"];
+
 			$content_show_cast = file_get_contents('http://api.tvmaze.com/shows/'.$id.'?&embed=cast');
 			$update_5 = json_decode($content_show_cast, TRUE);
 
@@ -160,8 +165,6 @@ function GetSerie($chatId,$title)
 			$cast_4 = $update_5["_embedded"]["cast"]["3"]["person"]["name"];
 
 			$casts = "".$cast."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4."%0A ..."."%0A %0A";
-
-			$rating = $update_2["rating"]["average"];
 
 			if ( $cast == "" & $cast_2 == "" & $cast_3 == "" & $cast_4 == "")
 			{
@@ -173,7 +176,7 @@ function GetSerie($chatId,$title)
 				$trama = "Non disponibile";
 			}
 
-			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A"."<b>Rating:</b>%0A".$rating."/10%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"/*."<b>Cast:</b>%0A".$casts;*//*."<b>Trama:</b>%0A".$trama."%0A %0A"*/;
+			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A"."<b>Rating:</b>%0A".$rating."/10%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts;/*."<b>Trama:</b>%0A".$trama."%0A %0A";*/
 
 			$message1 = str_replace_json('-',' ',$message1);
 			$message1 = str_replace_json(';',' ',$message1);
