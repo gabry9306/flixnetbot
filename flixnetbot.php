@@ -177,6 +177,8 @@ function GetSerie($chatId,$title)
 
 			$trama = $update_5["text"]["0"];*/
 
+			$trama = json_encode($trama);
+
 			if ( $trama == "")
 			{
 				$trama = "Non disponibile";
