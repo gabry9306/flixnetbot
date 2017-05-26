@@ -172,10 +172,10 @@ function GetSerie($chatId,$title)
 
 			// TRADUZIONE TRAMA 
 
-			/*$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
-			$update_5 = json_decode($content_yadex, TRUE);*/
+			$content_yadex = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170520T205327Z.87b5aa9c5b1a21ee.578062198537d96ec63800ae1d0292d6911ee90f&text='.$trama.'&lang=it&options=1');
+			$update_5 = json_decode($content_yadex, TRUE);
 
-			//$trama = $update_5["text"]["0"];
+			$trama = $update_5["text"]["0"];
 
 			//$trama = preg_replace('/(?<!^)([A-Z][a-z]|(?<=[a-z])[^a-z]|(?<=[A-Z])[0-9_])/', ' $1', $trama);
 
@@ -184,11 +184,10 @@ function GetSerie($chatId,$title)
 				$trama = "Non disponibile";
 			}
 
-			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A"."<b>Rating:</b>%0A".$rating."/10%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"/*."<b>Cast:</b>%0A".$casts;*//*."<b>Trama:</b>%0A".$trama."%0A %0A"*/;
+			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A"."<b>Rating:</b>%0A".$rating."/10%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"/*."<b>Cast:</b>%0A".$casts;*/."<b>Trama:</b>%0A".$trama."%0A %0A";
 
 			$message1 = str_replace_json('-',' ',$message1);
-			$message1 = str_replace_json(':',' -s',$message1);
-			$message1 = str_replace_json(';',' -st',$message1);
+			$message1 = str_replace_json(';',' ',$message1);
 			$message1 = str_replace_json('\'',' ',$message1);
  
 			if ( $trailer == "www.youtube.com/watch?v=/"){
