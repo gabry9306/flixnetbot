@@ -118,6 +118,7 @@ function GetSerie($chatId,$title)
 
 			$date_serie = $update_4["tv_results"]["0"]["first_air_date"];
 			$date_serie = date("d-m-Y", strtotime($date_serie));
+			$date_serie = str_replace_json('-','/',$date_serie);
 
 			$id_show = $update_4["tv_results"]["0"]["id"];
 			$title_film = $update_4["tv_results"]["0"]["original_name"];
@@ -167,7 +168,7 @@ function GetSerie($chatId,$title)
 			$content_show_cast = file_get_contents('https://api.themoviedb.org/3/tv/'.$id_show.'/season/{season_number}/credits?api_key=89a238b8e3407a5052501a516009622a&language=it-IT');
 			$update_5 = json_decode($content_show_cast, TRUE);
 
-			$cast = $update_5["cast"][0]["name"];
+			$cast = $update_5["cast"]["0"]["character"];
 			/*$cast_2 = $update_5["cast"]["1"]["name"];
 			$cast_3 = $update_5["cast"]["2"]["name"];
 			$cast_4 = $update_5["cast"]["3"]["name"];
