@@ -86,6 +86,8 @@ function GetSerie($chatId,$title)
 		//$id_show = $update_1["id"];
 		//$title_film = $update_1["name"];
 		$date_serie = $update_1["premiered"];
+		$date_serie = date("d-m-Y", strtotime($date_serie));
+		
 		$genere_1 = $update_1["genres"]["0"];
 		$genere_2 = $update_1["genres"]["1"];
 		$genere_3 = $update_1["genres"]["2"];
