@@ -122,8 +122,8 @@ function GetSerie($chatId,$title)
 			/*$trama = str_replace_json(';',' ',$trama);
 			$trama = str_replace_json(':',' ',$trama);
 			$trama = str_replace_json(',',' ',$trama);
-			$trama = str_replace_json($apo,' ',$trama);*/
-			$trama = str_replace_json($slash,' ',$trama);
+			$trama = str_replace_json($apo,' ',$trama);
+			$trama = str_replace_json($slash,' ',$trama);*/
 
 			$trama = "<b>Trama:</b>%0A".$trama;
 
