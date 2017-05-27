@@ -51,14 +51,14 @@ function TastieraMenuPrincipale($chatId,$message)
 
 }
 
-function TastieraSeriePopolari($chatId,$t1,$t2,$t3,$t4,$t5,$t6,$t7,$t8,$t9,$t10,$t11,$t12,$t13,$t14,$t15,$t16,$t17,$t18,$t19,$t20)
+/*function TastieraSeriePopolari($chatId,$t1,$t2,$t3,$t4,$t5,$t6,$t7,$t8,$t9,$t10,$t11,$t12,$t13,$t14,$t15,$t16,$t17,$t18,$t19,$t20)
 {
 
 	$tastiera = '&reply_markup={"keyboard":[["".$t1,"".$t2],["".$t3,"".$t4],["".$t5,"".$t6],["".$t7,"".$t8],["".$t9,"".$t10],["".$t11,"".$t12],["".$t13,"".$t14],["".$t15,"".$t16],["".$t17,"".$t18],["".$t19,"".$t20]],"resize_keyboard":true}';
 	$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text=prova'.$tastiera;
 	file_get_contents($url);
 
-}
+}*/
 
 function TastieraErrore($chatId)
 {
@@ -299,7 +299,7 @@ function GetMostPopularSeries($chatId)
 				$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
 				file_get_contents($url);
 
-				TastieraSeriePopolari($chatId,$name_show_1,$name_show_2,$name_show_3,$name_show_4,$name_show_5,$name_show_6,$name_show_7,$name_show_8,$name_show_9,$name_show_10,$name_show_11,$name_show_12,$name_show_13,$name_show_14,$name_show_15,$name_show_16,$name_show_17,$name_show_18,$name_show_19,$name_show_20);
+				/*TastieraSeriePopolari($chatId,$name_show_1,$name_show_2,$name_show_3,$name_show_4,$name_show_5,$name_show_6,$name_show_7,$name_show_8,$name_show_9,$name_show_10,$name_show_11,$name_show_12,$name_show_13,$name_show_14,$name_show_15,$name_show_16,$name_show_17,$name_show_18,$name_show_19,$name_show_20);*/
 		
 }
 
