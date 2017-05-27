@@ -183,7 +183,7 @@ function GetSerie($chatId,$title)
 
 			$rating = $update_2["rating"]["average"];
 
-			$content_show_cast = file_get_contents('https://api.themoviedb.org/3/tv/'.$id_show.'/season/{season_number}/credits?api_key=89a238b8e3407a5052501a516009622a&language=it-IT');
+			$content_show_cast = file_get_contents('https://api.themoviedb.org/4/tv/'.$id_show.'/season/{season_number}/credits?api_key=89a238b8e3407a5052501a516009622a&language=it-IT');
 			$update_5 = json_decode($content_show_cast, TRUE);
 
 			$cast = $update_5["cast"]["0"]["name"];
