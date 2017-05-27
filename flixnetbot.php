@@ -113,11 +113,15 @@ function GetSerie($chatId,$title)
 			// prima era $content_trama = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
 			$update_4 = json_decode($content_trama, TRUE);
 
+			$slash = "\"";
+			$apo = "'";
+
 			$trama = $update_4["results"]["0"]["overview"];
 
 			$trama = str_replace_json('-',' ',$trama);
 			$trama = str_replace_json(';',' ',$trama);
-			$trama = str_replace_json('\'',' ',$trama);
+			$trama = str_replace_json($apo,' ',$trama);
+			$trama = str_replace_json($slash,' ',$trama);
 
 			$trama = "<b>Trama:</b>%0A".$trama;
 
