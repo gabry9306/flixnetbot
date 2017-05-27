@@ -108,7 +108,7 @@ function GetSerie($chatId,$title)
 
 		// PRELEVO TRAMA 
 
-			$content_trama = file_get_contents('https://api.themoviedb.org/3/search/tv?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&query='.$title_serie.'&page=1');
+			$content_trama = file_get_contents('https://api.themoviedb.org/3/find/'.$id_imdb.'?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&external_source=imdb_id');
 			//$content_trama = file_get_contents('https://api.themoviedb.org/3/find/'.$id_imdb.'?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&external_source=imdb_id');
 			// prima era $content_trama = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
 			$update_4 = json_decode($content_trama, TRUE);
@@ -116,7 +116,7 @@ function GetSerie($chatId,$title)
 			$slash = "\"";
 			$apo = "'";
 
-			$trama = $update_4["results"]["0"]["overview"];
+			$trama = $update_4["tv_results"]["0"]["overview"];
 
 			$trama = str_replace_json('-',' ',$trama);
 			$trama = str_replace_json(';',' ',$trama);
@@ -127,12 +127,12 @@ function GetSerie($chatId,$title)
 
 			$trama = "<b>Trama:</b>%0A".$trama;
 
-			$date_serie = $update_4["results"]["0"]["first_air_date"];
+			$date_serie = $update_4["tv_results"]["0"]["first_air_date"];
 			$date_serie = date("d-m-Y", strtotime($date_serie));
 			$date_serie = str_replace_json('-','/',$date_serie);
 
-			$id_show = $update_4["results"]["0"]["id"];
-			$title_film = $update_4["results"]["0"]["original_name"];
+			$id_show = $update_4["tv_results"]["0"]["id"];
+			$title_film = $update_4["tv_results"]["0"]["original_name"];
 
 			$content_produttore = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
 			$update_6 = json_decode($content_produttore, TRUE);
