@@ -114,7 +114,7 @@ function GetSerie($chatId,$title)
 			$update_4 = json_decode($content_trama, TRUE);
 
 			$slash = "\"";
-			$apo = "'";
+			$apo = "\'";
 
 			$trama = $update_4["tv_results"]["0"]["overview"];
 
