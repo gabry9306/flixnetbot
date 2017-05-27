@@ -191,7 +191,7 @@ function GetSerie($chatId,$title)
 			$cast_3 = $update_5["cast"]["2"]["name"];
 			$cast_4 = $update_5["cast"]["3"]["name"];
 
-			$casts = "".$cast."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4."%0A ..."."%0A %0A";
+			$casts = "".$cast."".$cast_2."".$cast_3."".$cast_4."%0A ...";
 
 			if ( $cast == "" & $cast_2 == "" & $cast_3 == "" & $cast_4 == "")
 			{
