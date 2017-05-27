@@ -108,7 +108,7 @@ function GetSerie($chatId,$title)
 
 		// PRELEVO TRAMA 
 
-			$content_trama = file_get_contents('https://api.themoviedb.org/4/find/'.$id_imdb.'?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&external_source=imdb_id');
+			$content_trama = file_get_contents('https://api.themoviedb.org/3/find/'.$id_imdb.'?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&external_source=imdb_id');
 			//$content_trama = file_get_contents('https://api.themoviedb.org/3/find/'.$id_imdb.'?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&external_source=imdb_id');
 			// prima era $content_trama = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
 			$update_4 = json_decode($content_trama, TRUE);
