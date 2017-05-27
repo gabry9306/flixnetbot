@@ -175,7 +175,7 @@ function GetSerie($chatId,$title)
 				$durata = "Non disponibile";
 			}
 
-			if (!$trama){
+			if ((!isset($trama)){
 
 				$trama = "<b>Trama:</b>%0ANon disponibile";
 			}
