@@ -54,8 +54,8 @@ function TastieraMenuPrincipale($chatId,$message)
 function TastieraSeriePopolari($chatId,$t1,$t2,$t3,$t4,$t5,$t6,$t7,$t8,$t9,$t10,$t11,$t12,$t13,$t14,$t15,$t16,$t17,$t18,$t19,$t20)
 {
 
-	$tastiera = '&reply_markup={"keyboard":[[$t1,$t2],[$t3,$t4],[$t5,$t6],[$t7,$t8],[$t9,$t10],[$t11,$t12],[$t13,$t14],[$t15,$t16],[$t17,$t18],[$t19,$t20]],"resize_keyboard":true}';
-	$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$tastiera;
+	$tastiera = '&reply_markup={"keyboard":[["".$t1,"".$t2],["".$t3,"".$t4],["".$t5,"".$t6],["".$t7,"".$t8],["".$t9,"".$t10],["".$t11,"".$t12],["".$t13,"".$t14],["".$t15,"".$t16],["".$t17,"".$t18],["".$t19,"".$t20]],"resize_keyboard":true}';
+	$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text=prova'.$tastiera;
 	file_get_contents($url);
 
 }
