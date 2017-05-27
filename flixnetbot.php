@@ -115,7 +115,7 @@ function GetSerie($chatId,$title)
 
 			$slash = "\"";
 			$apo = "'";
-			$slash_1 = " \ ";
+			$slash_1 = "\ ";
 
 			$trama = $update_4["tv_results"]["0"]["overview"];
 
@@ -124,7 +124,7 @@ function GetSerie($chatId,$title)
 			$trama = str_replace_json(':',' ',$trama);
 			$trama = str_replace_json(',',' ',$trama);
 			$trama = str_replace_json($apo,' ',$trama);*/
-			$trama = str_replace_json($slash,' ',$trama);
+			$trama = str_replace_json($slash_1,' ',$trama);
 			$trama = str_replace_json('(',' ',$trama);
 			$trama = str_replace_json(')',' ',$trama);
 			$trama = str_replace_json('-',' ',$trama);
