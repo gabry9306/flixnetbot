@@ -196,27 +196,32 @@ function GetSerie($chatId,$title)
 
 			if ( $cast == "" )
 			{
-				$casts = "";
+				$cast = "";
+				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4;
 			}
 
 			if ( $cast_1 == "" )
 			{
 				$cast_1 = "";
+				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4;
 			}
 
 			if ( $cast_2 == "" ){
 
 				$cast_2 = "";
+				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4;
 			}
 
 			if ( $cast_3 == "" ){
 
 				$cast_3 = "";
+				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4;
 			}
 
 			if ( $cast_4 == "" ){
 
 				$cast_4 = "";
+				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4;
 			}
 
 			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A"."<b>Rating:</b>%0A".$rating."/10%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts;
