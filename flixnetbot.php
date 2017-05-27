@@ -118,8 +118,8 @@ function GetSerie($chatId,$title)
 
 			$trama = $update_4["tv_results"]["0"]["overview"];
 
-			/*$trama = str_replace_json('-',' ',$trama);
-			$trama = str_replace_json(';',' ',$trama);
+			$trama = str_replace_json('\n',' ',$trama);
+			/*$trama = str_replace_json(';',' ',$trama);
 			$trama = str_replace_json(':',' ',$trama);
 			$trama = str_replace_json(',',' ',$trama);
 			$trama = str_replace_json($apo,' ',$trama);
