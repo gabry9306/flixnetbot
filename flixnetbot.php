@@ -125,7 +125,7 @@ function GetSerie($chatId,$title)
 			$trama = str_replace_json(',',' ',$trama);
 			$trama = str_replace_json($apo,' ',$trama);*/
 			$trama = str_replace_json($slash_1,' ',$trama);
-
+			
 
 			$trama = "<b>Trama:</b>%0A".$trama;
 
@@ -178,15 +178,10 @@ function GetSerie($chatId,$title)
 				$trama = "";
 			}
 
-			$content_show_cast = file_get_contents('http://www.myapifilms.com/imdb/idIMDB?idIMDB='.$id_imdb.'&token=11e08191-2011-4679-9fb6-caaaef23eae7&format=json&language=it&aka=0&business=0&seasons=0&seasonYear=0&technical=0&trailers=1&movieTrivia=0&awards=1&moviePhotos=0&movieVideos=0&actors=1&biography=0&actorActress=0&similarMovies=0&goofs=0&keyword=0&quotes=0&fullSize=0&companyCredits=0&filmingLocations=0');
+			$content_show_cast = file_get_contents('http://api.tvmaze.com/lookup/shows?imdb='.$id_imdb.'');
 			$update_2 = json_decode($content_show_cast, TRUE);
 
-			$rating = $update_2["data"]["movies"]["0"]["rating"];
-
-			/*$content_show_cast = file_get_contents('http://api.tvmaze.com/lookup/shows?imdb='.$id_imdb.'');
-			$update_2 = json_decode($content_show_cast, TRUE);
-
-			$rating = $update_2["rating"]["average"];*/
+			$rating = $update_2["rating"]["average"];
 
 			$content_show_cast = file_get_contents('https://api.themoviedb.org/3/tv/'.$id_show.'/season/{season_number}/credits?api_key=89a238b8e3407a5052501a516009622a&language=it-IT');
 			$update_5 = json_decode($content_show_cast, TRUE);
