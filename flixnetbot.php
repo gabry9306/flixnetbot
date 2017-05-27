@@ -125,7 +125,7 @@ function GetSerie($chatId,$title)
 			$trama = str_replace_json(',',' ',$trama);
 			$trama = str_replace_json($apo,' ',$trama);*/
 			$trama = str_replace_json($slash_1,' ',$trama);
-			
+			$trama = removeslashes($trama);
 
 			$trama = "<b>Trama:</b>%0A".$trama;
 
@@ -294,6 +294,12 @@ function str_replace_json($search, $replace, $subject){
      return json_decode(str_replace($search, $replace,  json_encode($subject))); 
 
 } 
+
+function removeslashes($string)
+{
+    $string=implode("",explode("\\",$string));
+    return stripslashes(trim($string));
+}
 
 // ***************************************************************************************************************************** //
 
