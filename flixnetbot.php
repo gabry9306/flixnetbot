@@ -108,7 +108,7 @@ function GetSerie($chatId,$title)
 
 		// PRELEVO TRAMA 
 
-			$content_trama = file_get_contents('https://api.themoviedb.org/3/find/'.$id_imdb.'?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&external_source=imdb_id');
+			$content_trama = file_get_contents('https://api.themoviedb.org/4/find/'.$id_imdb.'?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&external_source=imdb_id');
 			//$content_trama = file_get_contents('https://api.themoviedb.org/3/find/'.$id_imdb.'?api_key=89a238b8e3407a5052501a516009622a&language=it-IT&external_source=imdb_id');
 			// prima era $content_trama = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
 			$update_4 = json_decode($content_trama, TRUE);
@@ -183,46 +183,41 @@ function GetSerie($chatId,$title)
 
 			$rating = $update_2["rating"]["average"];
 
-			$content_show_cast = file_get_contents('https://api.themoviedb.org/4/tv/'.$id_show.'/season/{season_number}/credits?api_key=89a238b8e3407a5052501a516009622a&language=it-IT');
+			$content_show_cast = file_get_contents('https://api.themoviedb.org/3/tv/'.$id_show.'/season/{season_number}/credits?api_key=89a238b8e3407a5052501a516009622a&language=it-IT');
 			$update_5 = json_decode($content_show_cast, TRUE);
 
 			$cast = $update_5["cast"]["0"]["name"];
 			$cast_1 = $update_5["cast"]["1"]["name"];
 			$cast_2 = $update_5["cast"]["2"]["name"];
-			$cast_3 = $update_5["cast"]["3"]["name"];
-			$cast_4 = $update_5["cast"]["4"]["name"];
+			//$cast_3 = $update_5["cast"]["3"]["name"];
+			//$cast_4 = $update_5["cast"]["4"]["name"];
 
-			$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4;
+			$casts = "Non disponibile";
 
-			if ( $cast == "" )
+			/*if ( $cast == "" )
 			{
-				$cast = "";
-				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4;
+				$casts = "".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4."%0A";
 			}
 
 			if ( $cast_1 == "" )
 			{
-				$cast_1 = "";
-				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4;
+				$casts = "".$cast."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4."%0A";
 			}
 
 			if ( $cast_2 == "" ){
 
-				$cast_2 = "";
-				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4;
+				$casts = "".$cast."%0A".$cast_1."%0A".$cast_3."%0A".$cast_4."%0A";
 			}
 
 			if ( $cast_3 == "" ){
 
-				$cast_3 = "";
-				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4;
+				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_4."%0A";
 			}
 
 			if ( $cast_4 == "" ){
 
-				$cast_4 = "";
-				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4;
-			}
+				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A";
+			}*/
 
 			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A"."<b>Rating:</b>%0A".$rating."/10%0A %0A"."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts;
 			$message2 = $trama;
