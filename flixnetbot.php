@@ -171,6 +171,11 @@ function GetSerie($chatId,$title)
 				$durata = "Non disponibile";
 			}
 
+			if ( $trama == "<b>Trama:</b>%0A"){
+
+				$trama = "";
+			}
+
 			$content_show_cast = file_get_contents('http://api.tvmaze.com/lookup/shows?imdb='.$id_imdb.'');
 			$update_2 = json_decode($content_show_cast, TRUE);
 
