@@ -201,7 +201,7 @@ function GetSerie($chatId,$title)
 
 			if ( $rating == "<b>Rating:</b>%0A /10%0A %0A"){
 
-				$rating = "";
+				$rating = "Non disponibile";
 			}
 
 			$content_show_cast = file_get_contents('https://api.themoviedb.org/3/tv/'.$id_show.'/season/{season_number}/credits?api_key=89a238b8e3407a5052501a516009622a&language=it-IT');
