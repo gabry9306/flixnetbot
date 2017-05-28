@@ -199,7 +199,7 @@ function GetSerie($chatId,$title)
 			$rating = $update_2["rating"]["average"];
 			$rating = "<b>Rating:</b>%0A".$rating."/10%0A %0A";
 
-			if ( $rating == "<b>Rating:</b>%0A /10%0A %0A"){
+			if ( $rating == "<b>Rating:</b>%0A".""."/10%0A %0A"){
 
 				$rating = "Non disponibile";
 			}
