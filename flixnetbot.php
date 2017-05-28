@@ -89,6 +89,8 @@ function timestamp_to_date($timestamp){
 function GetSerie($chatId,$title)
 {
 
+		$title = str_replace_json(' ','+',$title);
+
 		$content_imdb = file_get_contents('http://api.tvmaze.com/singlesearch/shows?q='.$title.'&embed=episodes');
 		$update_1 = json_decode($content_imdb, TRUE);
 	
@@ -99,7 +101,6 @@ function GetSerie($chatId,$title)
 		$genere_2 = $update_1["genres"]["1"];
 		$genere_3 = $update_1["genres"]["2"];
 		$durata = $update_1["runtime"];
-		//$produttore = $update_1["webChannel"]["name"];
 		$id_imdb = $update_1["externals"]["imdb"];
 		$link_imdb = "http://www.imdb.com/title/".$id_imdb."/";
 		
@@ -131,8 +132,8 @@ function GetSerie($chatId,$title)
 			$trama = str_replace_json('\n',' ',$trama);
 			/*$trama = str_replace_json(';',' ',$trama);
 			$trama = str_replace_json(':',' ',$trama);
-			$trama = str_replace_json(',',' ',$trama);
-			$trama = str_replace_json($apo,' ',$trama);*/
+			$trama = str_replace_json(',',' ',$trama);*/
+			$trama = str_replace_json($apo,' ',$trama);
 			$trama = str_replace_json($slash_1,' ',$trama);
 
 
