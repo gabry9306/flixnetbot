@@ -216,6 +216,11 @@ function GetSerie($chatId,$title)
 			$content_show_cast = file_get_contents('http://api-public.guidebox.com/v2/shows/'.$id_guidebox.'?api_key=5eb82c2cbd1742d036de96361c14af3ef12bb4b5');
 			$update_5 = json_decode($content_show_cast, TRUE);
 
+			if ( is_null($update_5) ){
+
+				$casts = "Non disponibile";
+			}
+
 			$cast = $update_5["cast"]["0"]["name"];
 			$cast_1 = $update_5["cast"]["1"]["name"];
 			$cast_2 = $update_5["cast"]["2"]["name"];
