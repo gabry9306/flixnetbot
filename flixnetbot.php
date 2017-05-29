@@ -243,37 +243,27 @@ function GetSerie($chatId,$title)
 			$cast_3 = $update_5["cast"]["3"]["name"];
 			$cast_4 = $update_5["cast"]["4"]["name"];
 
-			$casts = "".$cast." (".$character_1.")"." - ".$cast_1." - "." (".$character_2.")"." - ".$cast_2." (".$character_3.")";
+			$casts = "".$cast." (".$character_1.")"." - ".$cast_1." (".$character_2.")"." - ".$cast_2." (".$character_3.")";
 
-			/*if (is_null($cast))
+			if ( is_null($cast))
 			{
 				$casts = "".$cast_1."%0A".$cast_2;
 			}
 
-			if (is_null($cast_1))
+			if ( is_null($cast_1))
 			{
 				$casts = "".$cast."%0A".$cast_2;
 			}
 
-			if (is_null($cast_2)){
+			if ( is_null($cast_2)){
 
 				$casts = "".$cast."%0A".$cast_1;
-			}*/
-
-			/*if (!$cast_3){
-
-				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_4."%0A";
 			}
 
-			if (!$cast_4){
-
-				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A";
-			}*/
-
-			/*if ( is_null($cast) & is_null($cast_1) & is_null($cast_2) ){
+			if ( is_null($cast) & is_null($cast_1) & is_null($cast_2) ){
 
 				$casts = "Non disponibile";
-			}*/
+			}
 
 			$message1 = "<b>Nome Serie:</b>%0A".$title_serie."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A".$rating."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts;
 			$message2 = $trama;
