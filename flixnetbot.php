@@ -244,6 +244,7 @@ function GetSerie($chatId,$title)
 			$cast_4 = $update_5["cast"]["4"]["name"];
 
 			$casts = "".$cast." (".$character_1.")"." - ".$cast_1." (".$character_2.")"." - ".$cast_2." (".$character_3.")";
+			$casts = isset($casts);
 
 			if ( is_null($cast))
 			{
