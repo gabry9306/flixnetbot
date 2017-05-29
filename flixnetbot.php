@@ -213,12 +213,12 @@ function GetSerie($chatId,$title)
 
 			$id_tvmaze = $update_7["id"];
 
-			$content_show_cast = file_get_contents('http://api.tvmaze.com/lookup/shows/'.$id_tvmaze.'?embed=cast');
+			$content_show_cast = file_get_contents('http://api.tvmaze.com/lookup/shows/'.$id_tvmaze.'/cast');
 			$update_5 = json_decode($content_show_cast, TRUE);
 
-			$cast = $update_5["_embedded"]["cast"]["0"]["person"]["name"];
-			$cast_1 = $update_5["_embedded"]["cast"]["1"]["person"]["name"];
-			$cast_2 = $update_5["_embedded"]["cast"]["2"]["person"]["name"];
+			$cast = $update_5["0"]["person"]["name"];
+			$cast_1 = $update_5["1"]["person"]["name"];
+			$cast_2 = $update_5["2"]["person"]["name"];
 			//$cast_3 = $update_5["cast"]["3"]["name"];
 			//$cast_4 = $update_5["cast"]["4"]["name"];
 
