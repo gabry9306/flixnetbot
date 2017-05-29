@@ -150,7 +150,7 @@ function GetSerie($chatId,$title)
 			$date_serie = str_replace_json('-','/',$date_serie);
 
 			$id_show = $update_4["tv_results"]["0"]["id"];
-			$title_film = $update_4["tv_results"]["0"]["original_name"];
+			$title_serie = $update_4["tv_results"]["0"]["original_name"];
 
 			$content_produttore = file_get_contents('https://tv-v2.api-fetch.website/show/'.$id_imdb.'');
 			$update_6 = json_decode($content_produttore, TRUE);
