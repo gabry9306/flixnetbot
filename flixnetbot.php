@@ -208,12 +208,17 @@ function GetSerie($chatId,$title)
 				$rating = "<b>Rating:</b>%0A"."Non disponibile"."%0A %0A";
 			}
 
-			$content_show_cast = file_get_contents('https://api.themoviedb.org/3/tv/'.$id_show.'/season/{season_number}/credits?api_key=89a238b8e3407a5052501a516009622a&language=it-IT');
+			$content_show_cast = file_get_contents('http://api.tvmaze.com/lookup/shows?imdb='.$id_imdb.'');
+			$update_7 = json_decode($content_show_cast, TRUE);
+
+			$id_tvmaze = $update_7["id"];
+
+			$content_show_cast = file_get_contents('http://api.tvmaze.com/lookup/shows/'.$id_tvmaze.'?embed=cast');
 			$update_5 = json_decode($content_show_cast, TRUE);
 
-			$cast = $update_5["cast"]["0"]["name"];
-			$cast_1 = $update_5["cast"]["1"]["name"];
-			$cast_2 = $update_5["cast"]["2"]["name"];
+			$cast = $update_5["_embedded"]["cast"]["0"]["person"]["name"];
+			$cast_1 = $update_5["_embedded"]["cast"]["1"]["person"]["name"];
+			$cast_2 = $update_5["_embedded"]["cast"]["2"]["person"]["name"];
 			//$cast_3 = $update_5["cast"]["3"]["name"];
 			//$cast_4 = $update_5["cast"]["4"]["name"];
 
@@ -244,7 +249,7 @@ function GetSerie($chatId,$title)
 				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A";
 			}*/
 
-			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A".$rating."<b>Produttore:</b>%0A".$produttore."%0A %0A"/*."<b>Cast:</b>%0A".$casts*/;
+			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A".$rating."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$cast."%0A %0A".$cast_1."%0A %0A".$cast_2;
 			$message2 = $trama;
 
 			if ( $trailer == "www.youtube.com/watch?v=/"){
