@@ -216,11 +216,11 @@ function GetSerie($chatId,$title)
 			$content_show_cast = file_get_contents('http://api-public.guidebox.com/v2/shows/'.$id_guidebox.'?api_key=5eb82c2cbd1742d036de96361c14af3ef12bb4b5');
 			$update_5 = json_decode($content_show_cast, TRUE);
 
-			$cast = $update_5["0"]["person"]["name"];
-			$cast_1 = $update_5["1"]["person"]["name"];
-			$cast_2 = $update_5["2"]["person"]["name"];
-			$cast_3 = $update_5["3"]["person"]["name"];
-			$cast_4 = $update_5["4"]["person"]["name"];
+			$cast = $update_5["cast"]["0"]["name"];
+			$cast_1 = $update_5["cast"]["1"]["name"];
+			$cast_2 = $update_5["cast"]["2"]["name"];
+			$cast_3 = $update_5["cast"]["3"]["name"];
+			$cast_4 = $update_5["cast"]["4"]["name"];
 
 			$casts = "".$cast." - ".$cast_1." - ".$cast_2."%0A %0A".$cast_3." - ".$cast_4;
 
