@@ -249,7 +249,7 @@ function GetSerie($chatId,$title)
 				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A";
 			}
 
-			if ( $cast == "" & $cast_1 == "" & $cast_2 == "" & $cast_3 == "" & $cast_4 == "" ){
+			if ( $casts == "" ){
 
 				$casts = "Non disponibile";
 			}
