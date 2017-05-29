@@ -224,22 +224,22 @@ function GetSerie($chatId,$title)
 
 			$casts = "".$cast." - ".$cast_1." - ".$cast_2;
 
-			/*if (!$cast)
+			if (is_null($cast))
 			{
-				$casts = "".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4."%0A";
+				$casts = "".$cast_1."%0A".$cast_2;
 			}
 
-			if (!$cast_1)
+			if (is_null($cast_1))
 			{
-				$casts = "".$cast."%0A".$cast_2."%0A".$cast_3."%0A".$cast_4."%0A";
+				$casts = "".$cast."%0A".$cast_2;
 			}
 
-			if (!$cast_2){
+			if (is_null($cast_2)){
 
-				$casts = "".$cast."%0A".$cast_1."%0A".$cast_3."%0A".$cast_4."%0A";
+				$casts = "".$cast."%0A".$cast_1;
 			}
 
-			if (!$cast_3){
+			/*if (!$cast_3){
 
 				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_4."%0A";
 			}
@@ -249,7 +249,7 @@ function GetSerie($chatId,$title)
 				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A";
 			}*/
 
-			if ( $casts == "" ){
+			if ( is_null($cast) & is_null($cast_1) & is_null($cast_2) ){
 
 				$casts = "Non disponibile";
 			}
