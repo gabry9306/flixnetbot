@@ -222,12 +222,12 @@ function GetSerie($chatId,$title)
 			$character_2 = $update_5["cast"]["1"]["character_name"];
 			$cast_2 = $update_5["cast"]["2"]["name"];
 			$character_3 = $update_5["cast"]["2"]["character_name"];
-			//$cast_3 = $update_5["cast"]["3"]["name"];
-			//$cast_4 = $update_5["cast"]["4"]["name"];
+			$cast_3 = $update_5["cast"]["3"]["name"];
+			$cast_4 = $update_5["cast"]["4"]["name"];
 
-			$casts = "".$cast."(".$character_1.")"." - "/*.$cast_1." - "*/.$cast_2."(".$character_2.")";
+			//$casts = "".$cast."(".$character_1.")"." - "/*.$cast_1." - "*/.$cast_2."(".$character_2.")";
 
-			if (is_null($cast))
+			/*if (is_null($cast))
 			{
 				$casts = "".$cast_1."%0A".$cast_2;
 			}
@@ -240,7 +240,7 @@ function GetSerie($chatId,$title)
 			if (is_null($cast_2)){
 
 				$casts = "".$cast."%0A".$cast_1;
-			}
+			}*/
 
 			/*if (!$cast_3){
 
@@ -252,12 +252,12 @@ function GetSerie($chatId,$title)
 				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A";
 			}*/
 
-			if ( is_null($cast) & is_null($cast_1) & is_null($cast_2) ){
+			/*if ( is_null($cast) & is_null($cast_1) & is_null($cast_2) ){
 
 				$casts = "Non disponibile";
-			}
+			}*/
 
-			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A".$rating."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts;
+			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A".$rating."<b>Produttore:</b>%0A".$produttore."%0A %0A"/*."<b>Cast:</b>%0A".$casts*/;
 			$message2 = $trama;
 
 			if ( $trailer == "www.youtube.com/watch?v=/"){
