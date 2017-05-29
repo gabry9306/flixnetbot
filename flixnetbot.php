@@ -217,11 +217,11 @@ function GetSerie($chatId,$title)
 			$update_5 = json_decode($content_show_cast, TRUE);
 
 			$cast = $update_5["cast"]["0"]["name"];
-			$character_1 = $update_5["cast"]["0"]["name"];
+			$character_1 = $update_5["cast"]["0"]["character_name"];
 			$cast_1 = $update_5["cast"]["1"]["name"];
-			$character_2 = $update_5["cast"]["0"]["name"];
+			$character_2 = $update_5["cast"]["1"]["character_name"];
 			$cast_2 = $update_5["cast"]["2"]["name"];
-			$character_3 = $update_5["cast"]["0"]["name"];
+			$character_3 = $update_5["cast"]["2"]["character_name"];
 			//$cast_3 = $update_5["cast"]["3"]["name"];
 			//$cast_4 = $update_5["cast"]["4"]["name"];
 
