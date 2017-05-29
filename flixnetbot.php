@@ -216,18 +216,13 @@ function GetSerie($chatId,$title)
 			$content_show_cast = file_get_contents('http://api-public.guidebox.com/v2/shows/'.$id_guidebox.'?api_key=5eb82c2cbd1742d036de96361c14af3ef12bb4b5');
 			$update_5 = json_decode($content_show_cast, TRUE);
 
-			if ( $content_show_cast == ""){
-
-				$casts = "Non disponibile";
-			}
-
 			$cast = $update_5["cast"]["0"]["name"];
 			$cast_1 = $update_5["cast"]["1"]["name"];
 			$cast_2 = $update_5["cast"]["2"]["name"];
 			//$cast_3 = $update_5["cast"]["3"]["name"];
 			//$cast_4 = $update_5["cast"]["4"]["name"];
 
-			$casts = "".$cast." - ".$cast_1." - ".$cast_2;
+			//$casts = "".$cast." - ".$cast_1." - ".$cast_2;
 
 			if (is_null($cast))
 			{
@@ -254,12 +249,7 @@ function GetSerie($chatId,$title)
 				$casts = "".$cast."%0A".$cast_1."%0A".$cast_2."%0A".$cast_3."%0A";
 			}*/
 
-			if ( is_null($cast) & is_null($cast_1) & is_null($cast_2) ){
-
-				$casts = "Non disponibile";
-			}
-
-			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A".$rating."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$casts;
+			$message1 = "<b>Nome Serie:</b>%0A".$title_film."%0A %0A"."<b>Genere:</b>%0A".$genere."%0A %0A"."<b>Data uscita 1° Episodio:</b>%0A".$date_serie."%0A %0A"."<b>Durata Media Episodio:</b>%0A".$durata." min %0A %0A".$rating."<b>Produttore:</b>%0A".$produttore."%0A %0A"."<b>Cast:</b>%0A".$cast." - ".$cast_1." - ".$cast_2;
 			$message2 = $trama;
 
 			if ( $trailer == "www.youtube.com/watch?v=/"){
