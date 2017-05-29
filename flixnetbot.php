@@ -157,7 +157,7 @@ function GetSerie($chatId,$title)
 
 			$produttore = $update_6["network"];
 
-		if ( $title_film != "" ){
+		if ( $title_serie != "" ){
 
 			if( $genere_1 != "" ){
 
