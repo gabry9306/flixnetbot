@@ -133,8 +133,8 @@ function GetSerie($chatId,$title)
 			$trama = str_replace_json('\r',' ',$trama);
 			$trama = str_replace_json('<p>',' ',$trama);
 			$trama = str_replace_json('</p>',' ',$trama);
-			$trama = str_replace_json('-',' ',$trama);
-			/*$trama = str_replace_json(':',' ',$trama);
+			/*$trama = str_replace_json(';',' ',$trama);
+			$trama = str_replace_json(':',' ',$trama);
 			$trama = str_replace_json(',',' ',$trama);
 			$trama = str_replace_json($apo,' ',$trama);*/
 			$trama = str_replace_json('[1]','',$trama);
@@ -173,6 +173,12 @@ function GetSerie($chatId,$title)
 
 				$genere = "".$genere_1."/".$genere_2."/".$genere_3;
 			}
+
+			if( $genere_1 == "" & $genere_2 == "" & $genere_3 == "" ){
+
+				$genere = "Non disponibile";
+			}
+
 
 			if ( $produttore == "")
 			{
