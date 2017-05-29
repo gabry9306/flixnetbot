@@ -195,7 +195,17 @@ function GetSerie($chatId,$title)
 				$date_serie = "Non disponibile";
 			}
 
+			if ( $date_serie == NULL)
+			{
+				$date_serie = "Non disponibile";
+			}
+
 			if ( $durata == "")
+			{
+				$durata = "Non disponibile";
+			}
+
+			if ( $durata == NULL)
 			{
 				$durata = "Non disponibile";
 			}
