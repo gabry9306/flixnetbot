@@ -236,7 +236,7 @@ function GetSerie($chatId,$title)
 			$cast_1 = str_replace_json('.','. %0A%0A',$cast_1);
 			$cast_1 = str_replace_json($slash_1,' ',$cast_1);
 
-			$casts = "".$cast." - ".$cast_1/*." - ".$cast_2*/;
+			$casts = "".$cast." - "/*.$cast_1.*/" - ".$cast_2;
 
 			if (is_null($cast))
 			{
