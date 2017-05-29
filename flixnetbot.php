@@ -208,7 +208,7 @@ function GetSerie($chatId,$title)
 				$rating = "<b>Rating:</b>%0A"."Non disponibile"."%0A %0A";
 			}
 
-			$content_show_cast = file_get_contents('http://api.tvmaze.com/lookup/shows?imdb='.$id_imdb.'');
+			$content_show_cast = file_get_contents('http://api.tvmaze.com/lookup/shows?imdb='.$id_imdb);
 			$update_7 = json_decode($content_show_cast, TRUE);
 
 			$id_tvmaze = $update_7["id"];
