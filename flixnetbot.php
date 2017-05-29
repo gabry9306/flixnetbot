@@ -110,11 +110,17 @@ function GetSerie($chatId,$title)
 
 		// PRELEVO TRAILER 
 
-			$content_trailer = file_get_contents('https://www.googleapis.com/youtube/v3/search?part=snippet&q='.$title_serie.'official+trailer&key=AIzaSyAiMTE7edL3D-klp0y-nbtyyuv5IGLIlhU&maxResults=25');
+			$content_trailer = file_get_contents('https://www.episodate.com/api/show-details?q='.$title_serie.'');
+			$update_3 = json_decode($content_trailer, TRUE);
+
+			$trailer_base = $update_3["tvShow"]["youtube_link"];
+			$trailer = "www.youtube.com/watch?v=".$trailer_base."/";
+
+			/*$content_trailer = file_get_contents('https://www.googleapis.com/youtube/v3/search?part=snippet&q='.$title_serie.'official+trailer&key=AIzaSyAiMTE7edL3D-klp0y-nbtyyuv5IGLIlhU&maxResults=25');
 			$update_3 = json_decode($content_trailer, TRUE);
 
 			$trailer_base = $update_3["items"]["0"]["id"]["videoId"];
-			$trailer = "www.youtube.com/watch?v=".$trailer_base."/";
+			$trailer = "www.youtube.com/watch?v=".$trailer_base."/";*/
 
 		// PRELEVO TRAMA 
 
