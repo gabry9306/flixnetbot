@@ -208,12 +208,12 @@ function GetSerie($chatId,$title)
 				$rating = "<b>Rating:</b>%0A"."Non disponibile"."%0A %0A";
 			}
 
-			$content_show_cast = file_get_contents('http://api.tvmaze.com/lookup/shows?imdb='.$id_imdb);
+			$content_show_cast = file_get_contents('http://api-public.guidebox.com/v2/search?api_key=5eb82c2cbd1742d036de96361c14af3ef12bb4b5&type=show&field=title&query='.$title);
 			$update_7 = json_decode($content_show_cast, TRUE);
 
-			$id_tvmaze = $update_7["id"];
+			$id_guidebox = $update_7["results"]["0"]["id"];
 
-			$content_show_cast = file_get_contents('http://api.tvmaze.com/shows/'.$id_tvmaze.'/cast');
+			$content_show_cast = file_get_contents('http://api-public.guidebox.com/v2/shows/'.$id_guidebox.'?api_key=5eb82c2cbd1742d036de96361c14af3ef12bb4b5');
 			$update_5 = json_decode($content_show_cast, TRUE);
 
 			$cast = $update_5["0"]["person"]["name"];
