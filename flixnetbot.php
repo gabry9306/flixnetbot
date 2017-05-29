@@ -217,26 +217,15 @@ function GetSerie($chatId,$title)
 			$update_5 = json_decode($content_show_cast, TRUE);
 
 			$cast = $update_5["cast"]["0"]["name"];
+			$character_1 = $update_5["cast"]["0"]["name"];
 			$cast_1 = $update_5["cast"]["1"]["name"];
+			$character_2 = $update_5["cast"]["0"]["name"];
 			$cast_2 = $update_5["cast"]["2"]["name"];
+			$character_3 = $update_5["cast"]["0"]["name"];
 			//$cast_3 = $update_5["cast"]["3"]["name"];
 			//$cast_4 = $update_5["cast"]["4"]["name"];
 
-			$cast = str_replace_json('\n',' ',$cast);
-			$cast = str_replace_json('\r',' ',$cast);
-			$cast = str_replace_json('<p>',' ',$cast);
-			$cast = str_replace_json('</p>',' ',$cast);
-			$cast = str_replace_json('.','. %0A%0A',$cast);
-			$cast = str_replace_json($slash_1,' ',$cast);
-
-			$cast_1 = str_replace_json('\n',' ',$cast_1);
-			$cast_1 = str_replace_json('\r',' ',$cast_1);
-			$cast_1 = str_replace_json('<p>',' ',$cast_1);
-			$cast_1 = str_replace_json('</p>',' ',$cast_1);
-			$cast_1 = str_replace_json('.','. %0A%0A',$cast_1);
-			$cast_1 = str_replace_json($slash_1,' ',$cast_1);
-
-			$casts = "".$cast." - "/*.$cast_1." - "*/.$cast_2;
+			$casts = "".$cast."(".$character_1.")"." - "/*.$cast_1." - "*/.$cast_2."(".$character_2.")".;
 
 			if (is_null($cast))
 			{
