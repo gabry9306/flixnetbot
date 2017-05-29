@@ -226,7 +226,7 @@ function GetSerie($chatId,$title)
 				$rating = "<b>Rating:</b>%0A"."Non disponibile"."%0A %0A";
 			}
 
-			$content_show_cast = file_get_contents('http://api-public.guidebox.com/v2/search?api_key=5eb82c2cbd1742d036de96361c14af3ef12bb4b5&type=show&field=title&query='.$title_serie);
+			$content_show_cast = file_get_contents('http://api-public.guidebox.com/v2/search?api_key=5eb82c2cbd1742d036de96361c14af3ef12bb4b5&type=show&field=title&query='.$title);
 			$update_7 = json_decode($content_show_cast, TRUE);
 
 			$id_guidebox = $update_7["results"]["0"]["id"];
