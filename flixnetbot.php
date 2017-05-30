@@ -45,7 +45,7 @@ function sendMessage($chatId,$message)
 function TastieraMenuPrincipale($chatId,$message)
 {
 
-	$tastiera = '&reply_markup={"keyboard":[["🔎 CERCA SERIE","🎦 SERIE PIU\' POPOLARI"],["INFO BOT"]],"resize_keyboard":true}';
+	$tastiera = '&reply_markup={"keyboard":[["🔎 CERCA SERIE"],["✳ AGGIORNAMENTI EPISODI","🎦 SERIE PIU\' POPOLARI"],["INFO BOT"]],"resize_keyboard":true}';
 	$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message.$tastiera;
 	file_get_contents($url);
 
@@ -396,6 +396,43 @@ function GetMostPopularSeries($chatId)
 		
 }
 
+function GetUpdatesSeries($chatId)
+{
+
+		$content_popular = file_get_contents('https://www.episodate.com/api/most-popular?page=1');
+		$update_1 = json_decode($content_popular, TRUE);
+	
+		$name_show_1 = $update_1["tv_shows"]["0"]["name"];
+		$name_show_2 = $update_1["tv_shows"]["1"]["name"];
+		$name_show_3 = $update_1["tv_shows"]["2"]["name"];
+		$name_show_4 = $update_1["tv_shows"]["3"]["name"];
+		$name_show_5 = $update_1["tv_shows"]["4"]["name"];
+		$name_show_6 = $update_1["tv_shows"]["5"]["name"];
+		$name_show_7 = $update_1["tv_shows"]["6"]["name"];
+		$name_show_8 = $update_1["tv_shows"]["7"]["name"];
+		$name_show_9 = $update_1["tv_shows"]["8"]["name"];
+		$name_show_10 = $update_1["tv_shows"]["9"]["name"];
+		$name_show_11 = $update_1["tv_shows"]["10"]["name"];
+		$name_show_12 = $update_1["tv_shows"]["11"]["name"];
+		$name_show_13 = $update_1["tv_shows"]["12"]["name"];
+		$name_show_14 = $update_1["tv_shows"]["13"]["name"];
+		$name_show_15 = $update_1["tv_shows"]["14"]["name"];
+		$name_show_16 = $update_1["tv_shows"]["15"]["name"];
+		$name_show_17 = $update_1["tv_shows"]["16"]["name"];
+		$name_show_18 = $update_1["tv_shows"]["17"]["name"];
+		$name_show_19 = $update_1["tv_shows"]["18"]["name"];
+		$name_show_20 = $update_1["tv_shows"]["19"]["name"];
+
+				$message1 = "Per scoprire tutti gli episodi odierni e settimanali delle tue serie preferite visita il link sotto";
+
+				$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"VAI A ...","url":"http://www.serietvu.com/ultimi-episodi/"}]]}';
+				$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
+				file_get_contents($url);
+
+				/*TastieraSeriePopolari($chatId,$name_show_1,$name_show_2,$name_show_3,$name_show_4,$name_show_5,$name_show_6,$name_show_7,$name_show_8,$name_show_9,$name_show_10,$name_show_11,$name_show_12,$name_show_13,$name_show_14,$name_show_15,$name_show_16,$name_show_17,$name_show_18,$name_show_19,$name_show_20);*/
+		
+}
+
 function GetDiscoverSerie($chatId)
 {
 
@@ -499,6 +536,24 @@ switch($text)
   	{
   		Typing($chatId);
     	GetMostPopularSeries($chatId);
+
+    	break;
+
+	} 
+  case "✳ AGGIORNAMENTI EPISODI":
+
+  	{
+  		Typing($chatId);
+    	GetUpdatesSeries($chatId);
+
+    	break;
+	}
+    
+  case "✳ aggiornamenti episodi":
+
+  	{
+  		Typing($chatId);
+    	GetUpdatesSeries($chatId);
 
     	break;
 
