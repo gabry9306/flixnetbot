@@ -401,31 +401,10 @@ function GetUpdatesSeries($chatId)
 
 		$content_popular = file_get_contents('https://www.episodate.com/api/most-popular?page=1');
 		$update_1 = json_decode($content_popular, TRUE);
-	
-		$name_show_1 = $update_1["tv_shows"]["0"]["name"];
-		$name_show_2 = $update_1["tv_shows"]["1"]["name"];
-		$name_show_3 = $update_1["tv_shows"]["2"]["name"];
-		$name_show_4 = $update_1["tv_shows"]["3"]["name"];
-		$name_show_5 = $update_1["tv_shows"]["4"]["name"];
-		$name_show_6 = $update_1["tv_shows"]["5"]["name"];
-		$name_show_7 = $update_1["tv_shows"]["6"]["name"];
-		$name_show_8 = $update_1["tv_shows"]["7"]["name"];
-		$name_show_9 = $update_1["tv_shows"]["8"]["name"];
-		$name_show_10 = $update_1["tv_shows"]["9"]["name"];
-		$name_show_11 = $update_1["tv_shows"]["10"]["name"];
-		$name_show_12 = $update_1["tv_shows"]["11"]["name"];
-		$name_show_13 = $update_1["tv_shows"]["12"]["name"];
-		$name_show_14 = $update_1["tv_shows"]["13"]["name"];
-		$name_show_15 = $update_1["tv_shows"]["14"]["name"];
-		$name_show_16 = $update_1["tv_shows"]["15"]["name"];
-		$name_show_17 = $update_1["tv_shows"]["16"]["name"];
-		$name_show_18 = $update_1["tv_shows"]["17"]["name"];
-		$name_show_19 = $update_1["tv_shows"]["18"]["name"];
-		$name_show_20 = $update_1["tv_shows"]["19"]["name"];
 
 				$message1 = "Per scoprire tutti gli episodi odierni e settimanali delle tue serie preferite visita il link sotto";
 
-				$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"VAI A ...","url":"http://www.serietvu.com/ultimi-episodi/"}]]}';
+				$tastiera_1 = '&reply_markup={"inline_keyboard":[[{"text":"VAI A ...","url":"https://eurostreaming.club/aggiornamento-episodi/"}]]}';
 				$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1.$tastiera_1;
 				file_get_contents($url);
 
