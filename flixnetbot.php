@@ -66,6 +66,7 @@ function Pagamento($chatId)
 {
 	
 	$botid = "369850827:AAGQjHVeEF9RwNK51OpyC2vkvzq5MZHoXV4"; //telegram bot id
+	$chatId = isset($message['chat']['id']) ? $message['chat']['id'] : "";
 	$stripe_id = "284685063:TEST:YzFiMTRiOTUwNjY1"; // stripe token for telegram bot, example for test 784643563:TEST:ZWI5ZDsdfUyNzM2
 
 	$url = "https://api.telegram.org/$botid/sendInvoice";
