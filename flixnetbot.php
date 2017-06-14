@@ -32,7 +32,7 @@ $callback_data = $update['callback_query']['data'];
 $callback_message_id = $update['callback_data']['message']['chat']['id'];
 $callback_user_id = $update['callback_data']['from']['id'];
 
-$pagamento_id = $update['pre_checkout_query']['id'];
+$pagamento_id = isset($update['pre_checkout_query']['id']);
 $pagamento_user = $update['pre_checkout_query']['from'];
 $pagamento_valuta = $update['pre_checkout_query']['currency'];
 $pagamento_costo = $update['pre_checkout_query']['total_amount'];
