@@ -61,7 +61,7 @@ function Pagamento($chatId)
 {
 	$pay ='pay';
 	$tastiera = '&prices=[{"label":"label_prova","amount":100}]';
-	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=Lo Squalo&description=Blu Ray Lo Squalo&payload=1&provider_token=350862534:LIVE:MzU1MThiNjA1YzQw&start_parameter=pay&currency=EUR'.$tastiera;
+	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=Lo Squalo&description=Blu Ray Lo Squalo&payload=1&provider_token=284685063:TEST:YzFiMTRiOTUwNjY1&start_parameter=pay&currency=EUR'.$tastiera;
 	file_get_contents($url);
 
 	sendMessage($chatId,"Pagamento!");
