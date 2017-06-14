@@ -51,11 +51,11 @@ function TastieraMenuPrincipale($chatId,$message)
 
 }
 
-function Pagamento($chatId,$message)
+function Pagamento($chatId)
 {
 
-	$tastiera = '&reply_markup={"keyboard":[["🔎 CERCA SERIE"],["✳ AGGIORNAMENTI EPISODI","🎦 SERIE PIU\' POPOLARI"],["INFO BOT"]],"resize_keyboard":true}';
-	$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message.$tastiera;
+	$tastiera = '&prices={"label":"label_prova","amount":"145"}';
+	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=ProvaProdotto&description=DESCRIPTION&payload=128&provider_token=350862534:LIVE:MzU1MThiNjA1YzQw&start_parameter=avviopagamento&currency=EUR'.$tastiera;
 	file_get_contents($url);
 
 }
