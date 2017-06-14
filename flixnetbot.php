@@ -75,6 +75,13 @@ function sendMessage($chatId,$message)
 
 }
 
+function sendMessageFromChannel($chatId,$message)
+{
+	$url = $GLOBALS[website].'/sendMessage?chat_id=@Jackabry&parse_mode=HTML&text='.$message;
+	file_get_contents($url);
+
+}
+
 function TastieraMenuPrincipale($chatId,$message)
 {
 
@@ -597,7 +604,16 @@ switch($text)
     	TastieraMenuPrincipale($chatId,"<b>Qual'è il titolo della Serie Netflix che cerchi?</b>%0A %0AES. Master+of+none");
 
     	break;
-	} 
+	}
+
+	case "msg":
+
+  	{
+  		Typing($chatId);
+    	sendMessageFromChannel($chatId,"Prova messaggio da Canale");
+
+    	break;
+	}  
   case "🎦 SERIE PIU' POPOLARI":
 
   	{
