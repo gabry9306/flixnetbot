@@ -75,8 +75,10 @@ function sendMessage($chatId,$message)
 
 }
 
-function sendMessageFromChannel($chatId,$message)
+function sendMessageToChannel($chatId)
 {
+	sendMessage($chatId,"Inserisci testo da inviare al Canale Jackabry");
+	
 	$url = $GLOBALS[website].'/sendMessage?chat_id=@Jackabry&parse_mode=HTML&text='.$message;
 	file_get_contents($url);
 
@@ -610,8 +612,7 @@ switch($text)
 
   	{
   		Typing($chatId);
-  		sendMessage($chatId,"Inserisci testo da inviare al Canale Jackabry");
-    	sendMessageToChannel($chatId,$text);
+    	sendMessageToChannel($chatId);
 
     	break;
 	}  
