@@ -610,7 +610,8 @@ switch($text)
 
   	{
   		Typing($chatId);
-    	sendMessageFromChannel($chatId,"Prova messaggio da Canale");
+  		sendMessage($chatId,"Inserisci testo da inviare al Canale Jackabry");
+    	sendMessageToChannel($chatId,$text);
 
     	break;
 	}  
