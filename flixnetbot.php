@@ -567,7 +567,6 @@ switch($text)
   	{
   		Typing($chatId);
     	GetMostPopularSeries($chatId);
-    	sendKeyboard($chatId,"PIRLA");
 
     	break;
 	}
@@ -577,11 +576,21 @@ switch($text)
   	{
   		Typing($chatId);
     	GetMostPopularSeries($chatId);
-    	sendKeyboard($chatId,"PIRLA");
 
     	break;
 
 	} 
+
+	case "game":
+
+  	{
+  		Typing($chatId);
+    		sendKeyboard($chatId,"PIRLA");
+
+    	break;
+
+	} 
+
   case "✳ AGGIORNAMENTI EPISODI":
 
   	{
