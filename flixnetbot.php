@@ -87,19 +87,49 @@ function TastieraMenuPrincipale($chatId,$message)
 function Pagamento($chatId)
 {
 	$stripe_token = "284685063:TEST:YzFiMTRiOTUwNjY1";
-	$tastiera = '&prices=[{"amount":100,"label":"PriceLabel_1"}]';
-	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=LoSqualo&description=BluRayLoSqualo&payload=telebot-test-invoice&provider_token='.$stripe_token.'&start_parameter=pay&currency=EUR'.$tastiera;
-	file_get_contents($url);
+	
+	$url = $GLOBALS[website].'/sendInvoice';
 
-	CheckPagamento($pagamento_id);
+		$LabeledPrice = json_encode(array(array('label' => "Nike Shoes", 'amount' => 11000)));
+
+		$postfields = array(
+		'chat_id' => "$chatId",
+		'title' => "nike shoes",
+		'description' => "The best running shoes 2017",
+		'payload' => "telebot-test-invoice",
+		'provider_token' => "$stripe_token",
+		'start_parameter' => "pay",
+		'currency' => "EUR",
+		'prices' => $LabeledPrice
+		);
+
+		print_r($postfields);
+
+		if (!$curld = curl_init()) {
+		exit;
+		}
+
+		curl_setopt($curld, CURLOPT_POST, true);
+		curl_setopt($curld, CURLOPT_POSTFIELDS, $postfields);
+		curl_setopt($curld, CURLOPT_URL,$url);
+		curl_setopt($curld, CURLOPT_RETURNTRANSFER, true);
+
+		$output = curl_exec($curld);
+
+		curl_close ($curld);
+	
+	file_get_contents($url);
+	CheckPagamento($chatId);
+
+
 
 }
 
 
-function CheckPagamento($pagamento_id)
+function CheckPagamento($chatId)
 {
 
-	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=True';
+	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$chatId.'&ok=True';
 	file_get_contents($url);
 
 	sendMessage($chatId,"Pagamento OK!");
