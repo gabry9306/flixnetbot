@@ -58,6 +58,8 @@ function Pagamento($chatId)
 	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=ProvaProdotto&description=DESCRIPTION&payload=1&provider_token=350862534:LIVE:MzU1MThiNjA1YzQw&start_parameter=avviopagamento&currency=EUR'.$tastiera;
 	file_get_contents($url);
 
+	sendMessage($chatId,"Pagamento!");
+
 }
 
 /*function TastieraSeriePopolari($chatId,$t1,$t2,$t3,$t4,$t5,$t6,$t7,$t8,$t9,$t10,$t11,$t12,$t13,$t14,$t15,$t16,$t17,$t18,$t19,$t20)
