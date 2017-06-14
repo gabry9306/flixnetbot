@@ -71,23 +71,8 @@ function Pagamento($chatId)
 
 	//CheckPagamento($pagamento_id,$pagamento_user,$pagamento_valuta,$pagamento_costo,$pagamento_payload);
 
-
 }
 
-function sendKeyboard($chatId, $text) {
-	$keyboard = [
-                'inline_keyboard' => [['text' =>  $firstname, 'callback_data' => $text]],
-            ];
-                $markup = json_encode($keyboard, true);
-                $content = [
-                    'chat_id' => $chatId,
-                    'reply_markup' => $markup,
-                    'text' => 'Here is your places list. Choose one to get map with it.',
-                    'disable_notification' => true
-                ];
-	$url = $GLOBALS[website] . "/sendMessage?chat_id=".$chatId."&reply_markup=".$keyboard."&text=".urlencode($text);
-	file_get_contents($url);
-}
 
 function CheckPagamento($pagamento_id,$pagamento_user,$pagamento_valuta,$pagamento_costo,$pagamento_payload)
 {
@@ -575,16 +560,6 @@ switch($text)
   	{
   		Typing($chatId);
     	GetMostPopularSeries($chatId);
-
-    	break;
-
-	} 
-
-	case "game":
-
-  	{
-  		Typing($chatId);
-    		sendKeyboard($chatId,"PIRLA");
 
     	break;
 
