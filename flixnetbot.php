@@ -33,7 +33,7 @@ $callback_message_id = $update['callback_data']['message']['chat']['id'];
 $callback_user_id = $update['callback_data']['from']['id'];
 
 $pagamento_id = $update['pre_checkout_query']['id'];
-$pagamento_user = $update['pre_checkout_query']['from']['first_name'];
+$pagamento_user = $update['pre_checkout_query']['from'];
 $pagamento_valuta = $update['pre_checkout_query']['currency'];
 $pagamento_costo = $update['pre_checkout_query']['total_amount'];
 $pagamento_payload = $update['pre_checkout_query']['invoice_payload'];
