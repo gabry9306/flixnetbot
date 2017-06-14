@@ -77,10 +77,16 @@ function Pagamento($chatId)
 }
 
 function sendKeyboard($chatId, $text) {
-	$keyboard = {'inline_keyboard': [                 
-	                ['text':'Yes'],              
-	                ['text':'No']            
-	            ]   };
+	$keyboard = [
+                'inline_keyboard' => [['text' =>  $name, 'callback_data' => $text]],
+            ];
+                $markup = json_encode($keyboard, true);
+                $content = [
+                    'chat_id' => $chatId,
+                    'reply_markup' => $markup,
+                    'text' => 'Here is your places list. Choose one to get map with it.',
+                    'disable_notification' => true
+                ];
 	$keyboard = json_encode($keyboard);
 	$url = $GLOBALS[website] . "/sendMessage?chat_id=".$chatId."&reply_markup=".$keyboard."&text=".urlencode($text);
 	file_get_contents($url);
