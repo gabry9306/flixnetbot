@@ -73,6 +73,8 @@ function Pagamento($chatId)
 
 	CheckPagamento($pagamento_id,$pagamento_user,$pagamento_valuta,$pagamento_costo,$pagamento_payload);
 
+	sendMessage($chatId,"Id pagamento".var_dump($pagamento_id));
+
 }
 
 function CheckPagamento($pagamento_id,$pagamento_user,$pagamento_valuta,$pagamento_costo,$pagamento_payload)
