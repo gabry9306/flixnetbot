@@ -76,7 +76,7 @@ function Pagamento($chatId)
 
 function sendKeyboard($chatId, $text) {
 	$keyboard = [
-                'inline_keyboard' => [['text' =>  $name, 'callback_data' => $text]],
+                'inline_keyboard' => [['text' =>  $firstname, 'callback_data' => $text]],
             ];
                 $markup = json_encode($keyboard, true);
                 $content = [
