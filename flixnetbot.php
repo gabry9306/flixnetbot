@@ -65,7 +65,7 @@ function TastieraMenuPrincipale($chatId,$message)
 function Pagamento($chatId)
 {
 	
-	$tastiera = '&prices=[{"label":"Acquisto BluRay Lo Squalo","amount":100}]';
+	$tastiera = '&prices=[{"amount":100,"label":"PriceLabel_1"}]';
 	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=Lo Squalo&description=Blu Ray Lo Squalo&payload=1&provider_token=284685063:TEST:YzFiMTRiOTUwNjY1&start_parameter=pay&currency=EUR&photo_url=https://images-na.ssl-images-amazon.com/images/I/51N0OTCWaPL.jpg&photo_size=s'.$tastiera;
 	file_get_contents($url);
 
@@ -74,10 +74,10 @@ function Pagamento($chatId)
 }
 
 
-function CheckPagamento($pagamento_id)
+function CheckPagamento($pagamento_id,$check_ordine)
 {
 
-	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&error_message=Sorry, somebody just bought the last of our amazing black T-shirts while you were busy filling out your payment details. Please choose a different color or garment!';
+	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok='.$check_ordine.'';
 	file_get_contents($url);
 
 	sendMessage($chatId,"Pagamento OK!");
