@@ -65,11 +65,38 @@ function TastieraMenuPrincipale($chatId,$message)
 function Pagamento($chatId)
 {
 	
-	$tastiera = '&prices=[{"amount":100,"label":"PriceLabel_1"}]';
-	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=Lo Squalo&description=Blu Ray Lo Squalo&payload=1&provider_token=284685063:TEST:YzFiMTRiOTUwNjY1&start_parameter=pay&currency=EUR&photo_url=https://images-na.ssl-images-amazon.com/images/I/51N0OTCWaPL.jpg&photo_size=s'.$tastiera;
-	file_get_contents($url);
+	$botid = "369850827:AAGQjHVeEF9RwNK51OpyC2vkvzq5MZHoXV4"; //telegram bot id
+	$stripe_id = "284685063:TEST:YzFiMTRiOTUwNjY1"; // stripe token for telegram bot, example for test 784643563:TEST:ZWI5ZDsdfUyNzM2
 
-	CheckPagamento($pagamento_id,$check_ordine);
+	$url = "https://api.telegram.org/$botid/sendInvoice";
+
+	$LabeledPrice = json_encode(array(array('label' => "33", 'amount' => 11000)));
+
+	$postfields = array(
+	'chat_id' => $chatId,
+	'title' => "nike shoes",
+	'description' => "The best running shoes 2017",
+	'payload' => "telebot-test-invoice",
+	'provider_token' => "$stripe_id",
+	'start_parameter' => "pay",
+	'currency' => "EUR",
+	'prices' => $LabeledPrice
+	);
+
+	print_r($postfields);
+
+	if (!$curld = curl_init()) {
+	exit;
+	}
+
+	curl_setopt($curld, CURLOPT_POST, true);
+	curl_setopt($curld, CURLOPT_POSTFIELDS, $postfields);
+	curl_setopt($curld, CURLOPT_URL,$url);
+	curl_setopt($curld, CURLOPT_RETURNTRANSFER, true);
+
+	$output = curl_exec($curld);
+
+	curl_close ($curld);
 
 }
 
