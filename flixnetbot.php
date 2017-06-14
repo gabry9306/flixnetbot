@@ -90,26 +90,17 @@ function Pagamento($chatId)
 	
 	$url = $GLOBALS[website].'/sendInvoice';
 
-		$chat_id = $resulta['message']['chat']['id'];
+		$LabeledPrice = json_encode(array(array('label' => "Nike Shoes", 'amount' => 11000)));
 
-		$LabeledPrice = array(array('label' => "Nike Shoes", 'amount' => 11000), array('label' => "Shipping", 'amount' => 2500));
 		$postfields = array(
-		'chat_id' => "$chatId", // Telegram bot Chat ID
-		'title' => "NIKE SHOES",
-		'photo_url' => "https://at-cdn-s01.audiotool.com/2014/04/24/documents/CJdSUBI3TeFEiohdPJLsDgwF7Im5rOX/0/cover256x256-c73e8c1831fd4a78801487a2f6dc1de2.jpg",
-		'photo_width' => 50,
-		'photo_height' => 50,
+		'chat_id' => "$chatId",
+		'title' => "nike shoes",
 		'description' => "The best running shoes 2017",
 		'payload' => "telebot-test-invoice",
-		'provider_token' => "$stripe_token", // Your Stipe token for telegram Bot
+		'provider_token' => "$stripe_token",
 		'start_parameter' => "pay",
 		'currency' => "EUR",
-		'prices' => json_encode($LabeledPrice),
-		'need_name' => True,
-		'need_phone_number' => True,
-		'need_email' => True,
-		'need_shipping_address' => True,
-		'is_flexible' => True,
+		'prices' => $LabeledPrice
 		);
 
 		print_r($postfields);
@@ -128,14 +119,7 @@ function Pagamento($chatId)
 		curl_close ($curld);
 	
 	file_get_contents($url);
-	
-
-	$url2 = $GLOBALS[website].'/answerShippingQuery?shipping_query_id='.$chatId.'';
-	file_get_contents($url);
-
-	sendMessage($chatId,"Pagamento OK!");
-
-	file_get_contents($url2);
+	CheckPagamento($chatId);
 
 
 
