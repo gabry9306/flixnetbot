@@ -91,15 +91,15 @@ function Pagamento($chatId)
 	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=LoSqualo&description=BluRayLoSqualo&payload=telebot-test-invoice&provider_token='.$stripe_token.'&start_parameter=pay&currency=EUR'.$tastiera;
 	file_get_contents($url);
 
-	CheckPagamento($chatId);
+	CheckPagamento($pagamento_id);
 
 }
 
 
-function CheckPagamento($chatId)
+function CheckPagamento($pagamento_id)
 {
 
-	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$chatId.'&ok=True';
+	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=True';
 	file_get_contents($url);
 
 	sendMessage($chatId,"Pagamento OK!");
