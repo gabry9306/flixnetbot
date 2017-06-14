@@ -38,6 +38,11 @@ $pagamento_valuta = $update['pre_checkout_query']['currency'];
 $pagamento_costo = $update['pre_checkout_query']['total_amount'];
 $pagamento_payload = $update['pre_checkout_query']['invoice_payload'];
 
+$shipping_id = $update['shipping_query']['id'];
+$shipping_user = $update['shipping_query']['from'];
+$shipping_payload = $update['shipping_query']['invoice_payload'];
+$shipping_address = $update['shipping_query']['shipping_address'];
+
 
 // *********************************************** FUNZIONI ******************************************** //
 
@@ -73,10 +78,22 @@ function Pagamento($chatId)
 function CheckPagamento($pagamento_id,$pagamento_user,$pagamento_valuta,$pagamento_costo,$pagamento_payload)
 {
 
-	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=TRUE';
+	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$shipping_id.'&ok=TRUE';
 	file_get_contents($url);
 
 	sendMessage($chatId,"Pagamento OK!");
+
+	
+
+}
+
+function CheckShip($shipping_id,$shipping_user,$shipping_payload,$shipping_address)
+{
+
+	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=TRUE';
+	file_get_contents($url);
+
+	sendMessage($chatId,"SHIP OK!");
 
 }
 
