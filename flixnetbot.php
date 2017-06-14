@@ -7,6 +7,9 @@ $website = "https://api.telegram.org/bot".$botToken;
  
 $content = file_get_contents('php://input');
 $update = json_decode($content, TRUE);
+
+$fHandle=fopen('mioLog.txt','w');
+fwrite($fHandle,$content);
  
 $msg = $update["message"]["text"];
 $msg_id = $update["message"]["id"];
@@ -42,6 +45,26 @@ $shipping_id = $update['shipping_query']['id'];
 $shipping_user = $update['shipping_query']['from'];
 $shipping_payload = $update['shipping_query']['invoice_payload'];
 $shipping_address = $update['shipping_query']['shipping_address'];
+
+fwrite($fHandle,"\n\nPostField inviato a telegram:\n".JSON_ENCODE($postField_inline)."\n");
+
+
+$handle=curl_init();
+curl_setopt($handle,CURLOPT_URL,"https://api.telegram.org/bot$botToken/$method");
+curl_setopt($handle,CURLOPT_HTTPHEADER,array('Content-type: application/json'));
+curl_setopt($handle,CURLOPT_POST,1);
+curl_setopt($handle,CURLOPT_POSTFIELDS,JSON_ENCODE($postField_inline));
+curl_setopt($handle,CURLOPT_RETURNTRANSFER,1);
+curl_setopt($handle,CURLOPT_SSL_VERIFYPEER,false);
+curl_setopt($handle,CURLOPT_ENCODING,1);
+//$dati=json_decode( curl_exec($handle) ,true);	
+$dati=curl_exec($handle);	
+
+curl_close($handle);
+
+fwrite($fHandle,"\n\nRisposta ricevuta da telegram:\n$dati");
+
+fclose($fHandle);
 
 
 // *********************************************** FUNZIONI ******************************************** //
