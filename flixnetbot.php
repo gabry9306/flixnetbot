@@ -77,7 +77,7 @@ function Pagamento($chatId)
 function CheckPagamento($pagamento_id,$pagamento_valuta,$pagamento_costo,$pagamento_payload)
 {
 
-	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=TRUE';
+	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id=pay&ok=TRUE';
 	file_get_contents($url);
 
 	sendMessage($chatId,"Pagamento OK!");
