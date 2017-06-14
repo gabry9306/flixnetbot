@@ -59,9 +59,9 @@ function TastieraMenuPrincipale($chatId,$message)
 
 function Pagamento($chatId)
 {
-
-	$tastiera = '&prices={"label":["label_prova"],"amount":["145"]}';
-	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=ProvaProdotto&description=DESCRIPTION&payload=1&provider_token=350862534:LIVE:MzU1MThiNjA1YzQw&start_parameter=avviopagamento&currency=EUR'.$tastiera;
+	pay = TRUE;
+	$tastiera = '&prices=[{"label":"label_prova","amount":"145"}]';
+	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=ProvaProdotto&description=DESCRIPTION&payload=1&provider_token=350862534:LIVE:MzU1MThiNjA1YzQw&start_parameter=pay&currency=EUR'.$tastiera;
 	file_get_contents($url);
 
 	sendMessage($chatId,"Pagamento!");
