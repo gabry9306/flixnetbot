@@ -77,17 +77,12 @@ function Pagamento($chatId)
 }
 
 function sendKeyboard($chatId, $text) {
-	$keyboard = ['inline_keyboard' => [                 
+	$keyboard = ['inline_keyboard': [                 
 	                ['text':'Yes'],              
 	                ['text':'No']            
-	            ],
-	   'resize_keyboard' => true,           
-	   'one_time_keyboard' => true,      
-	   'selective' => true          
-	];
+	            ]   ];
 	$keyboard = json_encode($keyboard);
-	$url = $GLOBALS[website] . "/sendMessage?chat_id=".$chatId."&    
-	reply_markup=".$keyboard."&text=".urlencode($text);
+	$url = $GLOBALS[website] . "/sendMessage?chat_id=".$chatId."&reply_markup=".$keyboard."&text=".urlencode($text);
 	file_get_contents($url);
 }
 
