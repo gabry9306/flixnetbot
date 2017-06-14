@@ -79,7 +79,7 @@ function Pagamento($chatId)
 function CheckPagamento($pagamento_id,$check_ordine)
 {
 
-	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok='.$check_ordine.'';
+	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok='.$check_ordine.'&error_message=Sorry, somebody just bought the last of our amazing black T-shirts while you were busy filling out your payment details. Please choose a different color or garment!';
 	file_get_contents($url);
 
 	sendMessage($chatId,"Pagamento OK!");
