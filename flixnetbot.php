@@ -75,15 +75,6 @@ function sendMessage($chatId,$message)
 
 }
 
-function sendMessageToChannel($chatId,$text)
-{
-	sendMessage($chatId,"Inserisci testo da inviare al Canale Jackabry");
-	$message = $text;
-	$url = $GLOBALS[website].'/sendMessage?chat_id=@Jackabry&parse_mode=HTML&text='.$message;
-	file_get_contents($url);
-
-}
-
 function TastieraMenuPrincipale($chatId,$message)
 {
 
@@ -608,14 +599,6 @@ switch($text)
     	break;
 	}
 
-	case "msg":
-
-  	{
-  		Typing($chatId);
-    	sendMessageToChannel($chatId,$text);
-
-    	break;
-	}  
   case "🎦 SERIE PIU' POPOLARI":
 
   	{
