@@ -91,7 +91,7 @@ function Pagamento($chatId)
 	$url = $GLOBALS[website].'/sendInvoice';
 
 		$chat_id = $resulta['message']['chat']['id'];
-		
+
 		$LabeledPrice = array(array('label' => "Nike Shoes", 'amount' => 11000), array('label' => "Shipping", 'amount' => 2500));
 		$postfields = array(
 		'chat_id' => "$chatId", // Telegram bot Chat ID
@@ -128,7 +128,14 @@ function Pagamento($chatId)
 		curl_close ($curld);
 	
 	file_get_contents($url);
-	CheckPagamento($chatId);
+	
+
+	$url2 = $GLOBALS[website].'/answerShippingQuery?shipping_query_id='.$chatId.'';
+	file_get_contents($url);
+
+	sendMessage($chatId,"Pagamento OK!");
+
+	file_get_contents($url2);
 
 
 
@@ -138,7 +145,7 @@ function Pagamento($chatId)
 function CheckPagamento($chatId)
 {
 
-	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$chatId.'&ok=True';
+	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$chatId.'';
 	file_get_contents($url);
 
 	sendMessage($chatId,"Pagamento OK!");
