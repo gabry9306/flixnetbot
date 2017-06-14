@@ -565,7 +565,26 @@ switch($text)
 			TastieraMenuPrincipale($chatId,"Per usare il Bot utilizza la tastiera sotto per accedere alla sezione che ti interessa");
 		}
 
-  	break;  	
+  	break;  
+  case "paga":
+
+	  	{	
+	  		Typing($chatId);
+
+			Pagamento($chatId);
+		}
+
+  	break;  
+
+  case "PAGA":
+
+	  	{	
+	  		Typing($chatId);
+
+			Pagamento($chatId);
+		}
+
+  	break;  				
 
   default:
 
