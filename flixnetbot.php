@@ -35,8 +35,8 @@ $callback_data = $update['callback_query']['data'];
 $callback_message_id = $update['callback_data']['message']['chat']['id'];
 $callback_user_id = $update['callback_data']['from']['id'];
 
-$pagamento_id = isset($update['pre_checkout_query']['id']);
-$pagamento_user = $update['pre_checkout_query']['from'];
+$pagamento_id = $update['pre_checkout_query']['id'];
+$pagamento_user = $update['pre_checkout_query']['from']['id'];
 $pagamento_valuta = $update['pre_checkout_query']['currency'];
 $pagamento_costo = $update['pre_checkout_query']['total_amount'];
 $pagamento_payload = $update['pre_checkout_query']['invoice_payload'];
@@ -86,9 +86,9 @@ function TastieraMenuPrincipale($chatId,$message)
 
 function Pagamento($chatId)
 {
-	
+	$stripe_token = "284685063:TEST:YzFiMTRiOTUwNjY1";
 	$tastiera = '&prices=[{"amount":100,"label":"PriceLabel_1"}]';
-	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=Lo Squalo&description=Blu Ray Lo Squalo&payload=telebot-test-invoice&provider_token=284685063:TEST:YzFiMTRiOTUwNjY1&start_parameter=pay&currency=EUR'.$tastiera;
+	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=LoSqualo&description=BluRayLoSqualo&payload=telebot-test-invoice&provider_token='.$stripe_token.'&start_parameter=pay&currency=EUR'.$tastiera;
 	file_get_contents($url);
 
 	CheckPagamento($chatId);
