@@ -57,8 +57,7 @@ curl_setopt($handle,CURLOPT_POSTFIELDS,JSON_ENCODE($postField_inline));
 curl_setopt($handle,CURLOPT_RETURNTRANSFER,1);
 curl_setopt($handle,CURLOPT_SSL_VERIFYPEER,false);
 curl_setopt($handle,CURLOPT_ENCODING,1);
-//$dati=json_decode( curl_exec($handle) ,true);	
-$dati=curl_exec($handle);	
+$dati=json_decode( curl_exec($handle) ,true);		
 
 curl_close($handle);
 
