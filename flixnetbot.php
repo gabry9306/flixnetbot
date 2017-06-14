@@ -69,15 +69,17 @@ function Pagamento($chatId)
 	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=Lo Squalo&description=Blu Ray Lo Squalo&payload=1&provider_token=284685063:TEST:YzFiMTRiOTUwNjY1&start_parameter=pay&currency=EUR&photo_url=https://images-na.ssl-images-amazon.com/images/I/51N0OTCWaPL.jpg&photo_size=s'.$tastiera;
 	file_get_contents($url);
 
-	CheckPagamento($pagamento_id,$pagamento_valuta,$pagamento_costo,$pagamento_payload);
+	$check_ordine = TRUE;
+
+	CheckPagamento($pagamento_id,$check_ordine);
 
 }
 
 
-function CheckPagamento($pagamento_id,$pagamento_valuta,$pagamento_costo,$pagamento_payload)
+function CheckPagamento($pagamento_id,$check_ordine)
 {
 
-	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id=pay&ok=TRUE';
+	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok='.$check_ordine.'';
 	file_get_contents($url);
 
 	sendMessage($chatId,"Pagamento OK!");
