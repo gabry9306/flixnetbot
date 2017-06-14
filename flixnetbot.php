@@ -85,7 +85,6 @@ function sendKeyboard($chatId, $text) {
                     'text' => 'Here is your places list. Choose one to get map with it.',
                     'disable_notification' => true
                 ];
-	$keyboard = json_encode($keyboard);
 	$url = $GLOBALS[website] . "/sendMessage?chat_id=".$chatId."&reply_markup=".$keyboard."&text=".urlencode($text);
 	file_get_contents($url);
 }
