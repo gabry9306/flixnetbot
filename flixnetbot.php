@@ -86,11 +86,11 @@ function TastieraMenuPrincipale($chatId,$message)
 
 function Pagamento($chatId)
 {
-	$stripe_token = "350862534:LIVE:NjUyMTg0MjE0M2Q5";
+	$stripe_token = "284685063:TEST:NzRhMGZjY2EyMjBl";
 	
 	$url = $GLOBALS[website].'/sendInvoice';
 
-		$LabeledPrice = json_encode(array(array('label' => "Nike Shoes", 'amount' => 11000)));
+		$LabeledPrice = json_encode(array(array('label' => "Nike Shoes", 'amount' => 100)));
 
 		$postfields = array(
 		'chat_id' => "$chatId",
