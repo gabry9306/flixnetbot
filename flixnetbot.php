@@ -84,7 +84,7 @@ function TastieraMenuPrincipale($chatId,$message)
 
 }
 
-function Pagamento($chatId)
+function Pagamento($chatId,$pagamento_id)
 {
 	$stripe_token = "284685063:TEST:NzRhMGZjY2EyMjBl";
 	
@@ -118,13 +118,12 @@ function Pagamento($chatId)
 	
 	file_get_contents($url);
 
-	$pre_checkout_query = "********"; //telegram Pre Checkout Query id
-	$botid = "********"; // telegram bot id
+	$botToken = "369850827:AAGQjHVeEF9RwNK51OpyC2vkvzq5MZHoXV4";
 
 	$url2 = "https://api.telegram.org/$botToken/answerPreCheckoutQuery";
 
 	$postfields = array(
-	'pre_checkout_query_id' => "$chatId",
+	'pre_checkout_query_id' => "$pagamento_id",
 	'ok' => "True"
 	);
 
@@ -143,16 +142,6 @@ function Pagamento($chatId)
 
 	file_get_contents($url2);
 
-
-}
-
-function CheckShip($shipping_id,$shipping_user,$shipping_payload,$shipping_address)
-{
-
-	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=TRUE';
-	file_get_contents($url);
-
-	sendMessage($chatId,"SHIP OK!");
 
 }
 
@@ -669,7 +658,7 @@ switch($text)
 	  	{	
 	  		Typing($chatId);
 
-			Pagamento($chatId);
+			Pagamento($chatId,$pagamento_id);
 		}
 
   	break;  
