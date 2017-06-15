@@ -103,8 +103,6 @@ function Pagamento($chatId)
 		'prices' => $LabeledPrice
 		);
 
-		print_r($postfields);
-
 		if (!$curld = curl_init()) {
 		exit;
 		}
@@ -119,22 +117,30 @@ function Pagamento($chatId)
 		curl_close ($curld);
 	
 	file_get_contents($url);
-	CheckPagamento($chatId);
 
+	$pre_checkout_query = "********"; telegram Pre Checkout Query id
+	$botid = "********"; // telegram bot id
 
+	$url = "https://api.telegram.org/$botToken/answerPreCheckoutQuery";
 
-}
+	$postfields = array(
+	'pre_checkout_query_id' => "$chatId",
+	'ok' => "True"
+	);
 
+	if (!$curld = curl_init()) {
+	exit;
+	}
 
-function CheckPagamento($chatId)
-{
+	curl_setopt($curld, CURLOPT_POST, true);
+	curl_setopt($curld, CURLOPT_POSTFIELDS, $postfields);
+	curl_setopt($curld, CURLOPT_URL,$url);
+	curl_setopt($curld, CURLOPT_RETURNTRANSFER, true);
 
-	$url = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$chatId.'';
-	file_get_contents($url);
+	$output = curl_exec($curld);
 
-	sendMessage($chatId,"Pagamento OK!");
+	curl_close ($curld);
 
-	
 
 }
 
