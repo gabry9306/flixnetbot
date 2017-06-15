@@ -53,7 +53,7 @@ $handle=curl_init();
 curl_setopt($handle,CURLOPT_URL,"https://api.telegram.org/bot$botToken/$method");
 curl_setopt($handle,CURLOPT_HTTPHEADER,array('Content-type: application/json'));
 curl_setopt($handle,CURLOPT_POST,1);
-curl_setopt($handle,CURLOPT_POSTFIELDS,JSON_ENCODE($postfields));
+curl_setopt($handle,CURLOPT_POSTFIELDS,JSON_ENCODE($postField_inline));
 curl_setopt($handle,CURLOPT_RETURNTRANSFER,1);
 curl_setopt($handle,CURLOPT_SSL_VERIFYPEER,false);
 curl_setopt($handle,CURLOPT_ENCODING,1);
