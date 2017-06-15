@@ -86,7 +86,7 @@ function TastieraMenuPrincipale($chatId,$message)
 
 function Pagamento($chatId)
 {
-	$stripe_token = "350862534:LIVE:NjUyMTg0MjE0M2Q5";
+	$stripe_token = "284685063:TEST:NzRhMGZjY2EyMjBl";
 	
 	$url = $GLOBALS[website].'/sendInvoice';
 
