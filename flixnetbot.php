@@ -118,7 +118,7 @@ function Pagamento($chatId)
 	
 	file_get_contents($url);
 
-	$pre_checkout_query = "********"; telegram Pre Checkout Query id
+	$pre_checkout_query = "********"; //telegram Pre Checkout Query id
 	$botid = "********"; // telegram bot id
 
 	$url2 = "https://api.telegram.org/$botToken/answerPreCheckoutQuery";
