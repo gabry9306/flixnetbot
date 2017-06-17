@@ -106,8 +106,8 @@ function Pagamento($chatId)
 	
 	$LabeledPrice = json_encode(array(array('label' => "Nike Shoes", 'amount' => 11000), array('label' => "Shipping", 'amount' => 2500)));
 
-	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=nike shoes&description=The best running shoes 2017&payload=flixnet-test-invoice&provider_token='.$stripe_token.'&start_parameter=pay&currency=EUR&prices='.$LabeledPrice.'';
-
+	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=nike shoes&photo_url=https://at-cdn-s01.audiotool.com/2014/04/24/documents/CJdSUBI3TeFEiohdPJLsDgwF7Im5rOX/0/cover256x256-c73e8c1831fd4a78801487a2f6dc1de2.jpg&photo_width=50&photo_height=50&description=The best running shoes 2017&payload=flixnet-test-invoice&provider_token='.$stripe_token.'&start_parameter=pay&currency=EUR&prices='.$LabeledPrice.'';
+	
 	file_get_contents($url);
 
 	// *************************** //
