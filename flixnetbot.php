@@ -616,7 +616,7 @@ switch($text)
 			$content = file_get_contents('php://input');
 			$update = json_decode($content, TRUE);
 
-			$pagamento_id = $update['update_id'];
+			$pagamento_id = $update['pre_checkout_query']['id'];
 			$pagamento_user = $update['pre_checkout_query']['from']['id'];
 			$pagamento_valuta = $update['pre_checkout_query']['currency'];
 			$pagamento_costo = $update['pre_checkout_query']['total_amount'];
