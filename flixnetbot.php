@@ -103,9 +103,6 @@ function Pagamento($chatId)
 		'prices' => $LabeledPrice
 		);
 
-		if (!$curld = curl_init()) {
-		exit;
-		}
 
 		curl_setopt($curld, CURLOPT_POST, true);
 		curl_setopt($curld, CURLOPT_POSTFIELDS, $postfields);
@@ -135,10 +132,6 @@ function Pagamento($chatId)
 	'pre_checkout_query_id' => "$pagamento_id",
 	'ok' => "True"
 	);
-
-	if (!$curld = curl_init()) {
-	exit;
-	}
 
 	curl_setopt($curld, CURLOPT_POST, true);
 	curl_setopt($curld, CURLOPT_POSTFIELDS, $postfields);
