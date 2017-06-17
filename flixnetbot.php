@@ -132,17 +132,17 @@ function Pagamento($chatId)
 		curl_setopt($curld, CURLOPT_RETURNTRANSFER, true);
 
 		$output = curl_exec($curld);
-
-		curl_close ($curld);
 	
 	file_get_contents($url);
 
 	$url2 = "https://api.telegram.org/$botToken/answerPreCheckoutQuery";
 
 	$postfields = array(
-	'pre_checkout_query_id' => "$pagamento_id",
+	'pre_checkout_query_id' => "$chatId",
 	'ok' => "True"
 	);
+
+	print_r($postfields);
 
 	if (!$curld = curl_init()) {
 	exit;
