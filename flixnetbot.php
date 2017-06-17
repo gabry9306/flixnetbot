@@ -112,7 +112,7 @@ function Pagamento($chatId)
 
 	// *************************** //
 
-	$url3 = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=True&errorMessage=True';
+	$url3 = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=False&errorMessage=True';
 
 	file_get_contents($url3);
 
