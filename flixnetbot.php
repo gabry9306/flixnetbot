@@ -88,53 +88,29 @@ function Pagamento($chatId)
 {
 	$stripe_token = "284685063:TEST:NzRhMGZjY2EyMjBl";
 	
-	$url = $GLOBALS[website].'/sendInvoice';
+	$url = "https://api.telegram.org/$botToken/sendInvoice";
 
-		$LabeledPrice = json_encode(array(array('label' => "Nike Shoes", 'amount' => 100)));
+	$LabeledPrice = array(array('label' => "Nike Shoes", 'amount' => 1100));
 
-		$postfields = array(
-		'chat_id' => "$chatId",
-		'title' => "nike shoes",
-		'description' => "The best running shoes 2017",
-		'payload' => "flixnet-test-invoice",
-		'provider_token' => "$stripe_token",
-		'start_parameter' => "pay",
-		'currency' => "EUR",
-		'prices' => $LabeledPrice
-		);
+	$keyboard = array("inline_keyboard" => array(array(array("pay" => True,"text" => "Make A Payment")))); 
 
-		if (!$curld = curl_init()) {
-		exit;
-		}
-
-		curl_setopt($curld, CURLOPT_POST, true);
-		curl_setopt($curld, CURLOPT_POSTFIELDS, $postfields);
-		curl_setopt($curld, CURLOPT_URL,$url);
-		curl_setopt($curld, CURLOPT_RETURNTRANSFER, true);
-
-		$output = curl_exec($curld);
-
-		curl_close ($curld);
-	
-	file_get_contents($url);
-
-	$botToken = "369850827:AAGQjHVeEF9RwNK51OpyC2vkvzq5MZHoXV4";
-
-	$content = file_get_contents('php://input');
-	$update = json_decode($content, TRUE);
-
-	$pagamento_id = $update['pre_checkout_query']['id'];
-	$pagamento_user = $update['pre_checkout_query']['from']['id'];
-	$pagamento_valuta = $update['pre_checkout_query']['currency'];
-	$pagamento_costo = $update['pre_checkout_query']['total_amount'];
-	$pagamento_payload = $update['pre_checkout_query']['invoice_payload'];
-
-	$url2 = "https://api.telegram.org/$botToken/answerPreCheckoutQuery";
 
 	$postfields = array(
-	'pre_checkout_query_id' => "$pagamento_id",
-	'ok' => "True"
+	'chat_id' => "$chatId",
+	'title' => "NIKE SHOES",
+	'description' => "The best running shoes 2017",
+	'photo_url' => "https://2.bp.blogspot.com/-4EWBP3UEBDs/WTrJTwLVmMI/AAAAAAAAAk8/ZpbJ4c2WoocDpGtWL20n6TbcFYVq2pxZwCLcB/s320/1.png",
+	'photo_width' => 90,
+	'photo_height' => 50,
+	'payload' => "flixnet-test-invoice",
+	'provider_token' => "$stripe_token",
+	'start_parameter' => "pay",
+	'currency' => "EUR",
+	'prices' => json_encode($LabeledPrice),
+	'reply_markup' => json_encode($keyboard)
 	);
+
+	sendMessage($chatId,$postfields);
 
 	if (!$curld = curl_init()) {
 	exit;
@@ -148,8 +124,6 @@ function Pagamento($chatId)
 	$output = curl_exec($curld);
 
 	curl_close ($curld);
-
-	file_get_contents($url2);
 
 
 }
