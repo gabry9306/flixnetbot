@@ -87,17 +87,6 @@ function TastieraMenuPrincipale($chatId,$message)
 function Pagamento($chatId)
 {
 	$stripe_token = "284685063:TEST:NzRhMGZjY2EyMjBl";
-
-	$botToken = "369850827:AAGQjHVeEF9RwNK51OpyC2vkvzq5MZHoXV4";
-
-	$content = file_get_contents('php://input');
-	$update = json_decode($content, TRUE);
-
-	$pagamento_id = $update['pre_checkout_query']['id'];
-	$pagamento_user = $update['pre_checkout_query']['from']['id'];
-	$pagamento_valuta = $update['pre_checkout_query']['currency'];
-	$pagamento_costo = $update['pre_checkout_query']['total_amount'];
-	$pagamento_payload = $update['pre_checkout_query']['invoice_payload'];
 	
 	$url = $GLOBALS[website].'/sendInvoice';
 
@@ -114,6 +103,10 @@ function Pagamento($chatId)
 		'prices' => $LabeledPrice
 		);
 
+		if (!$curld = curl_init()) {
+		exit;
+		}
+
 		curl_setopt($curld, CURLOPT_POST, true);
 		curl_setopt($curld, CURLOPT_POSTFIELDS, $postfields);
 		curl_setopt($curld, CURLOPT_URL,$url);
@@ -125,12 +118,27 @@ function Pagamento($chatId)
 	
 	file_get_contents($url);
 
-	$url2 = $GLOBALS[website].'/answerPreCheckoutQuery';
+	$botToken = "369850827:AAGQjHVeEF9RwNK51OpyC2vkvzq5MZHoXV4";
+
+	$content = file_get_contents('php://input');
+	$update = json_decode($content, TRUE);
+
+	$pagamento_id = $update['pre_checkout_query']['id'];
+	$pagamento_user = $update['pre_checkout_query']['from']['id'];
+	$pagamento_valuta = $update['pre_checkout_query']['currency'];
+	$pagamento_costo = $update['pre_checkout_query']['total_amount'];
+	$pagamento_payload = $update['pre_checkout_query']['invoice_payload'];
+
+	$url2 = "https://api.telegram.org/$botToken/answerPreCheckoutQuery";
 
 	$postfields = array(
 	'pre_checkout_query_id' => "$pagamento_id",
 	'ok' => "True"
 	);
+
+	if (!$curld = curl_init()) {
+	exit;
+	}
 
 	curl_setopt($curld, CURLOPT_POST, true);
 	curl_setopt($curld, CURLOPT_POSTFIELDS, $postfields);
