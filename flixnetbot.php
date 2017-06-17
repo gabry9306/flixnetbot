@@ -86,35 +86,7 @@ function TastieraMenuPrincipale($chatId,$message)
 
 function Pagamento($chatId)
 {
-	$stripe_token = "284685063:TEST:NzRhMGZjY2EyMjBl";
-
-	$botToken = "369850827:AAGQjHVeEF9RwNK51OpyC2vkvzq5MZHoXV4";
-
-	$content = file_get_contents('php://input');
-	$update = json_decode($content, TRUE);
-
-	$pagamento_id = $update['pre_checkout_query']['id'];
-	$pagamento_user = $update['pre_checkout_query']['from']['id'];
-	$pagamento_valuta = $update['pre_checkout_query']['currency'];
-	$pagamento_costo = $update['pre_checkout_query']['total_amount'];
-	$pagamento_payload = $update['pre_checkout_query']['invoice_payload'];
-
-	$shipping_id = $update['shipping_query']['id'];
-	$shipping_user = $update['shipping_query']['from'];
-	$shipping_payload = $update['shipping_query']['invoice_payload'];
-	$shipping_address = $update['shipping_query']['shipping_address'];
 	
-	$LabeledPrice = json_encode(array(array('label' => "Nike Shoes", 'amount' => 11000), array('label' => "Shipping", 'amount' => 2500)));
-
-	$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=nike shoes&photo_url=https://at-cdn-s01.audiotool.com/2014/04/24/documents/CJdSUBI3TeFEiohdPJLsDgwF7Im5rOX/0/cover256x256-c73e8c1831fd4a78801487a2f6dc1de2.jpg&photo_width=50&photo_height=50&description=The best running shoes 2017&payload=flixnet-test-invoice&provider_token='.$stripe_token.'&start_parameter=pay&currency=EUR&prices='.$LabeledPrice.'';
-	
-	file_get_contents($url);
-
-	// *************************** //
-
-	$url3 = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=False&errorMessage=True';
-
-	file_get_contents($url3);
 
 
 }
@@ -623,7 +595,35 @@ switch($text)
 	  	{	
 	  		Typing($chatId);
 
-			Pagamento($chatId);
+			$stripe_token = "284685063:TEST:NzRhMGZjY2EyMjBl";
+
+			$botToken = "369850827:AAGQjHVeEF9RwNK51OpyC2vkvzq5MZHoXV4";
+
+			$content = file_get_contents('php://input');
+			$update = json_decode($content, TRUE);
+
+			$pagamento_id = $update['pre_checkout_query']['id'];
+			$pagamento_user = $update['pre_checkout_query']['from']['id'];
+			$pagamento_valuta = $update['pre_checkout_query']['currency'];
+			$pagamento_costo = $update['pre_checkout_query']['total_amount'];
+			$pagamento_payload = $update['pre_checkout_query']['invoice_payload'];
+
+			$shipping_id = $update['shipping_query']['id'];
+			$shipping_user = $update['shipping_query']['from'];
+			$shipping_payload = $update['shipping_query']['invoice_payload'];
+			$shipping_address = $update['shipping_query']['shipping_address'];
+			
+			$LabeledPrice = json_encode(array(array('label' => "Nike Shoes", 'amount' => 11000), array('label' => "Shipping", 'amount' => 2500)));
+
+			$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=nike shoes&photo_url=https://at-cdn-s01.audiotool.com/2014/04/24/documents/CJdSUBI3TeFEiohdPJLsDgwF7Im5rOX/0/cover256x256-c73e8c1831fd4a78801487a2f6dc1de2.jpg&photo_width=50&photo_height=50&description=The best running shoes 2017&payload=flixnet-test-invoice&provider_token='.$stripe_token.'&start_parameter=pay&currency=EUR&prices='.$LabeledPrice.'';
+			
+			file_get_contents($url);
+
+			// *************************** //
+
+			$url3 = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=False&errorMessage=True';
+
+			file_get_contents($url3);
 		}
 
   	break;  
@@ -633,7 +633,35 @@ switch($text)
 	  	{	
 	  		Typing($chatId);
 
-			Pagamento($chatId);
+			$stripe_token = "284685063:TEST:NzRhMGZjY2EyMjBl";
+
+			$botToken = "369850827:AAGQjHVeEF9RwNK51OpyC2vkvzq5MZHoXV4";
+
+			$content = file_get_contents('php://input');
+			$update = json_decode($content, TRUE);
+
+			$pagamento_id = $update['pre_checkout_query']['id'];
+			$pagamento_user = $update['pre_checkout_query']['from']['id'];
+			$pagamento_valuta = $update['pre_checkout_query']['currency'];
+			$pagamento_costo = $update['pre_checkout_query']['total_amount'];
+			$pagamento_payload = $update['pre_checkout_query']['invoice_payload'];
+
+			$shipping_id = $update['shipping_query']['id'];
+			$shipping_user = $update['shipping_query']['from'];
+			$shipping_payload = $update['shipping_query']['invoice_payload'];
+			$shipping_address = $update['shipping_query']['shipping_address'];
+			
+			$LabeledPrice = json_encode(array(array('label' => "Nike Shoes", 'amount' => 11000), array('label' => "Shipping", 'amount' => 2500)));
+
+			$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=nike shoes&photo_url=https://at-cdn-s01.audiotool.com/2014/04/24/documents/CJdSUBI3TeFEiohdPJLsDgwF7Im5rOX/0/cover256x256-c73e8c1831fd4a78801487a2f6dc1de2.jpg&photo_width=50&photo_height=50&description=The best running shoes 2017&payload=flixnet-test-invoice&provider_token='.$stripe_token.'&start_parameter=pay&currency=EUR&prices='.$LabeledPrice.'';
+			
+			file_get_contents($url);
+
+			// *************************** //
+
+			$url3 = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=False&errorMessage=True';
+
+			file_get_contents($url3);
 		}
 
   	break;  				
