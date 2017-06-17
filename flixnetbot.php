@@ -111,7 +111,11 @@ function Pagamento($chatId)
 		'provider_token' => "$stripe_token",
 		'start_parameter' => "pay",
 		'currency' => "EUR",
-		'prices' => $LabeledPrice
+		'prices' => $LabeledPrice,'need_name' => True,
+		'need_phone_number' => True,
+		'need_email' => True,
+		'need_shipping_address' => True,
+		'is_flexible' => True
 		);
 
 		if (!$curld = curl_init()) {
