@@ -107,8 +107,7 @@ function Pagamento($chatId)
 	'provider_token' => "$stripe_token",
 	'start_parameter' => "pay",
 	'currency' => "EUR",
-	'prices' => json_encode($LabeledPrice),
-	'reply_markup' => json_encode($keyboard)
+	'prices' => json_encode($LabeledPrice)
 	);
 
 	curl_setopt($curld, CURLOPT_POST, true);
