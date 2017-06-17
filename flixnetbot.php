@@ -137,27 +137,29 @@ function Pagamento($chatId)
 	
 	file_get_contents($url);
 
+	// *************************** //
+	
 	$url3 = $GLOBALS[website].'/answerPreCheckoutQuery';
 
-	$postfields = array(
+	$postfields2 = array(
 	'pre_checkout_query_id' => "$pagamento_id",
 	'ok' => "True"
 	);
 
 	print_r($postfields);
 
-	if (!$curld = curl_init()) {
+	if (!$curld2 = curl_init()) {
 	exit;
 	}
 
-	curl_setopt($curld, CURLOPT_POST, true);
-	curl_setopt($curld, CURLOPT_POSTFIELDS, $postfields);
-	curl_setopt($curld, CURLOPT_URL,$url3);
-	curl_setopt($curld, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($curld2, CURLOPT_POST, true);
+	curl_setopt($curld2, CURLOPT_POSTFIELDS, $postfields2);
+	curl_setopt($curld2, CURLOPT_URL,$url3);
+	curl_setopt($curld2, CURLOPT_RETURNTRANSFER, true);
 
-	$output = curl_exec($curld);
+	$output = curl_exec($curld2);
 
-	curl_close ($curld);
+	curl_close ($curld2);
 
 	file_get_contents($url3);
 
