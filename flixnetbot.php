@@ -86,30 +86,50 @@ function TastieraMenuPrincipale($chatId,$message)
 
 function Pagamento($chatId)
 {
-	$botToken = "369850827:AAGQjHVeEF9RwNK51OpyC2vkvzq5MZHoXV4";
 	$stripe_token = "284685063:TEST:NzRhMGZjY2EyMjBl";
-	
-	$url = "https://api.telegram.org/$botToken/sendInvoice";
 
-	$LabeledPrice = array(array('label' => "Nike Shoes", 'amount' => 11000), array('label' => "Shipping", 'amount' => 2500));
+	$botToken = "369850827:AAGQjHVeEF9RwNK51OpyC2vkvzq5MZHoXV4";
+
+	$content = file_get_contents('php://input');
+	$update = json_decode($content, TRUE);
+
+	$pagamento_id = $update['pre_checkout_query']['id'];
+	$pagamento_user = $update['pre_checkout_query']['from']['id'];
+	$pagamento_valuta = $update['pre_checkout_query']['currency'];
+	$pagamento_costo = $update['pre_checkout_query']['total_amount'];
+	$pagamento_payload = $update['pre_checkout_query']['invoice_payload'];
+	
+	$url = $GLOBALS[website].'/sendInvoice';
+
+		$LabeledPrice = json_encode(array(array('label' => "Nike Shoes", 'amount' => 100)));
+
+		$postfields = array(
+		'chat_id' => "$chatId",
+		'title' => "nike shoes",
+		'description' => "The best running shoes 2017",
+		'payload' => "flixnet-test-invoice",
+		'provider_token' => "$stripe_token",
+		'start_parameter' => "pay",
+		'currency' => "EUR",
+		'prices' => $LabeledPrice
+		);
+
+		curl_setopt($curld, CURLOPT_POST, true);
+		curl_setopt($curld, CURLOPT_POSTFIELDS, $postfields);
+		curl_setopt($curld, CURLOPT_URL,$url);
+		curl_setopt($curld, CURLOPT_RETURNTRANSFER, true);
+
+		$output = curl_exec($curld);
+
+		curl_close ($curld);
+	
+	file_get_contents($url);
+
+	$url2 = $GLOBALS[website].'/answerPreCheckoutQuery';
 
 	$postfields = array(
-	'chat_id' => "$chatId", // Telegram bot Chat ID
-	'title' => "NIKE SHOES",
-	'photo_url' => "https://at-cdn-s01.audiotool.com/2014/04/24/documents/CJdSUBI3TeFEiohdPJLsDgwF7Im5rOX/0/cover256x256-c73e8c1831fd4a78801487a2f6dc1de2.jpg",
-	'photo_width' => 50,
-	'photo_height' => 50,
-	'description' => "The best running shoes 2017",
-	'payload' => "flixnet-test-invoice",
-	'provider_token' => "$stripe_token", // Your Stipe token for telegram Bot
-	'start_parameter' => "pay",
-	'currency' => "EUR",
-	'prices' => json_encode($LabeledPrice),
-	'need_name' => True,
-	'need_phone_number' => True,
-	'need_email' => True,
-	'need_shipping_address' => True,
-	'is_flexible' => True,
+	'pre_checkout_query_id' => "$pagamento_id",
+	'ok' => "True"
 	);
 
 	curl_setopt($curld, CURLOPT_POST, true);
@@ -120,6 +140,8 @@ function Pagamento($chatId)
 	$output = curl_exec($curld);
 
 	curl_close ($curld);
+
+	file_get_contents($url2);
 
 
 }
