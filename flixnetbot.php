@@ -137,34 +137,12 @@ function Pagamento($chatId)
 		curl_setopt($curld, CURLOPT_RETURNTRANSFER, true);
 
 		$output = curl_exec($curld);
+
+		curl_close ($curld);
 	
 	file_get_contents($url);
 
-	$url2 = "https://api.telegram.org/$botToken/answerShippingQuery";
-
-	$postfields = array(
-	'shipping_query_id' => "$shipping_id",
-	'ok' => "True"
-	);
-
-	print_r($postfields);
-
-	if (!$curld = curl_init()) {
-	exit;
-	}
-
-	curl_setopt($curld, CURLOPT_POST, true);
-	curl_setopt($curld, CURLOPT_POSTFIELDS, $postfields);
-	curl_setopt($curld, CURLOPT_URL,$url2);
-	curl_setopt($curld, CURLOPT_RETURNTRANSFER, true);
-
-	$output = curl_exec($curld);
-
-	curl_close ($curld);
-
-	file_get_contents($url2);
-
-	$url3 = "https://api.telegram.org/$botToken/answerPreCheckoutQuery";
+	$url3 = $GLOBALS[website].'/answerPreCheckoutQuery';
 
 	$postfields = array(
 	'pre_checkout_query_id' => "$pagamento_id",
