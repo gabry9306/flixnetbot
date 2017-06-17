@@ -101,7 +101,7 @@ function Pagamento($chatId)
 	
 	$url = $GLOBALS[website].'/sendInvoice';
 
-		$LabeledPrice = json_encode(array(array('label' => "Nike Shoes", 'amount' => 100)));
+		$LabeledPrice = array(array('label' => "Nike Shoes", 'amount' => 11000), array('label' => "Shipping", 'amount' => 2500));
 
 		$postfields = array(
 		'chat_id' => "$chatId",
