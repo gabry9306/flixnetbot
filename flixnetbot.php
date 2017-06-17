@@ -616,13 +616,17 @@ switch($text)
 
 			$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=nike shoes&photo_url=https://at-cdn-s01.audiotool.com/2014/04/24/documents/CJdSUBI3TeFEiohdPJLsDgwF7Im5rOX/0/cover256x256-c73e8c1831fd4a78801487a2f6dc1de2.jpg&photo_width=50&photo_height=50&description=The best running shoes 2017'.' ID Pagamento: '.$pagamento_id.'&payload=flixnet-test-invoice&provider_token='.$stripe_token.'&start_parameter=pay&currency=EUR&prices='.$LabeledPrice.'';
 
-			$update_1 = json_decode($url, TRUE);
+			$url_exect = file_get_contents($url);
+
+			$update_1 = json_decode($url_exect, TRUE);
 
 			// *************************** //
 
-			$url3 = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=False&errorMessage=True';
+			$url3 = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=True';
 
-			file_get_contents($url3);
+			$url_exect2 = file_get_contents($url3);
+
+			$update_2 = json_decode($url_exect2, TRUE);
 		}
 
   	break;  
@@ -653,7 +657,7 @@ switch($text)
 
 			$url = $GLOBALS[website].'/sendInvoice?chat_id='.$chatId.'&title=nike shoes&photo_url=https://at-cdn-s01.audiotool.com/2014/04/24/documents/CJdSUBI3TeFEiohdPJLsDgwF7Im5rOX/0/cover256x256-c73e8c1831fd4a78801487a2f6dc1de2.jpg&photo_width=50&photo_height=50&description=The best running shoes 2017'.' ID Pagamento: '.$pagamento_id.'&payload=flixnet-test-invoice&provider_token='.$stripe_token.'&start_parameter=pay&currency=EUR&prices='.$LabeledPrice.'';
 
-			$update_1 = json_decode($url, TRUE);
+			$update_1 = file_get_contents($url);
 
 			// *************************** //
 
