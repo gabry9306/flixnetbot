@@ -621,7 +621,9 @@ switch($text)
 
 			// *************************** //
 
-			sendMessage($chatId,"ID: " + $pagamento_id);
+			$url2 = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text=ID Pagamento: '.$pagamento_id;
+			file_get_contents($url2);
+
 			$url3 = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=False&errorMessage=True';
 
 			file_get_contents($url3);
@@ -659,7 +661,10 @@ switch($text)
 			file_get_contents($url);
 
 			// *************************** //
-			sendMessage($chatId,"ID: " + $pagamento_id);
+
+			$url2 = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text=ID Pagamento: '.$pagamento_id;
+			file_get_contents($url2);
+			
 			$url3 = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=False&errorMessage=True';
 
 			file_get_contents($url3);
