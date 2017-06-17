@@ -621,6 +621,7 @@ switch($text)
 
 			// *************************** //
 
+			sendMessage($chatId,"ID: " + $pagamento_id);
 			$url3 = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=False&errorMessage=True';
 
 			file_get_contents($url3);
@@ -658,7 +659,7 @@ switch($text)
 			file_get_contents($url);
 
 			// *************************** //
-
+			sendMessage($chatId,"ID: " + $pagamento_id);
 			$url3 = $GLOBALS[website].'/answerPreCheckoutQuery?pre_checkout_query_id='.$pagamento_id.'&ok=False&errorMessage=True';
 
 			file_get_contents($url3);
