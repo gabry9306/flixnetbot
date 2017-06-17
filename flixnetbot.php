@@ -111,12 +111,6 @@ function Pagamento($chatId)
 	'reply_markup' => json_encode($keyboard)
 	);
 
-	sendMessage($chatId,json_decode($postfields));
-
-	if (!$curld = curl_init()) {
-	exit;
-	}
-
 	curl_setopt($curld, CURLOPT_POST, true);
 	curl_setopt($curld, CURLOPT_POSTFIELDS, $postfields);
 	curl_setopt($curld, CURLOPT_URL,$url);
