@@ -65,6 +65,12 @@ fwrite($fHandle,"\n\nRisposta ricevuta da telegram:\n$dati");
 
 fclose($fHandle);
 
+// APPUNTI
+
+// Per mandare un messaggio dal bot al canale Jackabry
+
+// https://api.telegram.org/bot369850827:AAGQjHVeEF9RwNK51OpyC2vkvzq5MZHoXV4/sendMessage?chat_id=@Jackabry&text=Hello
+
 
 // *********************************************** FUNZIONI ******************************************** //
 
@@ -610,7 +616,7 @@ switch($text)
 			$content = file_get_contents('php://input');
 			$update = json_decode($content, TRUE);
 
-			$pagamento_id = $update['pre_checkout_query']['id'];
+			$pagamento_id = $update['result']['pre_checkout_query']['id'];
 			$pagamento_user = $update['pre_checkout_query']['from']['id'];
 			$pagamento_valuta = $update['pre_checkout_query']['currency'];
 			$pagamento_costo = $update['pre_checkout_query']['total_amount'];
