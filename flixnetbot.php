@@ -91,23 +91,25 @@ function Pagamento($chatId)
 	
 	$url = "https://api.telegram.org/$botToken/sendInvoice";
 
-	$LabeledPrice = array(array('label' => "Nike Shoes", 'amount' => 1100));
-
-	$keyboard = array("inline_keyboard" => array(array(array("pay" => True,"text" => "Make A Payment")))); 
-
+	$LabeledPrice = array(array('label' => "Nike Shoes", 'amount' => 11000), array('label' => "Shipping", 'amount' => 2500));
 
 	$postfields = array(
-	'chat_id' => "$chatId",
+	'chat_id' => "$chatId", // Telegram bot Chat ID
 	'title' => "NIKE SHOES",
-	'description' => "The best running shoes 2017",
-	'photo_url' => "https://2.bp.blogspot.com/-4EWBP3UEBDs/WTrJTwLVmMI/AAAAAAAAAk8/ZpbJ4c2WoocDpGtWL20n6TbcFYVq2pxZwCLcB/s320/1.png",
-	'photo_width' => 90,
+	'photo_url' => "https://at-cdn-s01.audiotool.com/2014/04/24/documents/CJdSUBI3TeFEiohdPJLsDgwF7Im5rOX/0/cover256x256-c73e8c1831fd4a78801487a2f6dc1de2.jpg",
+	'photo_width' => 50,
 	'photo_height' => 50,
+	'description' => "The best running shoes 2017",
 	'payload' => "flixnet-test-invoice",
-	'provider_token' => "$stripe_token",
+	'provider_token' => "$stripe_token", // Your Stipe token for telegram Bot
 	'start_parameter' => "pay",
 	'currency' => "EUR",
-	'prices' => json_encode($LabeledPrice)
+	'prices' => json_encode($LabeledPrice),
+	'need_name' => True,
+	'need_phone_number' => True,
+	'need_email' => True,
+	'need_shipping_address' => True,
+	'is_flexible' => True,
 	);
 
 	curl_setopt($curld, CURLOPT_POST, true);
