@@ -86,6 +86,7 @@ function TastieraMenuPrincipale($chatId,$message)
 
 function Pagamento($chatId)
 {
+	$botToken = "369850827:AAGQjHVeEF9RwNK51OpyC2vkvzq5MZHoXV4";
 	$stripe_token = "284685063:TEST:NzRhMGZjY2EyMjBl";
 	
 	$url = "https://api.telegram.org/$botToken/sendInvoice";
@@ -110,7 +111,7 @@ function Pagamento($chatId)
 	'reply_markup' => json_encode($keyboard)
 	);
 
-	sendMessage($chatId,$postfields);
+	sendMessage($chatId,json_decode($postfields));
 
 	if (!$curld = curl_init()) {
 	exit;
