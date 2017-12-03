@@ -90,13 +90,6 @@ function TastieraMenuPrincipale($chatId,$message)
 
 }
 
-function Pagamento($chatId)
-{
-	
-
-
-}
-
 function TastieraErrore($chatId)
 {
 	$message = "Non ho capito, riprova!";
@@ -153,7 +146,7 @@ function GetSerie($chatId,$title)
 			$trailer_base = $update_3["tvShow"]["youtube_link"];
 			$trailer = "www.youtube.com/watch?v=".$trailer_base."/";*/
 
-			$content_trailer = file_get_contents('https://www.googleapis.com/youtube/v3/search?part=snippet&q='.$title_serie.'official+trailer&key=AIzaSyAiMTE7edL3D-klp0y-nbtyyuv5IGLIlhU&maxResults=25');
+			$content_trailer = file_get_contents('https://www.googleapis.com/youtube/v3/search?part=snippet&q='.$title_serie.'serie+tv+official+trailer&key=AIzaSyAiMTE7edL3D-klp0y-nbtyyuv5IGLIlhU&maxResults=25');
 			$update_3 = json_decode($content_trailer, TRUE);
 
 			$trailer_base = $update_3["items"]["0"]["id"]["videoId"];
