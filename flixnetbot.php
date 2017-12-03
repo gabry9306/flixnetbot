@@ -379,7 +379,7 @@ function GetSerie($chatId,$title)
 
 		else {
 
-			$message1 = "✴ Serie Tv non disponibile ... provare con un'altro nome!";
+			$message1 = "✴ Serie Tv non disponibile";
 			$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.$message1;
 			file_get_contents($url);
 
